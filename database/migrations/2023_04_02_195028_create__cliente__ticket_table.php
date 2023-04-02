@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Tickets', function (Blueprint $table) {
+        Schema::create('_cliente__ticket', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->increments("nroTicket") -> id();
-            $table->decimal("precio",$precision = 10, $scale = 2);
+            $table->foreignId("ticket")->references("nroTicket")->on("Ticket") -> id();
+            $table->foreignId("cliente")->references("nombreUsuario")->on("Clientes");
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Tickets');
+        Schema::dropIfExists('_cliente__ticket');
     }
 };
