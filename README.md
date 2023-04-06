@@ -1,5 +1,5 @@
 ## Diagrama de Entidad-Relacion
-<p align="center"><img src="https://raw.githubusercontent.com/iaw-2023/Wilberger-Verniere-laravel/blob/migraciones/documentacion/DiagramaEntidad-Relacion.png?raw=true" width="400" alt="Laravel Logo"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/MartinVerniere/iaw-2023/Wilberger-Verniere-laravel/blob/migraciones/documentacion/DiagramaEntidad-Relacion.png?raw=true" width="400"></p>
 
 ## Respecto al Proyecto Framework PHP - Laravel :
 Las entidades que se podran actualizar seran:
