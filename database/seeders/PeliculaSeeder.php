@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class PeliculaSeeder extends Seeder
 {
@@ -12,9 +14,10 @@ class PeliculaSeeder extends Seeder
      */
     public function run(): void
     {
+        $generosIDs = DB::table('Genero')->pluck('id');
         DB::table('Pelicula') -> insert ([
             'nombre' => Str::random(40),
-            'idGenero' => Int::random() // Solo numeros de Genero('id') y unico
+            'idGenero' => $generosIDs -> random() //Solo numeros de Genero('id') y unico
         ]);
     }
 }

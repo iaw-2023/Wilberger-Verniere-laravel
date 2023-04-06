@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\integer;
 
 class SalaSeeder extends Seeder
 {
@@ -14,7 +17,7 @@ class SalaSeeder extends Seeder
     {
         DB::table('Sala') -> insert ([
             'nombre' => Str::random(40),
-            'capacidadMaxima' => int::random(),
+            'capacidadMaxima' => rand(30,120),
         ]);
     }
 }

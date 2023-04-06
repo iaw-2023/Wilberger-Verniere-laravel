@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreignId("idSala")->references("id")->on("Sala");
 
             $table->timestamps();
+
+            $table->unique(['fecha', 'hora', 'idSala']);
         });
     }
 
