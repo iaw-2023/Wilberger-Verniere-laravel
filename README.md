@@ -1,5 +1,5 @@
 ## Diagrama de Entidad-Relacion
-<p align="center"><img src="https://raw.githubusercontent.com/MartinVerniere/iaw-2023/Wilberger-Verniere-laravel/blob/migraciones/documentacion/DiagramaEntidad-Relacion.png?raw=true" width="400"></p>
+![imagen](documentacion/DiagramaEntidad-Relacion.png)
 
 ## Respecto al Proyecto Framework PHP - Laravel :
 Las entidades que se podran actualizar seran:
@@ -40,3 +40,7 @@ Las acciones que podra realizar el usuario cuando ingrese a la aplicacion son:
 - Consultar detalles de funciones disponibles(que peliculas estrenan, en que fecha y hora, y en que sala)
 - Crear/cancelar/confirmar una Compra
 - Añadir o quitar Detalles de Compra a una Compra creada
+
+## Librerias utilizadas :\
+Se utilizaron las siguientes librerias en la implementacion de este proyecto:
+-<a href="https://github.com/JulienRAVIA/FakerCinemaProviders"> extension de libreria Faker, con datos relacionados a peliculas, cinemas, generos, shows de tv, etc...</a>

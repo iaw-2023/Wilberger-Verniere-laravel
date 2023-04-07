@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-
+use App\Models\Genero;
 
 class GeneroSeeder extends Seeder
 {
@@ -15,8 +15,10 @@ class GeneroSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('Genero') -> insert ([
+        Genero::factory()->count(20)->create();
+
+        /* DB::table('Genero') -> insert ([
             'nombre' => Str::random(25),
-        ]);
+        ]); */
     }
 }

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\DetallesCompra;
 
 class DetallesCompraSeeder extends Seeder
 {
@@ -14,8 +14,9 @@ class DetallesCompraSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('Detalles_Compra') -> insert ([
+        DetallesCompra::factory()->count(5)->create();
+        /* DB::table('Detalles_Compra') -> insert ([
             'cantidadTickets' => rand(0,120)
-        ]);
+        ]); */
     }
 }

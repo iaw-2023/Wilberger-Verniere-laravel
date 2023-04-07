@@ -4,10 +4,11 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class salaFactory extends Factory
+class generoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,10 +17,10 @@ class salaFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            
-            'nombre'=>$this->faker->name(),
-            'capacidadMaxima'=>$this->faker->numberBetween(30,120)
+        $faker = \Faker\Factory::create();
+        $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));
+        return [            
+            'nombre'=>$faker->movieGenre
         ];
     }
 }

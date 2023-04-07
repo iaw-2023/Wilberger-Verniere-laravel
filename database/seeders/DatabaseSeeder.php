@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\Factory;
+//use App\Models\Sala;
 
 
 class DatabaseSeeder extends Seeder
@@ -24,12 +26,13 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
 
-            GeneroSeeder::class,
-            PeliculaSeeder::class,
-            SalaSeeder::class,
-            FuncionSeeder::class,
-            DetallesCompraSeeder::class,
-            CompraSeeder::class
+             GeneroSeeder::class,
+             PeliculaSeeder::class,
+             SalaSeeder::class,            
+             FuncionSeeder::class,
+             CompraSeeder::class,
+             DetallesCompraSeeder::class,
+             
         ]);
     }
 }

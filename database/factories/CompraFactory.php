@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Compra;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class salaFactory extends Factory
+class compraFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,10 +17,10 @@ class salaFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            
-            'nombre'=>$this->faker->name(),
-            'capacidadMaxima'=>$this->faker->numberBetween(30,120)
+        return [            
+            'emailCliente'=>$this->faker->safeEmail(),
+            'observaciones'=>$this->faker->text($maxNbChars = 30),
+            'fecha'=>$this->faker->date($format = 'Y-m-d'),
         ];
     }
 }
