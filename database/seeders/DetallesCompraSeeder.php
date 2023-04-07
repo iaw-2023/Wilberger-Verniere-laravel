@@ -15,8 +15,5 @@ class DetallesCompraSeeder extends Seeder
     public function run(): void
     {
         DetallesCompra::factory()->count(5)->create();
-        /* DB::table('Detalles_Compra') -> insert ([
-            'cantidadTickets' => rand(0,120)
-        ]); */
     }
 }

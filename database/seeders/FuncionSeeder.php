@@ -16,14 +16,6 @@ class FuncionSeeder extends Seeder
      */
     public function run(): void
     {
-        //$peliculasIDs = DB::table('Pelicula')->pluck('id');
-        //$salasIDs = DB::table('Sala')->pluck('id');
         Funcion::factory()->count(5)->create();
-        /* DB::table('Funcion') -> insert ([
-            'fecha' => Carbon::now()->format('Y-m-d'),
-            'hora' => Carbon::now()->subMinutes(random_int(0,300))->format('H:i:s'),
-            'idPelicula' => $pelicudatabase/seeders/FuncionSeeder.phplasIDs->random(), // Solo numeros de Pelicula('id') y unico
-            'idSala' => $salasIDs->random() // Solo numeros de Sala('id') y unico
-        ]); */
     }
 }

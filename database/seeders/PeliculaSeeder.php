@@ -16,11 +16,6 @@ class PeliculaSeeder extends Seeder
      */
     public function run(): void
     {
-        //$generosIDs = DB::table('Genero')->pluck('id');
         Pelicula::factory()->count(5)->create();
-        /* DB::table('Pelicula') -> insert ([
-            'nombre' => Str::random(40),
-            'idGenero' => $generosIDs -> random() //Solo numeros de Genero('id') y unico
-        ]); */
     }
 }

@@ -18,17 +18,5 @@ class CompraSeeder extends Seeder
     public function run(): void
     {
         Compra::factory()->count(5)->create();
-
-        // Estos pluck son de llaves foranes que se movieron a detalles_compra
-        // $funcionesIDs = DB::table('Funcion')->pluck('id');
-        // $comprasIDs = DB::table('Detalles_Compra')->pluck('id');
-
-        /* DB::table('Compra') -> insert ([
-            'emailCliente' => Str::random(40),
-            'observaciones' => Str::random(300),
-            'fecha' => Carbon::now(),
-            'idFuncion' => $funcionesIDs->random(), // Solo numeros de Funcion('id')
-            'idCompra' => $comprasIDs->random() // Solo numeros de Compra('id')
-        ]); */
     }
 }

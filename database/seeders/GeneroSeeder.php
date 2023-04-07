@@ -16,9 +16,5 @@ class GeneroSeeder extends Seeder
     public function run(): void
     {
         Genero::factory()->count(20)->create();
-
-        /* DB::table('Genero') -> insert ([
-            'nombre' => Str::random(25),
-        ]); */
     }
 }

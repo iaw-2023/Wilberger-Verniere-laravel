@@ -18,10 +18,5 @@ class SalaSeeder extends Seeder
     public function run(): void
     {
         Sala::factory()->count(5)->create();
-        /* DB::table('Sala') -> insert ([
-              'nombre' => Str::random(40),
-              'capacidadMaxima' => rand(30,120),
-            
-        ]); */
     }
 }
