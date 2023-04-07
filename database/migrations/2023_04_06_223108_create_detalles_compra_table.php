@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->integer("cantidadTickets");
+
+            $table->foreignId("idFuncion")->references("id")->on("Funcion"); 
             $table->foreignId("idCompra")->references("id")->on("Compra");
 
             $table->timestamps();

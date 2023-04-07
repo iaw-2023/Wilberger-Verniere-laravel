@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("emailCliente",40);
             $table->string("observaciones",300);
-            $table->date("fecha");
-        
-            $table->foreignId("idFuncion")->references("id")->on("Funcion");            
+            $table->date("fecha");                          
 
             $table->timestamps();
         });
