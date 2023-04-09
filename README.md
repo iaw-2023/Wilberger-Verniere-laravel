@@ -44,3 +44,12 @@ Las acciones que podra realizar el usuario cuando ingrese a la aplicacion son:
 ## Librerias utilizadas :\
 Se utilizaron las siguientes librerias en la implementacion de este proyecto:
 -<a href="https://github.com/JulienRAVIA/FakerCinemaProviders"> extension de libreria Faker, con datos relacionados a peliculas, cinemas, generos, shows de tv, etc...</a>
+
+## Observaciones:
+Existe un error al hacer
+    php artisan db:seed
+ya que, en la clase Genero, se trata obtener un nombre de genero de la libreria externa utilizada (en GeneroFactory), pero puede suceder que obtenga un genero que ya habia utilizado, y rompera con lo establecido en Migrations/create_genero_table, que define al atributo 'nombre' como unico, y lanzara un error la consola al intentar hacer el seed.
+Lo unico que provoca esto es que la tabla genero se llene parcialmente, si se hacen las demas tablas por separado haciendo
+    php artisan db:seed --class="NombreSeeder"
+las demas tablas se llenan correctamente y se pueden hacer consultas.
+VER COMO RESOLVER
