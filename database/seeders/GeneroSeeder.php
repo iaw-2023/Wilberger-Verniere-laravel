@@ -15,6 +15,24 @@ class GeneroSeeder extends Seeder
      */
     public function run(): void
     {
-        Genero::factory()->count(20)->create();
+
+        $faker = \Faker\Factory::create();
+        $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));
+        $listaGeneros=$faker->movieGenres(21);
+
+        $usados = array();
+
+        foreach ($listaGeneros as $genero){
+            if (!in_array($genero, $usados)) {
+                DB::table('genero')->insert([
+                    'nombre' => $genero,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ]);
+                $usados[] = $genero;
+            }
+        }
+        
+        //Genero::factory()->count(20)->create(); NO LO USAMOS
     }
 }
