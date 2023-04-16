@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("nombre",40);
 
-            $table->foreignId("idGenero")->references("id")->on("Genero") -> unique();
+            $table->foreignId("idGenero")->references("id")->on("genero") -> unique();
 
             $table->timestamps();
         });

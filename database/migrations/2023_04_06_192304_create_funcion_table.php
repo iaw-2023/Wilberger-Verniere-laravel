@@ -16,8 +16,8 @@ return new class extends Migration
             $table->date("fecha");
             $table->time("hora");
 
-            $table->foreignId("idPelicula")->references("id")->on("Pelicula");
-            $table->foreignId("idSala")->references("id")->on("Sala");
+            $table->foreignId("idPelicula")->references("id")->on("pelicula");
+            $table->foreignId("idSala")->references("id")->on("sala");
 
             $table->timestamps();
 
