@@ -13,4 +13,34 @@ class Pelicula extends Model
         'idGenero',
         'nombre'
     ];
+
+    /*
+        Agrega una pelicula de la lista de funciones
+     */
+    public function agregarPelicula(Request $request): RedirectResponse
+    {
+        //VALIDAR SI IDGENER ES VALIDO
+        $pelicula = new Pelicula;
+
+        $pelicula->nombre     = $request->Nombre;
+        $pelicula->idGenero   = $request->Genero;
+        
+        $pelicula->save();
+
+        return redirect('/');
+    }
+
+    /*
+        Elimina una pelicula de la lista de Peliculas
+     */
+    public function quitarPelicula(Request $request): RedirectResponse
+    {
+        //VALIDAR ID SI EXISTE EN LA TABLA
+        $pelicula = $request->Pelicula; //Id de la pelicula
+
+        Pelicula::delete($pelicula);
+        Pelicula::truncate();
+
+        return redirect('/');
+    }
 }

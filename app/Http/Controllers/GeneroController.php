@@ -10,14 +10,14 @@ class GeneroController extends Controller {
     /*
         Añade una genero a la lista de generos
      */
-    public function añadirGenero(Request $request): RedirectResponse
-    {
+    public function agregarGenero(Request $request): RedirectResponse
+    {/*
         $genero = new Genero;
 
         $genero->nombre = $request->Nombre;
         
         $genero->save();
-
+        */
         return redirect('/');
     }
 
@@ -25,14 +25,14 @@ class GeneroController extends Controller {
         Elimina un genero de la lista de generos
      */
     public function quitarGenero(Request $request): RedirectResponse
-    {
+    {/*
         //VALIDAR ID SI EXISTE EN LA TABLA
 
         $genero = $request->Genero; //Id del genero
 
         Genero::delete($genero);
         Genero::truncate();
-
+        */
         return redirect('/');
     }
 }

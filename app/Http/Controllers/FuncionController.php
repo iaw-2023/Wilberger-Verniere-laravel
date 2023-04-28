@@ -10,9 +10,9 @@ class FuncionController extends Controller {
     /*
         Añade una funcion a la lista de funciones
      */
-    public function añadirFuncion(Request $request): RedirectResponse
+    public function agregarFuncion(Request $request): RedirectResponse
     {
-        //VALIDAR SI IDPELICULA Y IDSALA SON VALIDOS
+/*         //VALIDAR SI IDPELICULA Y IDSALA SON VALIDOS
         $funcion = new Funcion;
 
         $funcion->idPelicula = $request->Pelicula;
@@ -20,7 +20,7 @@ class FuncionController extends Controller {
         $funcion->fecha      = $request->Fecha;
         $funcion->hora       = $request->Hora;
         
-        $funcion->save();
+        $funcion->save();  <--Esto se movio a el modelo correspondiente*/
 
         return redirect('/');
     }

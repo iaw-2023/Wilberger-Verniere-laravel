@@ -10,8 +10,8 @@ class PeliculaController extends Controller{
     /*
         Agrega una pelicula de la lista de funciones
      */
-    public function añadirPelicula(Request $request): RedirectResponse
-    {
+    public function agregarPelicula(Request $request): RedirectResponse
+    {/*
         //VALIDAR SI IDGENER ES VALIDO
         $pelicula = new Pelicula;
 
@@ -19,7 +19,7 @@ class PeliculaController extends Controller{
         $pelicula->idGenero   = $request->Genero;
         
         $pelicula->save();
-
+        */
         return redirect('/');
     }
 
@@ -27,13 +27,13 @@ class PeliculaController extends Controller{
         Elimina una pelicula de la lista de Peliculas
      */
     public function quitarPelicula(Request $request): RedirectResponse
-    {
+    {/*
         //VALIDAR ID SI EXISTE EN LA TABLA
         $pelicula = $request->Pelicula; //Id de la pelicula
 
         Pelicula::delete($pelicula);
         Pelicula::truncate();
-
+        */
         return redirect('/');
     }
 }
