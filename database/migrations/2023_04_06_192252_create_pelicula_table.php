@@ -17,6 +17,8 @@ return new class extends Migration
 
             $table->foreignId("idGenero")->references("id")->on("genero");
 
+            $table->boolean("habilitado");
+
             $table->timestamps();
         });
     }

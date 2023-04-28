@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string("nombre",25)->unique();
 
+            $table->boolean("habilitado");
+
             $table->timestamps();
         });
     }
