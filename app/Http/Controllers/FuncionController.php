@@ -30,12 +30,12 @@ class FuncionController extends Controller {
      */
     public function quitarFuncion(Request $request): RedirectResponse
     {
-        //VALIDAR ID SI EXISTE EN LA TABLA
+/*         //VALIDAR ID SI EXISTE EN LA TABLA
 
         $funcion = $request->Funcion; //Id de la funcion
 
         Funcion::delete($funcion);
-        Funcion::truncate();
+        Funcion::truncate(); */
 
         return redirect('/');
     }

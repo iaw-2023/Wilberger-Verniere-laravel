@@ -16,21 +16,20 @@ class Genero extends Model
     /*
         Añade una genero a la lista de generos
      */
-    public function agregarGenero(Request $request): RedirectResponse
+    public function agregarGenero(Request $request)
     {
         $genero = new Genero;
 
         $genero->nombre = $request->Nombre;
         
         $genero->save();
-
-        return redirect('/');
+        
     }
 
     /*
         Elimina un genero de la lista de generos
      */
-    public function quitarGenero(Request $request): RedirectResponse
+    public function quitarGenero(Request $request)
     {
         //VALIDAR ID SI EXISTE EN LA TABLA
 
@@ -38,8 +37,7 @@ class Genero extends Model
 
         Genero::delete($genero);
         Genero::truncate();
-
-        return redirect('/');
+        
     }
 
 }

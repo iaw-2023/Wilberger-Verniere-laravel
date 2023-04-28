@@ -17,7 +17,7 @@ class Pelicula extends Model
     /*
         Agrega una pelicula de la lista de funciones
      */
-    public function agregarPelicula(Request $request): RedirectResponse
+    public function agregarPelicula(Request $request)
     {
         //VALIDAR SI IDGENER ES VALIDO
         $pelicula = new Pelicula;
@@ -27,13 +27,12 @@ class Pelicula extends Model
         
         $pelicula->save();
 
-        return redirect('/');
     }
 
     /*
         Elimina una pelicula de la lista de Peliculas
      */
-    public function quitarPelicula(Request $request): RedirectResponse
+    public function quitarPelicula(Request $request)
     {
         //VALIDAR ID SI EXISTE EN LA TABLA
         $pelicula = $request->Pelicula; //Id de la pelicula
@@ -41,6 +40,5 @@ class Pelicula extends Model
         Pelicula::delete($pelicula);
         Pelicula::truncate();
 
-        return redirect('/');
     }
 }

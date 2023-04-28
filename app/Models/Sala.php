@@ -16,7 +16,7 @@ class Sala extends Model
     /*
         Añade una sala a la lista de salas
      */
-    public function agregarSala(Request $request): RedirectResponse
+    public function agregarSala(Request $request)
     {
         $sala = new Sala;
 
@@ -25,13 +25,12 @@ class Sala extends Model
         
         $sala->save();
 
-        return redirect('/');
     }
 
     /*
         Elimina un sala de la lista de salas
      */
-    public function quitarSala(Request $request): RedirectResponse
+    public function quitarSala(Request $request)
     {
         //VALIDAR ID SI EXISTE EN LA TABLA
 
@@ -39,7 +38,5 @@ class Sala extends Model
 
         Sala::delete($sala);
         Sala::truncate();
-
-        return redirect('/');
     }
 }

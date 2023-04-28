@@ -17,7 +17,7 @@ class Funcion extends Model
     ];
 
 
-    public function agregarFuncion(Request $request): RedirectResponse
+    public function agregarFuncion(Request $request)
     {
          //VALIDAR SI IDPELICULA Y IDSALA SON VALIDOS
         $funcion = new Funcion;
@@ -28,7 +28,15 @@ class Funcion extends Model
         $funcion->hora       = $request->Hora;
         
         $funcion->save();
+    }
 
-        return redirect('/');
+    public function quitarFuncion(Request $request)
+    {
+        //VALIDAR ID SI EXISTE EN LA TABLA
+
+        $funcion = $request->Funcion; //Id de la funcion
+
+        Funcion::delete($funcion);
+        Funcion::truncate();
     }
 }
