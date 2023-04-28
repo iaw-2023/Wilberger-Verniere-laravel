@@ -8,8 +8,9 @@
 
     </head>
     <body>
-        <input type="submit" action="" value="Generos">
-        <input type="submit" action="" value="Funcion">
-        <input type="submit" action="" value="Pelicula">    
+        <input type="submit" action="" value="Generos"> <!--Con este input derivamos al controlador de generos-->
+        <input type="submit" action="" value="Funciones"> <!--Con este input derivamos al controlador de funciones-->
+        <input type="submit" action="" value="Peliculas"> <!--Con este input derivamos al controlador de peliculas-->
+        <input type="submit" action="" value="Salas"> <!--Con este input derivamos al controlador de peliculas-->
     </body>
 </html>
