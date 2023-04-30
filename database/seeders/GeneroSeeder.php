@@ -26,6 +26,7 @@ class GeneroSeeder extends Seeder
             if (!in_array($genero, $usados)) {
                 DB::table('genero')->insert([
                     'nombre' => $genero,
+                    'habilitado'=>true,
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]);

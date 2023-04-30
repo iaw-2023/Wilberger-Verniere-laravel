@@ -21,7 +21,7 @@ class peliculaFactory extends Factory
         return [
             'idGenero' => $this->faker->unique()->randomElement(Genero::pluck('id')),
             'nombre'=>$faker->movie,
-            
+            'habilitado'=>true,            
         ];
     }
 }
