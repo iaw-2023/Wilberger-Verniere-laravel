@@ -35,8 +35,7 @@ class Funcion extends Model
         //VALIDAR ID SI EXISTE EN LA TABLA
 
         $funcion = $request->Funcion; //Id de la funcion
-
-        Funcion::delete($funcion);
-        Funcion::truncate();
+        $elimFuncion = Funcion::where('id',$funcion);
+        $elimFuncion->habilitado = false;  
     }
 }

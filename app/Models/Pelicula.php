@@ -36,9 +36,8 @@ class Pelicula extends Model
     {
         //VALIDAR ID SI EXISTE EN LA TABLA
         $pelicula = $request->Pelicula; //Id de la pelicula
-
-        Pelicula::delete($pelicula);
-        Pelicula::truncate();
+        $elimPelicula = Pelicula::where('id',$pelicula);
+        $elimPelicula->habilitado = false;  
 
     }
 }

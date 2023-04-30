@@ -1,42 +1,71 @@
 <?php
 
-use App\Models\Funcion;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\RedirectResponse;
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
-class FuncionController extends Controller {
-
-    /*
-        Añade una funcion a la lista de funciones
+class FuncionController extends Controller
+{
+    /**
+     * Display a listing of the resource.
      */
-    public function agregarFuncion(Request $request): RedirectResponse
+    public function index()
     {
-/*         //VALIDAR SI IDPELICULA Y IDSALA SON VALIDOS
-        $funcion = new Funcion;
+        //
+    }
 
-        $funcion->idPelicula = $request->Pelicula;
-        $funcion->idSala     = $request->Sala;
-        $funcion->fecha      = $request->Fecha;
-        $funcion->hora       = $request->Hora;
-        
-        $funcion->save();  <--Esto se movio a el modelo correspondiente*/
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        agregarFuncion($request);
         return redirect('/');
     }
 
-    /*
-        Elimina una funcion de la lista de funciones
+    /**
+     * Display the specified resource.
      */
-    public function quitarFuncion(Request $request): RedirectResponse
+    public function show(string $id)
     {
-/*         //VALIDAR ID SI EXISTE EN LA TABLA
+        //
+    }
 
-        $funcion = $request->Funcion; //Id de la funcion
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
 
-        Funcion::delete($funcion);
-        Funcion::truncate(); */
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
 
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id): RedirectResponse
+    {
+        $validated = $request->validate([
+            'id' => 'exists:funcion',
+        ]);
+        if ($validated){
+            quitarFuncion($request);
+        }
         return redirect('/');
     }
 }

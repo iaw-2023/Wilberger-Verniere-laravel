@@ -1,38 +1,72 @@
 <?php
 
-use App\Models\Genero;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\RedirectResponse;
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
-class GeneroController extends Controller {
-
-    /*
-        Añade una genero a la lista de generos
+class GeneroController extends Controller
+{
+    /**
+     * Display a listing of the resource.
      */
-    public function agregarGenero(Request $request): RedirectResponse
-    {/*
-        $genero = new Genero;
+    public function index()
+    {
+        //
+    }
 
-        $genero->nombre = $request->Nombre;
-        
-        $genero->save();
-        */
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        //
+        agregarGenero($request);
         return redirect('/');
     }
 
-    /*
-        Elimina un genero de la lista de generos
+    /**
+     * Display the specified resource.
      */
-    public function quitarGenero(Request $request): RedirectResponse
-    {/*
-        //VALIDAR ID SI EXISTE EN LA TABLA
+    public function show(string $id)
+    {
+        //
+    }
 
-        $genero = $request->Genero; //Id del genero
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
 
-        Genero::delete($genero);
-        Genero::truncate();
-        */
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id): RedirectResponse
+    {
+        $validated = $request->validate([
+            'id' => 'exists:genero',
+        ]);
+        if ($validated){
+            quitarGenero($request);
+        }
         return redirect('/');
     }
 }

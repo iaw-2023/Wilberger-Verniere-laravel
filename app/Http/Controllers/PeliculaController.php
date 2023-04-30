@@ -1,39 +1,71 @@
 <?php
 
-use App\Models\Pelicula;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\RedirectResponse;
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
-class PeliculaController extends Controller{
-
-    /*
-        Agrega una pelicula de la lista de funciones
+class PeliculaController extends Controller
+{
+    /**
+     * Display a listing of the resource.
      */
-    public function agregarPelicula(Request $request): RedirectResponse
-    {/*
-        //VALIDAR SI IDGENER ES VALIDO
-        $pelicula = new Pelicula;
+    public function index()
+    {
+        //
+    }
 
-        $pelicula->nombre     = $request->Nombre;
-        $pelicula->idGenero   = $request->Genero;
-        
-        $pelicula->save();
-        */
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        agregarPelicula($request);
         return redirect('/');
     }
 
-    /*
-        Elimina una pelicula de la lista de Peliculas
+    /**
+     * Display the specified resource.
      */
-    public function quitarPelicula(Request $request): RedirectResponse
-    {/*
-        //VALIDAR ID SI EXISTE EN LA TABLA
-        $pelicula = $request->Pelicula; //Id de la pelicula
+    public function show(string $id)
+    {
+        //
+    }
 
-        Pelicula::delete($pelicula);
-        Pelicula::truncate();
-        */
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id): RedirectResponse
+    {
+        $validated = $request->validate([
+            'id' => 'exists:pelicula',
+        ]);
+        if ($validated){
+            quitarPelicula($request);
+        }
         return redirect('/');
     }
 }

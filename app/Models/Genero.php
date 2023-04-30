@@ -19,11 +19,8 @@ class Genero extends Model
     public function agregarGenero(Request $request)
     {
         $genero = new Genero;
-
         $genero->nombre = $request->Nombre;
-        
         $genero->save();
-        
     }
 
     /*
@@ -32,12 +29,8 @@ class Genero extends Model
     public function quitarGenero(Request $request)
     {
         //VALIDAR ID SI EXISTE EN LA TABLA
-
         $genero = $request->Genero; //Id del genero
-
-        Genero::delete($genero);
-        Genero::truncate();
-        
+        $elimGenero = Genero::where('id',$genero);
+        $elimGenero->habilitado = false;    
     }
-
 }

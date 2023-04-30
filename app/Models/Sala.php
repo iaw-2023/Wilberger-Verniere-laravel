@@ -36,8 +36,7 @@ class Sala extends Model
         //VALIDAR ID SI EXISTE EN LA TABLA
 
         $sala = $request->Sala; //Id del sala
-
-        Sala::delete($sala);
-        Sala::truncate();
+        $elimSala = Sala::where('id',$sala);
+        $elimSala->habilitado = false;   
     }
 }
