@@ -22,8 +22,8 @@ class Funcion extends Model
          //VALIDAR SI IDPELICULA Y IDSALA SON VALIDOS
         $funcion = new Funcion;
 
-        $funcion->idPelicula = $request->Pelicula;
-        $funcion->idSala     = $request->Sala;
+        /* $funcion->idPelicula = $request->Pelicula;
+        $funcion->idSala     = $request->Sala; */
         $funcion->fecha      = $request->Fecha;
         $funcion->hora       = $request->Hora;
         

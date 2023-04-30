@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('funcion', function (Blueprint $table) {
+        Schema::create('estrena_funcion_pelicula_sala', function (Blueprint $table) {
             $table->id();
-            $table->date("fecha");
-            $table->time("hora");
+            
 
-            /* $table->foreignId("idPelicula")->references("id")->on("pelicula");
-            $table->foreignId("idSala")->references("id")->on("sala"); */
+            $table->foreignId("idFuncion")->references("id")->on("funcion"); 
+            $table->foreignId("idPelicula")->references("id")->on("pelicula");
+            $table->foreignId("idSala")->references("id")->on("sala");
 
             $table->timestamps();
-
-            $table->unique(['fecha', 'hora', 'idSala']);
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('funcion');
+        Schema::dropIfExists('estrena_funcion_pelicula_sala');
     }
 };
