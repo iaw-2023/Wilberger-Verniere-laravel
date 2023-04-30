@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('pelicula', function (Blueprint $table) {
             $table->id();
             $table->string("nombre",40);
+            $table->boolean("habilitado")->default('true');
 
-            $table->foreignId("idGenero")->references("id")->on("genero");
-
-            $table->boolean("habilitado");
+            $table->foreignId("idGenero")->references("id")->on("genero");        
 
             $table->timestamps();
         });

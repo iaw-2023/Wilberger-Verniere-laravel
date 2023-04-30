@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("nombre",40);
             $table->integer("capacidadMaxima");
-
-            $table->boolean("habilitado");
+            $table->boolean("habilitado")->default('true');
 
             $table->timestamps();
         });

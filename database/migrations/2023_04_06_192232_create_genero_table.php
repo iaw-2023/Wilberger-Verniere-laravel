@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('genero', function (Blueprint $table) {
             $table->id();
             $table->string("nombre",25)->unique();
-
-            $table->boolean("habilitado");
+            $table->boolean("habilitado")->default('true');
 
             $table->timestamps();
         });

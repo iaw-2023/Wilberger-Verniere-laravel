@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date("fecha");
             $table->time("hora");
+            $table->boolean("habilitado")->default('true');
 
             $table->foreignId("idPelicula")->references("id")->on("pelicula");
             $table->foreignId("idSala")->references("id")->on("sala");
