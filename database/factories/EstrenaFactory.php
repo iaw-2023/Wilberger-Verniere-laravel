@@ -10,7 +10,7 @@ use App\Models\Sala;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class funcionFactory extends Factory
+class EstrenaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,11 +19,11 @@ class funcionFactory extends Factory
      */
     public function definition(): array
     {
-        return [ 
-            /* 'idPelicula'=>$this->faker->randomElement(Pelicula::pluck('id')),
-            'idSala'=>$this->faker->randomElement(Sala::pluck('id')),   */         
-            'fecha'=>$this->faker->date($format = 'Y-m-d'),
-            'hora'=>$this->faker->time($format = 'H:i:s'),
+        return [
+            //
+            'idFuncion'=>$this->faker->randomElement(Funcion::pluck('id')),
+            'idPelicula'=>$this->faker->randomElement(Pelicula::pluck('id')),
+            'idSala'=>$this->faker->randomElement(Sala::pluck('id')),
         ];
     }
 }

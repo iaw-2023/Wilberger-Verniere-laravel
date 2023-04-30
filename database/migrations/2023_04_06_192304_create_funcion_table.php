@@ -16,12 +16,12 @@ return new class extends Migration
             $table->date("fecha");
             $table->time("hora");
 
-            $table->foreignId("idPelicula")->references("id")->on("pelicula");
-            $table->foreignId("idSala")->references("id")->on("sala");
+            /* $table->foreignId("idPelicula")->references("id")->on("pelicula");
+            $table->foreignId("idSala")->references("id")->on("sala"); */
 
             $table->timestamps();
 
-            $table->unique(['fecha', 'hora', 'idSala']);
+            $table->unique(['id', 'fecha', 'hora']);
         });
     }
 

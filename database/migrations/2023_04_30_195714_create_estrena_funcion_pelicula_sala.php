@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detalles_compra', function (Blueprint $table) {
+        Schema::create('estrena_funcion_pelicula_sala', function (Blueprint $table) {
             $table->id();
 
-            $table->integer("cantidadTickets");
 
-            $table->foreignId("idFuncion")->references("id")->on("estrena_funcion_pelicula_sala"); 
-            $table->foreignId("idCompra")->references("id")->on("compra");
+            $table->foreignId("idFuncion")->references("id")->on("funcion"); 
+            $table->foreignId("idPelicula")->references("id")->on("pelicula");
+            $table->foreignId("idSala")->references("id")->on("sala");
 
             $table->timestamps();
-            
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detalles_compra');
+        Schema::dropIfExists('estrena_funcion_pelicula_sala');
     }
 };
