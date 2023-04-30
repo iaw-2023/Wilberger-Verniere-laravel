@@ -19,13 +19,14 @@ class GeneroSeeder extends Seeder
         $faker = \Faker\Factory::create();
         $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));
         $listaGeneros=$faker->movieGenres(21);
-
+        
         $usados = array();
-
+        $habilitado = true;
         foreach ($listaGeneros as $genero){
             if (!in_array($genero, $usados)) {
                 DB::table('genero')->insert([
                     'nombre' => $genero,
+                    'habilitado'=> $habilitado,
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]);

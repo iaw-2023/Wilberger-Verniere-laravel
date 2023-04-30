@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
              SalaSeeder::class,            
              FuncionSeeder::class,
              CompraSeeder::class,
-             DetallesCompraSeeder::class,
+            //  DetallesCompraSeeder::class,
              
         ]);
     }

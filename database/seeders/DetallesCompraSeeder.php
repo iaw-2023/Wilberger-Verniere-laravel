@@ -14,6 +14,6 @@ class DetallesCompraSeeder extends Seeder
      */
     public function run(): void
     {
-        DetallesCompra::factory()->count(5)->create();
+        // DetallesCompra::factory()->count(5)->create();
     }
 }

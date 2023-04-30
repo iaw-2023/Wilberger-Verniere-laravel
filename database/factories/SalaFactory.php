@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class salaFactory extends Factory
+class SalaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +19,8 @@ class salaFactory extends Factory
         return [
             
             'nombre'=>$this->faker->name(),
-            'capacidadMaxima'=>$this->faker->numberBetween(30,120)
+            'capacidadMaxima'=>$this->faker->numberBetween(30,120),
+            'habilitado'=>true,
         ];
     }
 }

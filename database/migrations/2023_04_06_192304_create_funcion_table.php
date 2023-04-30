@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->unique(['fecha', 'hora', 'idSala']);
+            $table->unique(['id', 'fecha', 'hora']);
         });
     }
 
