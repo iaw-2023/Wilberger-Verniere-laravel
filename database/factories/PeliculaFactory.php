@@ -20,8 +20,7 @@ class peliculaFactory extends Factory
         $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));
         return [
             'idGenero' => $this->faker->unique()->randomElement(Genero::pluck('id')),
-            'nombre'=>$faker->movie,
-            'habilitado'=>true,            
+            'nombre'=>$faker->movie          
         ];
     }
 }

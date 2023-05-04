@@ -26,7 +26,7 @@ class generoFactory extends Factory
     public function createConGenero($genero): array
     {
         return [
-            'nombre'=>$genero,
+            'nombre'=>$genero
         ];
     } 
 }
