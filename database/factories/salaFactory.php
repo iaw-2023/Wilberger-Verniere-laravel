@@ -20,7 +20,6 @@ class salaFactory extends Factory
             
             'nombre'=>$this->faker->name(),
             'capacidadMaxima'=>$this->faker->numberBetween(30,120),
-            'habilitado'=>true,
         ];
     }
 }

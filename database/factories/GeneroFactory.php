@@ -21,14 +21,12 @@ class generoFactory extends Factory
         $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));
         return [
             'nombre'=>$faker->movieGenre,
-            'habilitado'=>'true'
         ];
     }
     public function createConGenero($genero): array
     {
         return [
-            'nombre'=>$faker->movieGenre,
-            'habilitado'=>'true'
+            'nombre'=>$genero,
         ];
     } 
 }

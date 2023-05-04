@@ -10,8 +10,8 @@ class Funcion extends Model
     use HasFactory;
     protected $table = 'funcion';
     protected $fillable = [
-        // 'idPelicula',
-        // 'idSala',
+        'idPelicula',
+        'idSala',
         'fecha',
         'hora'
     ];
