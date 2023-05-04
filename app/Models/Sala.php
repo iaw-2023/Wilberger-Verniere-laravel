@@ -32,16 +32,10 @@ class Sala extends Model
      */
     public function quitarSala(Request $request)
     {
-        $sala = $request->id; //Id del sala
-<<<<<<< HEAD
+        $sala = $request->id;
         $salaElem = Sala::find($sala);
         $salaElem->habilitado = false;
         $salaElem->save();   
-=======
-        $elimSala = Sala::find($sala);
-        $elimSala->habilitado = false;
-        $elimSala->save();   
->>>>>>> a6c952d1a393e17e657b7b2fbac7e6304ffc6c55
     }
 
     /*
@@ -49,15 +43,9 @@ class Sala extends Model
      */
     public function habilitarSala(Request $request)
     {
-        $sala = $request->id; //Id del sala
-<<<<<<< HEAD
+        $sala = $request->id;
         $salaElem = Sala::find($sala);
         $salaElem->habilitado = true; 
         $salaElem->save();  
-=======
-        $habSala = Sala::find($sala);
-        $habSala->habilitado = true;
-        $habSala->save();
->>>>>>> a6c952d1a393e17e657b7b2fbac7e6304ffc6c55
     }
 }

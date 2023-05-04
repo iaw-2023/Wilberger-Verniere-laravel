@@ -39,11 +39,7 @@
                             <td>{{ $s->nombre }}</td>
                             <td>{{ $s->capacidadMaxima }}</td>
                             <td>{{ $s->habilitado }}</td>
-<<<<<<< HEAD
-                            <td>
-=======
-                            <td>                                
->>>>>>> a6c952d1a393e17e657b7b2fbac7e6304ffc6c55
+                            <td>             
                                 <form action="{{ route('sala.destroy',$s->id) }}" method="Post">
                                     <a class="btn btn-primary" href="{{ route('sala.update',$s->id) }}">Habilitar</a>
                                     @csrf

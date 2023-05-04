@@ -37,16 +37,13 @@
                             <td>{{ $gen->id }}</td>
                             <td>{{ $gen->nombre }}</td>
                             <td>{{ $gen->habilitado }}</td>
-<<<<<<< HEAD
                             <td>
                                 <form action="{{ route('genero.update',$gen->id) }}" method="Post">
                                     @csrf
                                     @method('PUT')
                                     <button type="submit" class="btn btn-primary">Habilitar</button>
                                 </form>
-=======
-                            <td>                                
->>>>>>> a6c952d1a393e17e657b7b2fbac7e6304ffc6c55
+                            <td>
                                 <form action="{{ route('genero.destroy',$gen->id) }}" method="Post">
                                     @csrf
                                     @method('DELETE')
