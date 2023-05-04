@@ -8,9 +8,17 @@
 
     </head>
     <body>
-        <input type="submit" action="" value="Generos"> <!--Con este input derivamos al controlador de generos-->
-        <input type="submit" action="" value="Funciones"> <!--Con este input derivamos al controlador de funciones-->
-        <input type="submit" action="" value="Peliculas"> <!--Con este input derivamos al controlador de peliculas-->
-        <input type="submit" action="" value="Salas"> <!--Con este input derivamos al controlador de peliculas-->
+        <form action="{{ route('genero.index') }}" method="Post">
+            <a class="btn btn-primary" href="{{ route('genero.index')}}">Generos</a>
+        </form>        
+        <form action="" method="Post">
+            <a class="btn btn-primary" href="">Funciones</a>
+        </form> 
+        <form action="" method="Post">
+            <a class="btn btn-primary" href="">Peliculas</a>
+        </form> 
+        <form action="" method="Post">
+            <a class="btn btn-primary" href="">Salas</a>
+        </form> 
     </body>
 </html>
