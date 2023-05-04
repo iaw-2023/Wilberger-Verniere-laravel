@@ -4,6 +4,7 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
   
 class Genero extends Model
 {
@@ -16,7 +17,7 @@ class Genero extends Model
     /*
         Añade una genero a la lista de generos
      */
-    public function agregarGenero(Request $request)
+    public static function agregarGenero(Request $request)
     {
         $genero = new Genero;
         $genero->nombre = $request->Nombre;
@@ -24,13 +25,22 @@ class Genero extends Model
     }
 
     /*
-        Elimina un genero de la lista de generos
+        Deshabilitar un genero de la lista de generos
      */
-    public function quitarGenero(Request $request)
+    public static function quitarGenero(Request $request)
     {
-        //VALIDAR ID SI EXISTE EN LA TABLA
-        $genero = $request->Genero; //Id del genero
+        $genero = $request->id;
         $elimGenero = Genero::where('id',$genero);
         $elimGenero->habilitado = false;    
+    }
+
+    /*
+        Habilitar un genero de la lista de generos
+     */
+    public static function habilitarGenero(Request $request)
+    {
+        $genero = $request->id;
+        $elimGenero = Genero::where('id',$genero);
+        $elimGenero->habilitado = true;    
     }
 }

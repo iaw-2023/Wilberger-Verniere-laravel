@@ -19,7 +19,7 @@ class PeliculaController extends Controller
      */
     public function create()
     {
-        //
+        // Retornar BLADE que muestre pagina de cosas a insertar tal vez
     }
 
     /**
