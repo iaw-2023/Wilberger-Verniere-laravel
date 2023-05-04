@@ -32,6 +32,8 @@
                             <strong>Sala nombre:</strong>
                             <input type="text" name="Nombre" class="form-control" placeholder="Sala Name">
                             @error('Nombre')
+                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                            @enderror
                             <strong>Sala capacidad:</strong>
                             <input type="number" min="50" name="Capacidad" class="form-control" placeholder="Sala Capacity">
                             @error('Capacidad')
