@@ -33,17 +33,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($sala as $s)
+                    @foreach ($salas as $s)
                         <tr>
                             <td>{{ $s->id }}</td>
                             <td>{{ $s->nombre }}</td>
                             <td>{{ $s->capacidadMaxima }}</td>
                             <td>{{ $s->habilitado }}</td>
-                            <td>
-                                <!--
-                                <a class="btn btn-primary" href="{{ route('genero.update',$gen->id) }}">Habilitar</a> 
-                                <a class="btn btn-danger" href="{{ route('genero.destroy',$gen->id) }}">Deshabilitar</a>
-                                -->
+                            <td>                                
                                 <form action="{{ route('sala.destroy',$s->id) }}" method="Post">
                                     <a class="btn btn-primary" href="{{ route('sala.update',$s->id) }}">Habilitar</a>
                                     @csrf

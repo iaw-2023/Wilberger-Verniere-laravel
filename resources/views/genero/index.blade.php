@@ -37,11 +37,7 @@
                             <td>{{ $gen->id }}</td>
                             <td>{{ $gen->nombre }}</td>
                             <td>{{ $gen->habilitado }}</td>
-                            <td>
-                                <!--
-                                <a class="btn btn-primary" href="{{ route('genero.update',$gen->id) }}">Habilitar</a> 
-                                <a class="btn btn-danger" href="{{ route('genero.destroy',$gen->id) }}">Deshabilitar</a>
-                                -->
+                            <td>                                
                                 <form action="{{ route('genero.destroy',$gen->id) }}" method="Post">
                                     <a class="btn btn-primary" href="{{ route('genero.update',$gen->id) }}">Habilitar</a>
                                     @csrf
