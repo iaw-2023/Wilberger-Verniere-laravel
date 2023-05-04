@@ -36,8 +36,9 @@ class Sala extends Model
         //VALIDAR ID SI EXISTE EN LA TABLA
 
         $sala = $request->id; //Id del sala
-        $elimSala = Sala::where('id',$sala);
-        $elimSala->habilitado = false;   
+        $elimSala = Sala::find($sala);
+        $elimSala->habilitado = false;
+        $elimSala->save();   
     }
 
     /*
@@ -48,7 +49,8 @@ class Sala extends Model
         //VALIDAR ID SI EXISTE EN LA TABLA
 
         $sala = $request->id; //Id del sala
-        $elimSala = Sala::where('id',$sala);
-        $elimSala->habilitado = true;   
+        $habSala = Sala::find($sala);
+        $habSala->habilitado = true;
+        $habSala->save();
     }
 }
