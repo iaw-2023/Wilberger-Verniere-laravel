@@ -4,6 +4,7 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
   
 class Pelicula extends Model
 {
@@ -19,7 +20,6 @@ class Pelicula extends Model
      */
     public function agregarPelicula(Request $request)
     {
-        //VALIDAR SI IDGENER ES VALIDO
         $pelicula = new Pelicula;
 
         $pelicula->nombre     = $request->Nombre;
@@ -34,10 +34,16 @@ class Pelicula extends Model
      */
     public function quitarPelicula(Request $request)
     {
-        //VALIDAR ID SI EXISTE EN LA TABLA
         $pelicula = $request->Pelicula; //Id de la pelicula
-        $elimPelicula = Pelicula::where('id',$pelicula);
-        $elimPelicula->habilitado = false;  
-
+        $peliculaElem = Pelicula::find($pelicula);
+        $peliculaElem->habilitado = false; 
+        $peliculaElem->save();
+    }
+    public function habilitarPelicula(Request $request)
+    {
+        $pelicula = $request->Pelicula; //Id de la pelicula
+        $peliculaElem = Pelicula::find($pelicula);
+        $peliculaElem->habilitado = true;
+        $peliculaElem->save();  
     }
 }
