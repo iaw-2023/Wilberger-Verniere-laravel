@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sala;
 
 class SalaController extends Controller
 {
@@ -12,6 +13,8 @@ class SalaController extends Controller
     public function index()
     {
         //
+        $salas = Sala::orderBy('id')->paginate(10);
+        return view('sala.index', compact('salas'));
     }
 
     /**
@@ -20,6 +23,7 @@ class SalaController extends Controller
     public function create()
     {
         //
+        return view('sala.create');
     }
 
     /**
@@ -27,8 +31,8 @@ class SalaController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        agregarSala($request);
-        return redirect('/');
+        Sala::agregarSala($request);
+        return redirect()->route('sala.index')->with('Success','Sala has been created successfully.');
     }
 
     /**
@@ -37,6 +41,7 @@ class SalaController extends Controller
     public function show(string $id)
     {
         //
+        return view('sala.show',compact('sala'));
     }
 
     /**
@@ -45,6 +50,7 @@ class SalaController extends Controller
     public function edit(string $id)
     {
         //
+        return view('sala.edit', compact('sala'));
     }
 
     /**
@@ -53,6 +59,13 @@ class SalaController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $validated = $request->validate([
+            'id'=>'exists:sala',
+        ]);
+        if($validated){
+            Sala::habilitarSala($request);
+        }
+        return redirect()->route('sala.index');
     }
 
     /**
@@ -64,8 +77,8 @@ class SalaController extends Controller
             'id' => 'exists:sala',
         ]);
         if ($validated){
-            quitarSala($request);
+            Sala::quitarSala($request);
         }
-        return redirect('/');
+        return redirect()->route('sala.index');
     }
 }

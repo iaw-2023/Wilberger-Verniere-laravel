@@ -17,8 +17,8 @@
         <form action="" method="Post">
             <a class="btn btn-primary" href="">Peliculas</a>
         </form> 
-        <form action="" method="Post">
-            <a class="btn btn-primary" href="">Salas</a>
+        <form action="{{ route('sala.index') }}" method="Post">
+            <a class="btn btn-primary" href="{{ route('sala.index') }}">Salas</a>
         </form> 
     </body>
 </html>
