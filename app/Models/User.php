@@ -43,8 +43,4 @@ class User extends Authenticatable
     ];
 
 
-    public function getAuthPassword(){
-        return User::find('1');
-    }
-
 }
