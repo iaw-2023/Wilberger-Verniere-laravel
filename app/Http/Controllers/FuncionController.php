@@ -37,11 +37,21 @@ class FuncionController extends Controller
         $validated = $request->validate([
             'idPelicula' => 'exists:pelicula',
             'idSala' => 'exists:sala',
-            //NINGUNA FUNCION EN ESA SALA A ESA FECHA Y HORA --> Hacer una consulta a la BD, si existe no validar
+            validarFuncionUnica($request) // PREGUNTAR SI ESTA BIEN
         ]);
-        Funcion::agregarFuncion($request);
-        return redirect()->route('funcion.index')->with('Success','Funcion has been created successfully.');
+        if ($validated){
+            Funcion::agregarFuncion($request);
+            return redirect()->route('funcion.index')->with('Success','Funcion has been created successfully.');
+        }
+        return redirect()->route('funcion.index')->with('Error','Funcion could not been created.');
     }
+        private function validarFuncionUnica(Request $request): Boolean{
+            $funciones = DB::table('funcion')
+                            ->where('idSala' == $request->Sala)
+                            ->where('fecha' == $request->Fecha)
+                            ->where('hora' == $request->Hora);
+            return count($funciones)<1? true : false;
+        }
 
     /**
      * Display the specified resource.
@@ -63,15 +73,16 @@ class FuncionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,Funcion $funcion)
+    public function update(Request $request)
     {
         $validated = $request->validate([
-            'id' => 'exists:funcion',
+            'Funcion' => 'exists:funcion',
         ]);
         if ($validated){
             Funcion::habilitarFuncion($request);
+            return redirect()->route('funcion.index')->with('Success','Funcion has been enabled successfully');
         }
-        return redirect()->route('funcion.index')->with('Success','Funcion has been enabled successfully');
+        return redirect()->route('funcion.index')->with('Error','Funcion has not been enabled successfully');
     }
 
     /**
@@ -80,11 +91,12 @@ class FuncionController extends Controller
     public function destroy(Request $request)
     {
         $validated = $request->validate([
-            'id' => 'exists:funcion',
+            'Funcion' => 'exists:funcion',
         ]);
         if ($validated){
             Funcion::quitarFuncion($request);
+            return redirect()->route('funcion.index')->with('Success','Funcion has been disabled successfully');
         }
-        return redirect()->route('funcion.index')->with('Success','Funcion has been disabled successfully');
+        return redirect()->route('funcion.index')->with('Error','Funcion has not been disabled successfully');
     }
 }

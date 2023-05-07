@@ -29,7 +29,6 @@
                         <th>Nombre:</th>
                         <th>Genero ID:</th>
                         <th>Hablitado:</th>
-                        <th width="280px">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,14 +37,10 @@
                             <td>{{ $pel->id }}</td>
                             <td>{{ $pel->nombre }}</td>
                             <td>{{ $pel->idGenero }}</td>
-                            <td>{{ $pel->habilitado }}</td>
-                            <td>
-                                <form action="{{ route('pelicula.destroy',$pel->id) }}" method="Post">
-                                    <a class="btn btn-primary" href="{{ route('pelicula.update',$pel->id) }}">Habilitar</a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Deshabilitar</button>
-                                </form>
+                            <td> 
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

@@ -11,11 +11,11 @@
         <form action="{{ route('genero.index') }}" method="Post">
             <a class="btn btn-primary" href="{{ route('genero.index')}}">Generos</a>
         </form>        
-        <form action="" method="Post">
-            <a class="btn btn-primary" href="">Funciones</a>
+        <form action="{{ route('funcion.index')}}" method="Post">
+            <a class="btn btn-primary" href="{{ route('funcion.index')}}">Funciones</a>
         </form> 
-        <form action="" method="Post">
-            <a class="btn btn-primary" href="">Peliculas</a>
+        <form action="{{ route('pelicula.index')}}" method="Post">
+            <a class="btn btn-primary" href="{{ route('pelicula.index')}}">Peliculas</a>
         </form> 
         <form action="{{ route('sala.index') }}" method="Post">
             <a class="btn btn-primary" href="{{ route('sala.index') }}">Salas</a>

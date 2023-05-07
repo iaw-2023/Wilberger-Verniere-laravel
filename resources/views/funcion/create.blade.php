@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Add Genero Form - Laravel 9 CRUD</title>
+        <title>Formulario Funcion</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
 
@@ -12,10 +12,7 @@
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-left mb-2">
-                        <h2>Add Genero</h2>
-                    </div>
-                    <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ route('genero.index') }}"> Back</a>
+                        <h2>Añadir nueva funcion</h2>
                     </div>
                 </div>
             </div>
@@ -24,20 +21,56 @@
                 {{ session('status') }}
             </div>
             @endif
-            <form action="{{ route('genero.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Genero Name:</strong>
-                            <input type="text" name="Nombre" class="form-control" placeholder="Genero Name">
-                            @error('Nombre')
-                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
+            <form action="{{ route('funcion.store') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" name="Nombre" class="form-control"  placeholder="Ej: Accion, Aventura">
+                    @error('Nombre')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Pelicula:</label>
+                    <div class="dropdown">
+                        
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Elija una opcion
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            @foreach ($peliculas as $pel)
+                                <a class="dropdown-item" href="#">
+                                    $pel->nombre
+                                </a>
+                            @endforeach
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary ml-3">Submit</button>
                 </div>
+                <div class="form-group">
+                    <label>Sala:</label>
+                    <div class="dropdown">
+                        
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Elija una opcion
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            @foreach ($salas as $s)
+                                <a class="dropdown-item" href="#">
+                                    $s->id
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha:</label>
+                    <input type="date" id="date" name="Fecha" required>
+                    <label>Hora:</label>
+                    <input type="time" id="date" name="Hora" min="08:00" max="24:00" required>
+                </div>
+
+                <a class="btn btn-danger" href="{{ route('funcion.index') }}">Back</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </body>

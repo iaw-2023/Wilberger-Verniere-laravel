@@ -22,7 +22,7 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>ID:</th>
@@ -30,8 +30,7 @@
                         <th>Sala ID:</th>
                         <th>Fecha:</th>
                         <th>Hora:</th>
-                        <th>Hablitado:</th>
-                        <th width="280px">Accion</th>
+                        <th>Habilitado:</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,14 +41,16 @@
                             <td>{{ $fun->idSala }}</td>
                             <td>{{ $fun->fecha }}</td>
                             <td>{{ $fun->hora }}</td>
-                            <td>{{ $fun->habilitado }}</td>
-                            <td>
-                                <form action="{{ route('funcion.destroy',$fun->id) }}" method="Post">
-                                    <a class="btn btn-primary" href="{{ route('funcion.update',$fun->id) }}">Habilitar</a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Deshabilitar</button>
-                                </form>
+                            <td> 
+                                <div class="form-check form-switch">
+                                    <input 
+                                        class="form-check-input" 
+                                        type="checkbox" 
+                                        id="flexSwitchCheckDefault" 
+                                        <?php echo ($fun->habilitado) ? 'checked' : '' ; ?>
+                                        onClick = "cambiarEstado($fun)"
+                                    >
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -57,5 +58,16 @@
             </table>
             {!! $funciones->links() !!}
         </div>
+
+
+        <script>
+            funcion cambiarEstado(Funcion $fun){
+                $request = new \Illuminate\Http\Request();
+                $request->replace(['Funcion' => '$fun->id']);
+
+                if ($fun->habilitado) { route('funcion.destroy',$request); }  
+                else {  route('funcion.update',$request) }
+            }
+        </script>
     </body>
 </html>
