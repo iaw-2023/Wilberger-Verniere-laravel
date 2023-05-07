@@ -18,7 +18,10 @@ class GeneroResource extends JsonResource
             'Nro° Id' => $this->id,
             'Nombre' => $this->nombre,
             'Habilitado' => $this->habilitado,
-            'Peliculas' => PeliculaCollection::collection(Pelicula::where('idGenero','$this->id')),
+            'Peliculas' => PeliculaCollection::collection(DB::pelicula
+                ->where('idGenero','$this->id')
+                ->where('habilitado',true)
+            ),
             'Creado' => $this->created_at,
             'Ultima modificacion'=> $this->updated_at,
         ];
