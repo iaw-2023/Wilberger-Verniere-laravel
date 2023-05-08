@@ -19,7 +19,6 @@ class Funcion extends Model
 
     public function agregarFuncion(Request $request)
     {
-         //VALIDAR SI IDPELICULA Y IDSALA SON VALIDOS
         $funcion = new Funcion;
 
         $funcion->idPelicula = $request->Pelicula;
@@ -32,10 +31,16 @@ class Funcion extends Model
 
     public function quitarFuncion(Request $request)
     {
-        //VALIDAR ID SI EXISTE EN LA TABLA
-
         $funcion = $request->Funcion; //Id de la funcion
-        $elimFuncion = Funcion::where('id',$funcion);
-        $elimFuncion->habilitado = false;  
+        $funcionElem = Funcion::find($funcion);
+        $funcionElem->habilitado = false;
+        $funcionElem->save();  
+    }
+    public function habilitarFuncion(Request $request)
+    {
+        $funcion = $request->Funcion; //Id de la funcion
+        $funcionElem = Funcion::find($funcion);
+        $funcionElem->habilitado = true;
+        $funcionElem->save();  
     }
 }

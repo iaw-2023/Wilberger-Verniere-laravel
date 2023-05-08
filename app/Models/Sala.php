@@ -25,7 +25,6 @@ class Sala extends Model
         $sala->capacidadMaxima = $request->Capacidad;
         
         $sala->save();
-
     }
 
     /*
@@ -33,12 +32,10 @@ class Sala extends Model
      */
     public function quitarSala(Request $request)
     {
-        //VALIDAR ID SI EXISTE EN LA TABLA
-
-        $sala = $request->id; //Id del sala
-        $elimSala = Sala::find($sala);
-        $elimSala->habilitado = false;
-        $elimSala->save();   
+        $sala = $request->id;
+        $salaElem = Sala::find($sala);
+        $salaElem->habilitado = false;
+        $salaElem->save();   
     }
 
     /*
@@ -46,11 +43,9 @@ class Sala extends Model
      */
     public function habilitarSala(Request $request)
     {
-        //VALIDAR ID SI EXISTE EN LA TABLA
-
-        $sala = $request->id; //Id del sala
-        $habSala = Sala::find($sala);
-        $habSala->habilitado = true;
-        $habSala->save();
+        $sala = $request->id;
+        $salaElem = Sala::find($sala);
+        $salaElem->habilitado = true; 
+        $salaElem->save();  
     }
 }

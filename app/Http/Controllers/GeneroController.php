@@ -57,7 +57,7 @@ class GeneroController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Genero $genero)
+    public function update(Request $request,Genero $genero)
     {
         //
         $validated = $request->validate([

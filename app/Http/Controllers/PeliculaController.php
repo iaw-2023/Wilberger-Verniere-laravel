@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pelicula;
 
 class PeliculaController extends Controller
 {
@@ -12,6 +13,8 @@ class PeliculaController extends Controller
     public function index()
     {
         //
+        $peliculas = Pelicula::orderBy('id')->paginate(10);
+        return view('pelicula.index', compact('peliculas'));
     }
 
     /**
@@ -19,53 +22,67 @@ class PeliculaController extends Controller
      */
     public function create()
     {
-        // Retornar BLADE que muestre pagina de cosas a insertar tal vez
+        return view('pelicula.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        agregarPelicula($request);
-        return redirect('/');
+        $validated = $request->validate([
+            'genero' => 'exists:genero',
+        ]);
+        if ($validated) {
+            Pelicula::agregarPelicula($request);
+        }
+        return redirect()->route('pelicula.index')->with('Success','Pelicula has been created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Pelicula $pelicula)
     {
         //
+        return view('pelicula.show',compact('pelicula'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Pelicula $pelicula)
     {
         //
+        return view('pelicula.edit',compact('pelicula'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Pelicula $pelicula)
     {
         //
+        $validated = $request->validate([
+            'id' => 'exists:pelicula',
+        ]);
+        if ($validated){
+            Pelicula::habilitarPelicula($request);
+        }
+        return redirect()->route('pelicula.index')->with('Success','Pelicula has been enabled successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): RedirectResponse
+    public function destroy(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'id' => 'exists:pelicula',
         ]);
         if ($validated){
-            quitarPelicula($request);
+            Pelicula::quitarPelicula($request);
         }
-        return redirect('/');
+        return redirect()->route('pelicula.index')->with('Success','Pelicula has been disabled successfully');
     }
 }
