@@ -1,0 +1,41 @@
+*{
+    font-size: 150%;
+    background-color: cornsilk;
+    font-family: "Times New Roman", Times, serif;
+}
+.body{
+    position:center;
+}
+
+.wrapper{    
+    display:grid;
+    padding:2%;
+    grid-template-columns: 40% 40%;
+    grid-auto-rows: 60%;
+}
+
+
+.btn-salas{
+    padding:15%;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.btn-funciones{
+    padding:15%;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}
+
+
+.btn-peliculas{
+    padding:15%;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.btn-generos{
+    padding:15%;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}
