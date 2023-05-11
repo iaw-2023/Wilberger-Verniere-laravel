@@ -19,7 +19,7 @@ class CompraAPIController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // GUARDAR COMPRA CUANDO SE CONFIRMA
     }
 
     /**
@@ -43,6 +43,6 @@ class CompraAPIController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // DESTRUIR LOS DETALLES COMPRA ASOCIADOS???
     }
 }

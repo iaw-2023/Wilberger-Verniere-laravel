@@ -15,13 +15,13 @@
                 </form>
             </div>        
             <div class="item2">    
-                <form action="" method="Post">
-                    <a class="btn btn-secondary btn-peliculas" href="">Peliculas</a>
+                <form action="{{ route('pelicula.index') }}" method="Post">
+                    <a class="btn btn-secondary btn-peliculas" href="{{ route('pelicula.index') }}">Peliculas</a>
                 </form>
             </div>
             <div class="item3">
-                <form action="" method="Post">
-                    <a class="btn btn-secondary btn-funciones" href="">Funciones</a>
+                <form action="{{ route('funcion.index') }}" method="Post">
+                    <a class="btn btn-secondary btn-funciones" href="{{ route('funcion.index') }}">Funciones</a>
                 </form> 
             </div>
             <div class="item4">    

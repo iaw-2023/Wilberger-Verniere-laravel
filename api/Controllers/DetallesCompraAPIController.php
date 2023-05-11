@@ -43,6 +43,6 @@ class DetallesCompraAPIController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // DESTRUIR DETALLES COMPRA
     }
 }

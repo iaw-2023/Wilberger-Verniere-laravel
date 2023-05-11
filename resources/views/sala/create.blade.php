@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Add Sala Form - Laravel 9 CRUD</title>
+        <title>Formulario Sala</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
 
@@ -12,10 +12,7 @@
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-left mb-2">
-                        <h2>Add Sala</h2>
-                    </div>
-                    <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ route('sala.index') }}"> Back</a>
+                        <h2>Añadir nueva sala:</h2>
                     </div>
                 </div>
             </div>
@@ -29,20 +26,21 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Sala nombre:</strong>
-                            <input type="text" name="Nombre" class="form-control" placeholder="Sala Name">
+                            <strong>Nombre:</strong>
+                            <input type="text" name="Nombre" class="form-control" placeholder="Nombre" required>
                             @error('Nombre')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                             @enderror
-                            <strong>Sala capacidad:</strong>
-                            <input type="number" min="50" name="Capacidad" class="form-control" placeholder="Sala Capacity">
+                            <strong>Capacidad:</strong>
+                            <input type="number" min="50" name="Capacidad" class="form-control" placeholder="Capacidad" required>
                             @error('Capacidad')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary ml-3">Submit</button>
                 </div>
+                <a class="btn btn-danger" href="{{ route('sala.index') }}">Back</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </body>

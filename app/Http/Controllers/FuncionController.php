@@ -24,11 +24,12 @@ class FuncionController extends Controller
     public function create()
     {
         //
-        $peliculas = Pelicula::where('habilitado',true);
+//        $peliculas = Pelicula::where('habilitado',true);
+        $peliculas = Pelicula::all();
         $salas = Sala::where('habilitado',true);
-        return view('funcion.create', compact('peliculas'), compact('salas'));
+        return view('funcion.create', compact('peliculas','salas'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */

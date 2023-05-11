@@ -31,14 +31,14 @@ class Funcion extends Model
 
     public function quitarFuncion(Request $request)
     {
-        $funcion = $request->Funcion; //Id de la funcion
+        $funcion = $request->Funcion;
         $funcionElem = Funcion::find($funcion);
         $funcionElem->habilitado = false;
         $funcionElem->save();  
     }
     public function habilitarFuncion(Request $request)
     {
-        $funcion = $request->Funcion; //Id de la funcion
+        $funcion = $request->Funcion;
         $funcionElem = Funcion::find($funcion);
         $funcionElem->habilitado = true;
         $funcionElem->save();  
