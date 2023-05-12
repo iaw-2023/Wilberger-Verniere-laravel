@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-left mb-2">
-                        <h2>Añadir nueva funcion</h2>
+                        <h2>Añadir nueva funcion:</h2>
                     </div>
                 </div>
             </div>
@@ -23,13 +23,6 @@
             @endif
             <form action="{{ route('funcion.store') }}" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label>Nombre:</label>
-                    <input type="text" name="Nombre" class="form-control"  placeholder="Ej: Accion, Aventura">
-                    @error('Nombre')
-                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-group">
                     <label>Pelicula:</label>
                     <div class="dropdown">
                         
@@ -39,7 +32,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             @foreach ($peliculas as $pel)
                                 <a class="dropdown-item" href="#">
-                                    $pel->nombre
+                                    {{ $pel->nombre }}
                                 </a>
                             @endforeach
                         </div>

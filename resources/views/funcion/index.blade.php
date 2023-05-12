@@ -41,22 +41,17 @@
                             <td>{{ $fun->idPelicula }}</td>
                             <td>{{ $fun->idSala }}</td>
                             <td>{{ $fun->fecha }}</td>
-                            <td>{{ $fun->hora }}</td>                         
-                            
-                            <td>
-                            @if($fun->habilitado ===1)
-                                <form action="{{ route('funcion.update',$fun->id) }}" method="Post">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="btn btn-primary">Habilitar</button>
-                                </form>              
-                            @else              
-                                <form action="{{ route('funcion.destroy',$fun->id) }}" method="Post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Deshabilitar</button>
-                                </form>
-                            @endif
+                            <td>{{ $fun->hora }}</td>
+                            <td> 
+                                <div class="form-check form-switch">
+                                    <input 
+                                        class="form-check-input" 
+                                        type="checkbox" 
+                                        id="flexSwitchCheckDefault" 
+                                        <?php echo ($fun->habilitado) ? 'checked' : '' ; ?>
+                                        onClick = "cambiarEstado($fun)"
+                                    >
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -65,5 +60,15 @@
             {!! $funciones->links() !!}
         </div>
 
+
+        <script>
+            funcion cambiarEstado(Funcion $fun){
+                $request = new \Illuminate\Http\Request();
+                $request->replace(['Funcion' => '$fun->id']);
+
+                if ($fun->habilitado) { route('funcion.destroy',$request); }  
+                else {  route('funcion.update',$request) }
+            }
+        </script>
     </body>
 </html>
