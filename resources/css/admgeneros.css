@@ -1,0 +1,4 @@
+body{
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('movie_background.jpeg');
+    background-size: cover;
+}

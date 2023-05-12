@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Generos</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        
     </head>
     <body>
         <div class="container mt-2">
@@ -38,17 +39,19 @@
                             <td>{{ $gen->nombre }}</td>
                             <td>{{ $gen->habilitado }}</td>
                             <td>
+                            @if($gen->habilitado ===1)
                                 <form action="{{ route('genero.update',$gen->id) }}" method="Post">
                                     @csrf
                                     @method('PUT')
                                     <button type="submit" class="btn btn-primary">Habilitar</button>
                                 </form>
-                            <td>
+                            @else
                                 <form action="{{ route('genero.destroy',$gen->id) }}" method="Post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Deshabilitar</button>
                                 </form>
+                            @endif
                             </td>
                         </tr>
                     @endforeach

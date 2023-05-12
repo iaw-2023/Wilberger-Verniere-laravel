@@ -38,9 +38,19 @@
                             <td>{{ $pel->nombre }}</td>
                             <td>{{ $pel->idGenero }}</td>
                             <td> 
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked>
-                                </div>
+                            @if($pel->habilitado ===1)
+                                <form action="{{ route('pelicula.update',$pel->id) }}" method="Post">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-primary">Habilitar</button>
+                                </form>
+                            @else
+                                <form action="{{ route('pelicula.destroy',$pel->id) }}" method="Post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                                </form>
+                            @endif
                             </td>
                         </tr>
                     @endforeach
