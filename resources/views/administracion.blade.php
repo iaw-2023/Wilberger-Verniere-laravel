@@ -9,26 +9,18 @@
     </head>
     <body >        
         <div class="wrapper">
-            <div class="item">
-                <form action="{{ route('genero.index') }}" method="Post">
-                    <a class="btn btn-secondary btn-generos" href="{{ route('genero.index')}}">Generos</a>
-                </form>
-            </div>        
-            <div class="item">    
-                <form action="{{ route('pelicula.index')}}" method="Post">
-                    <a class="btn btn-secondary btn-peliculas" href="{{ route('pelicula.index')}}">Peliculas</a>
-                </form>
-            </div>
-            <div class="item">
-                <form action="{{ route('funcion.index')}}" method="Post">
-                    <a class="btn btn-secondary btn-funciones" href="{{ route('funcion.index')}}">Funciones</a>
-                </form> 
-            </div>
-            <div class="item">    
-                <form action="{{ route('sala.index') }}" method="Post">
-                    <a class="btn btn-secondary btn-salas" href="{{ route('sala.index') }}">Salas</a>
-                </form> 
-            </div>    
+            <form action="{{ route('genero.index') }}" method="Post" class="item">
+                <a class="btn btn-secondary btn-generos" href="{{ route('genero.index')}}">Generos</a>
+            </form>
+            <form action="{{ route('pelicula.index')}}" method="Post" class="item">
+                <a class="btn btn-secondary btn-peliculas" href="{{ route('pelicula.index')}}">Peliculas</a>
+            </form>            
+            <form action="{{ route('funcion.index')}}" method="Post" class="item">
+                <a class="btn btn-secondary btn-funciones" href="{{ route('funcion.index')}}">Funciones</a>
+            </form>              
+            <form action="{{ route('sala.index') }}" method="Post" class="item">
+                <a class="btn btn-secondary btn-salas" href="{{ route('sala.index') }}">Salas</a>
+            </form>             
         </div>
     </body>
 </html>

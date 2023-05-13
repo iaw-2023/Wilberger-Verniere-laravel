@@ -28,7 +28,8 @@
                         <th>ID:</th>
                         <th>Nombre:</th>
                         <th>Genero ID:</th>
-                        <th>Hablitado:</th>
+                        <th>Habilitada:</th>
+                        <th>Accion:</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,8 +38,14 @@
                             <td>{{ $pel->id }}</td>
                             <td>{{ $pel->nombre }}</td>
                             <td>{{ $pel->idGenero }}</td>
+                            <td>@if($pel->habilitado ==1)
+                                SI
+                            @else
+                                NO
+                            @endif
+                            </td>
                             <td> 
-                            @if($pel->habilitado ===1)
+                            @if($pel->habilitado !=1)
                                 <form action="{{ route('pelicula.update',$pel->id) }}" method="Post">
                                     @csrf
                                     @method('PUT')

@@ -29,7 +29,7 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Hablitado</th>
-                        <th width="280px">Action</th>
+                        <th width="280px">Accion:</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,19 +37,24 @@
                         <tr>
                             <td>{{ $gen->id }}</td>
                             <td>{{ $gen->nombre }}</td>
-                            <td>{{ $gen->habilitado }}</td>
-                            <td>
-                            @if($gen->habilitado ===1)
-                                <form action="{{ route('genero.update',$gen->id) }}" method="Post">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="btn btn-primary">Habilitar</button>
-                                </form>
+                            <td>@if($gen->habilitado ==1)
+                                SI
                             @else
+                                NO
+                            @endif
+                            </td>
+                            <td>
+                            @if($gen->habilitado ==1)
                                 <form action="{{ route('genero.destroy',$gen->id) }}" method="Post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                                </form>
+                            @else
+                                <form action="{{ route('genero.update',$gen->id) }}" method="Post">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-primary">Habilitar</button>
                                 </form>
                             @endif
                             </td>

@@ -29,7 +29,8 @@
                         <th>ID:</th>
                         <th>Nombre: </th>
                         <th>Capacidad: </th>
-                        <th>Hablitado: </th>
+                        <th>Habilitada: </th>
+                        <th>Accion: </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,8 +39,14 @@
                             <td>{{ $s->id }}</td>
                             <td>{{ $s->nombre }}</td>
                             <td>{{ $s->capacidadMaxima }}</td>
+                            <td>@if($s->habilitado ==1)
+                                SI
+                            @else
+                                NO
+                            @endif
+                            </td>
                             <td>      
-                            @if($s->habilitado ===1)
+                            @if($s->habilitado !=1)
                                 <form action="{{ route('sala.update',$s->id) }}" method="Post">
                                     @csrf
                                     @method('PUT')

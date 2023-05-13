@@ -31,7 +31,8 @@
                         <th>Sala ID:</th>
                         <th>Fecha:</th>
                         <th>Hora:</th>
-                        <th>Habilitado:</th>
+                        <th>Habilitada:</th>
+                        <th>Accion:</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,16 +43,26 @@
                             <td>{{ $fun->idSala }}</td>
                             <td>{{ $fun->fecha }}</td>
                             <td>{{ $fun->hora }}</td>
-                            <td> 
-                                <div class="form-check form-switch">
-                                    <input 
-                                        class="form-check-input" 
-                                        type="checkbox" 
-                                        id="flexSwitchCheckDefault" 
-                                        <?php echo ($fun->habilitado) ? 'checked' : '' ; ?>
-                                        onClick = "cambiarEstado($fun)"
-                                    >
-                                </div>
+                            <td>@if($fun->habilitado ==1)
+                                SI
+                            @else
+                                NO
+                            @endif
+                            </td>
+                            <td>
+                            @if($fun->habilitado !=1)
+                                <form action="{{ route('funcion.update',$fun->id) }}" method="Post">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-primary">Habilitar</button>
+                                </form>
+                            @else
+                                <form action="{{ route('funcion.destroy',$fun->id) }}" method="Post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                                </form>
+                            @endif
                             </td>
                         </tr>
                     @endforeach
