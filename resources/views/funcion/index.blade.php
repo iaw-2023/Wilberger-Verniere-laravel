@@ -43,15 +43,26 @@
                             <td>{{ $fun->fecha }}</td>
                             <td>{{ $fun->hora }}</td>
                             <td> 
-                                <div class="form-check form-switch">
-                                    <input 
-                                        class="form-check-input" 
-                                        type="checkbox" 
-                                        id="flexSwitchCheckDefault" 
-                                        <?php echo ($fun->habilitado) ? 'checked' : '' ; ?>
-                                        onClick = "cambiarEstado($fun)"
-                                    >
-                                </div>
+                                @if($fun->habilitado ===1)
+                                            class="form-check-input" 
+                                    <form action="{{ route('funcion.update',$fun->id) }}" method="Post">
+                                            type="checkbox" 
+                                        @csrf
+                                            id="flexSwitchCheckDefault" 
+                                        @method('PUT')
+                                            <?php echo ($fun->habilitado) ? 'checked' : '' ; ?>
+                                        <button type="submit" class="btn btn-primary">Habilitar</button>
+                                            onClick = "cambiarEstado($fun)"
+                                    </form>              
+                                        >
+                                @else              
+                                    </div>
+                                    <form action="{{ route('funcion.destroy',$fun->id) }}" method="Post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
