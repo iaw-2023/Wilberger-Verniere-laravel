@@ -23,10 +23,8 @@ class FuncionController extends Controller
      */
     public function create()
     {
-        //
-//        $peliculas = Pelicula::where('habilitado',true);
-        $peliculas = Pelicula::all();
-        $salas = Sala::where('habilitado',true);
+        $peliculas = Pelicula::where('habilitado',true)->get();
+        $salas = Sala::where('habilitado',true)->get();
         return view('funcion.create', compact('peliculas','salas'));
     }
     
@@ -57,17 +55,18 @@ class FuncionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Funcion $funcion)
-    {
-        //
+    public function show(String $id)
+    {   
+        $funcion = Funcion::where('id',$id)->get();
         return view('funcion.show',compact('funcion'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Funcion $funcion)
+    public function edit(String $id)
     {
+        $funcion = Funcion::where('id',$id)->get();
         return view('funcion.edit',compact('funcion'));
     }
 
@@ -77,7 +76,7 @@ class FuncionController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'Funcion' => 'exists:funcion',
+            'Funcion' => 'exists:funcion,id',
         ]);
         if ($validated){
             Funcion::habilitarFuncion($request);
@@ -92,7 +91,7 @@ class FuncionController extends Controller
     public function destroy(Request $request)
     {
         $validated = $request->validate([
-            'Funcion' => 'exists:funcion',
+            'Funcion' => 'exists:funcion,id',
         ]);
         if ($validated){
             Funcion::quitarFuncion($request);

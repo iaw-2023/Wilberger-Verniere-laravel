@@ -29,6 +29,7 @@
                         <th>Nombre:</th>
                         <th>Genero ID:</th>
                         <th>Hablitado:</th>
+                        <th>Accion:</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,18 +38,25 @@
                             <td>{{ $pel->id }}</td>
                             <td>{{ $pel->nombre }}</td>
                             <td>{{ $pel->idGenero }}</td>
+                            <td>
+                                @if ($pel->habilitado) {{ 'SI' }} 
+                                @else {{ 'NO' }} 
+                                @endif 
+                            </td>
                             <td> 
-                            @if($pel->habilitado ===1)
-                                <form action="{{ route('pelicula.update',$pel->id) }}" method="Post">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="btn btn-primary">Habilitar</button>
-                                </form>
-                            @else
+                            @if($pel->habilitado)
                                 <form action="{{ route('pelicula.destroy',$pel->id) }}" method="Post">
                                     @csrf
                                     @method('DELETE')
+                                    <input type="hidden" name="Pelicula" value="{{ $pel->id }}">
                                     <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                                </form>
+                            @else
+                                <form action="{{ route('pelicula.update',$pel->id) }}" method="Post">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="Pelicula" value="{{ $pel->id }}">
+                                    <button type="submit" class="btn btn-primary">Habilitar</button>
                                 </form>
                             @endif
                             </td>

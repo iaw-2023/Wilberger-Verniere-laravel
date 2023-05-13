@@ -4,6 +4,7 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
   
 class Funcion extends Model
 {
@@ -17,7 +18,7 @@ class Funcion extends Model
     ];
 
 
-    public function agregarFuncion(Request $request)
+    public static function agregarFuncion(Request $request)
     {
         $funcion = new Funcion;
 
@@ -29,14 +30,14 @@ class Funcion extends Model
         $funcion->save();
     }
 
-    public function quitarFuncion(Request $request)
+    public static function quitarFuncion(Request $request)
     {
         $funcion = $request->Funcion;
         $funcionElem = Funcion::find($funcion);
         $funcionElem->habilitado = false;
         $funcionElem->save();  
     }
-    public function habilitarFuncion(Request $request)
+    public static function habilitarFuncion(Request $request)
     {
         $funcion = $request->Funcion;
         $funcionElem = Funcion::find($funcion);

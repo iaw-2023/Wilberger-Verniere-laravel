@@ -32,6 +32,7 @@
                         <th>Fecha:</th>
                         <th>Hora:</th>
                         <th>Habilitado:</th>
+                        <th>Accion:</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,27 +43,27 @@
                             <td>{{ $fun->idSala }}</td>
                             <td>{{ $fun->fecha }}</td>
                             <td>{{ $fun->hora }}</td>
-                            <td> 
-                                @if($fun->habilitado ===1)
-                                            class="form-check-input" 
-                                    <form action="{{ route('funcion.update',$fun->id) }}" method="Post">
-                                            type="checkbox" 
-                                        @csrf
-                                            id="flexSwitchCheckDefault" 
-                                        @method('PUT')
-                                            <?php echo ($fun->habilitado) ? 'checked' : '' ; ?>
-                                        <button type="submit" class="btn btn-primary">Habilitar</button>
-                                            onClick = "cambiarEstado($fun)"
-                                    </form>              
-                                        >
-                                @else              
-                                    </div>
-                                    <form action="{{ route('funcion.destroy',$fun->id) }}" method="Post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Deshabilitar</button>
-                                    </form>
-                                @endif
+                            <td>
+                                @if ($fun->habilitado) {{ 'SI' }} 
+                                @else {{ 'NO' }} 
+                                @endif 
+                            </td>
+                            <td>
+                            @if($fun->habilitado)
+                                <form action="{{ route('funcion.destroy',$fun->id) }}" method="Post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="Funcion" value="{{ $fun->id }}">
+                                    <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                                </form>
+                            @else
+                                <form action="{{ route('funcion.update',$fun->id) }}" method="Post">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="Funcion" value="{{ $fun->id }}">
+                                    <button type="submit" class="btn btn-primary">Habilitar</button>
+                                </form>
+                            @endif
                             </td>
                         </tr>
                     @endforeach
@@ -70,16 +71,5 @@
             </table>
             {!! $funciones->links() !!}
         </div>
-
-
-        <script>
-            funcion cambiarEstado(Funcion $fun){
-                $request = new \Illuminate\Http\Request();
-                $request->replace(['Funcion' => '$fun->id']);
-
-                if ($fun->habilitado) { route('funcion.destroy',$request); }  
-                else {  route('funcion.update',$request) }
-            }
-        </script>
     </body>
 </html>

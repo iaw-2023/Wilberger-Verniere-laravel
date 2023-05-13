@@ -24,35 +24,19 @@
             <form action="{{ route('funcion.store') }}" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Pelicula:</label>
-                    <div class="dropdown">
-                        
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Elija una opcion
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            @foreach ($peliculas as $pel)
-                                <a class="dropdown-item" href="#">
-                                    {{ $pel->nombre }}
-                                </a>
+                    <select name="Pelicula" id="pel" placeholder="Elija una opcion" required>
+                        @foreach ($peliculas as $pel)
+                            <option value="opcion"> {{ $pel->nombre }} </option>
                             @endforeach
-                        </div>
-                    </div>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Sala:</label>
-                    <div class="dropdown">
-                        
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Elija una opcion
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            @foreach ($salas as $s)
-                                <a class="dropdown-item" href="#">
-                                    $s->id
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
+                    <select name="Sala" id="s" placeholder="Elija una opcion" required>
+                        @foreach ($salas as $s)
+                            <option value="opcion"> {{ $s->id }} </option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group">

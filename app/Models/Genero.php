@@ -29,10 +29,10 @@ class Genero extends Model
      */
     public static function quitarGenero(Request $request)
     {
-        $genero = $request->id;
+        $genero = $request->Genero;
         $generoElem = Genero::find($genero);
         $generoElem->habilitado = false;
-        $generoElem->save();
+        $generoElem->save(); 
     }
 
     /*
@@ -40,7 +40,7 @@ class Genero extends Model
      */
     public static function habilitarGenero(Request $request)
     {
-        $genero = $request->id;
+        $genero = $request->Genero;
         $generoElem = Genero::find($genero);
         $generoElem->habilitado = true; 
         $generoElem->save();   

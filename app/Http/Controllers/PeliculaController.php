@@ -60,29 +60,31 @@ class PeliculaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pelicula $pelicula)
+    public function update(Request $request)
     {
         //
         $validated = $request->validate([
-            'id' => 'exists:pelicula',
+            'Pelicula' => 'exists:pelicula,id',
         ]);
         if ($validated){
             Pelicula::habilitarPelicula($request);
+            return redirect()->route('pelicula.index')->with('Success','Pelicula has been enabled successfully');
         }
-        return redirect()->route('pelicula.index')->with('Success','Pelicula has been enabled successfully');
+        return redirect()->route('pelicula.index')->with('Error','Pelicula has not been enabled successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request)
     {
         $validated = $request->validate([
-            'id' => 'exists:pelicula',
+            'Pelicula' => 'exists:pelicula,id',
         ]);
         if ($validated){
             Pelicula::quitarPelicula($request);
+            return redirect()->route('pelicula.index')->with('Success','Pelicula has been disabled successfully');
         }
-        return redirect()->route('pelicula.index')->with('Success','Pelicula has been disabled successfully');
+        return redirect()->route('pelicula.index')->with('Error','Pelicula has not been disabled successfully');
     }
 }

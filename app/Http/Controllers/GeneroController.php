@@ -57,16 +57,17 @@ class GeneroController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,Genero $genero)
+    public function update(Request $request)
     {
         //
         $validated = $request->validate([
-            'id' => 'exists:genero',
+            'Genero' => 'exists:genero,id',
         ]);
         if ($validated){
             Genero::habilitarGenero($request);
+            return redirect()->route('genero.index')->with('Success','Genero has been enabled successfully');
         }
-        return redirect()->route('genero.index')->with('Success','Genero has been enabled successfully');
+        return redirect()->route('genero.index')->with('Error','Genero has not been enabled successfully');
     }
 
     /**
@@ -75,11 +76,12 @@ class GeneroController extends Controller
     public function destroy(Request $request)
     {
         $validated = $request->validate([
-            'id' => 'exists:genero',
+            'Genero' => 'exists:genero,id',
         ]);
         if ($validated){
             Genero::quitarGenero($request);
+            return redirect()->route('genero.index')->with('Success','Genero has been disabled successfully');
         }
-        return redirect()->route('genero.index')->with('Success','Genero has been disabled successfully');
+        return redirect()->route('genero.index')->with('Error','Genero has not been disabled successfully');
     }
 }

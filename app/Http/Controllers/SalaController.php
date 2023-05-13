@@ -29,7 +29,7 @@ class SalaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         Sala::agregarSala($request);
         return redirect()->route('sala.index')->with('Success','Sala has been created successfully.');
@@ -56,29 +56,31 @@ class SalaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         //
         $validated = $request->validate([
-            'id'=>'exists:sala',
+            'Sala'=>'exists:sala,id',
         ]);
         if($validated){
             Sala::habilitarSala($request);
+            return redirect()->route('sala.index')->with('Success','Sala has been enabled successfully');
         }
-        return redirect()->route('sala.index');
+        return redirect()->route('sala.index')->with('Error','Sala has not been enabled successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): RedirectResponse
+    public function destroy(Request $request)
     {
         $validated = $request->validate([
-            'id' => 'exists:sala',
+            'Sala' => 'exists:sala,id',
         ]);
         if ($validated){
             Sala::quitarSala($request);
+            return redirect()->route('sala.index')->with('Success','Sala has been disabled successfully');
         }
-        return redirect()->route('sala.index');
+        return redirect()->route('sala.index')->with('Error','Sala has not been disabled successfully');
     }
 }

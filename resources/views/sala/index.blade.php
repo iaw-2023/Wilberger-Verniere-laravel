@@ -38,18 +38,25 @@
                             <td>{{ $s->id }}</td>
                             <td>{{ $s->nombre }}</td>
                             <td>{{ $s->capacidadMaxima }}</td>
+                            <td>
+                                @if ($s->habilitado) {{ 'SI' }} 
+                                @else {{ 'NO' }} 
+                                @endif 
+                            </td>
                             <td>      
-                            @if($s->habilitado ===1)
-                                <form action="{{ route('sala.update',$s->id) }}" method="Post">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="btn btn-primary">Habilitar</button>
-                                </form>
-                            @else
+                            @if($s->habilitado)
                                 <form action="{{ route('sala.destroy',$s->id) }}" method="Post">
                                     @csrf
                                     @method('DELETE')
+                                    <input type="hidden" name="Sala" value="{{ $s->id }}">
                                     <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                                </form>
+                            @else
+                                <form action="{{ route('sala.update',$s->id) }}" method="Post">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="Sala" value="{{ $s->id }}">
+                                    <button type="submit" class="btn btn-primary">Habilitar</button>
                                 </form>
                             @endif
                             </td>

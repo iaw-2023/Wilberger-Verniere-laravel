@@ -4,6 +4,7 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
   
 class Sala extends Model
 {
@@ -17,7 +18,7 @@ class Sala extends Model
     /*
         Añade una sala a la lista de salas
      */
-    public function agregarSala(Request $request)
+    public static function agregarSala(Request $request)
     {
         $sala = new Sala;
 
@@ -30,9 +31,9 @@ class Sala extends Model
     /*
         Elimina un sala de la lista de salas
      */
-    public function quitarSala(Request $request)
+    public static function quitarSala(Request $request)
     {
-        $sala = $request->id;
+        $sala = $request->Sala;
         $salaElem = Sala::find($sala);
         $salaElem->habilitado = false;
         $salaElem->save();   
@@ -41,9 +42,9 @@ class Sala extends Model
     /*
         Habilita una sala de la lista de salas
      */
-    public function habilitarSala(Request $request)
+    public static function habilitarSala(Request $request)
     {
-        $sala = $request->id;
+        $sala = $request->Sala;
         $salaElem = Sala::find($sala);
         $salaElem->habilitado = true; 
         $salaElem->save();  
