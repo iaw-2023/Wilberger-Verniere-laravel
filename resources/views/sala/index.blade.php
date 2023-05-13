@@ -29,7 +29,8 @@
                         <th>ID:</th>
                         <th>Nombre: </th>
                         <th>Capacidad: </th>
-                        <th>Hablitado: </th>
+                        <th>Habilitado: </th>
+                        <th>Accion: </th>
                     </tr>
                 </thead>
                 <tbody>
