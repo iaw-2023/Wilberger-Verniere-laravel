@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pelicula;
+use App\Models\Genero;
 
 class PeliculaController extends Controller
 {
@@ -22,7 +23,8 @@ class PeliculaController extends Controller
      */
     public function create()
     {
-        return view('pelicula.create');
+        $generos = Genero::where('habilitado',true)->get();
+        return view('pelicula.create', compact('generos'));
     }
 
     /**
@@ -31,7 +33,7 @@ class PeliculaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'genero' => 'exists:genero',
+            'Genero' => 'exists:genero,id',
         ]);
         if ($validated) {
             Pelicula::agregarPelicula($request);

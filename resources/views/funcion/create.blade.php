@@ -22,11 +22,12 @@
             </div>
             @endif
             <form action="{{ route('funcion.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="form-group">
                     <label>Pelicula:</label>
                     <select name="Pelicula" id="pel" placeholder="Elija una opcion" required>
                         @foreach ($peliculas as $pel)
-                            <option value="opcion"> {{ $pel->nombre }} </option>
+                            <option value="{{$pel->id}}"> {{ $pel->nombre }} </option>
                             @endforeach
                     </select>
                 </div>
@@ -34,7 +35,7 @@
                     <label>Sala:</label>
                     <select name="Sala" id="s" placeholder="Elija una opcion" required>
                         @foreach ($salas as $s)
-                            <option value="opcion"> {{ $s->id }} </option>
+                            <option value="{{$s->id}}"> {{ $s->id }} </option>
                         @endforeach
                     </select>
                 </div>

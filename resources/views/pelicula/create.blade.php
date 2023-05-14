@@ -33,15 +33,14 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>ID genero:</strong>
-                            <input type="number" min="1" name="Genero" class="form-control" placeholder="Ej: 1-> Genero1, 2->Genero2" required>
-                            @error('Genero')
-                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
+                    <div class="form-group">
+                    <label>ID Genero:</label>
+                    <select name="Genero" id="gen" placeholder="Elija una opcion" required>
+                        @foreach ($generos as $gen)
+                            <option value="{{$gen->id}}"> {{ $gen->id }} </option>
+                        @endforeach
+                    </select>
+                </div>
                 </div>
                 <a class="btn btn-danger" href="{{ route('pelicula.index') }}">Back</a>
                 <button type="submit" class="btn btn-primary">Submit</button>

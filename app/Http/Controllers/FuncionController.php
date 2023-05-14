@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Funcion;
+use App\Models\DetallesCompra;
 use App\Models\Pelicula;
 use App\Models\Sala;
+use Illuminate\Support\Facades\DB;
 
 class FuncionController extends Controller
 {
@@ -34,22 +36,25 @@ class FuncionController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'idPelicula' => 'exists:pelicula',
-            'idSala' => 'exists:sala',
-            validarFuncionUnica($request) // PREGUNTAR SI ESTA BIEN
+            'Pelicula' => 'exists:pelicula,id',
+            'Sala' => 'exists:sala,id',
         ]);
-        if ($validated){
+        if ($validated && $this->validarFuncionUnica($request)){
             Funcion::agregarFuncion($request);
             return redirect()->route('funcion.index')->with('Success','Funcion has been created successfully.');
         }
         return redirect()->route('funcion.index')->with('Error','Funcion could not been created.');
     }
-        private function validarFuncionUnica(Request $request): Boolean{
-            $funciones = DB::table('funcion')
-                            ->where('idSala' == $request->Sala)
-                            ->where('fecha' == $request->Fecha)
-                            ->where('hora' == $request->Hora);
-            return count($funciones)<1? true : false;
+        private function validarFuncionUnica(Request $request): bool {
+            $funciones = Funcion::where([
+                ['idSala', $request->Sala],
+                ['fecha', $request->Fecha],
+                ['hora', $request->Hora]
+            ]);
+            if ($funciones->exists()){
+                return false;
+            } 
+            return true;
         }
 
     /**
@@ -93,10 +98,16 @@ class FuncionController extends Controller
         $validated = $request->validate([
             'Funcion' => 'exists:funcion,id',
         ]);
-        if ($validated){
+        if ($validated && $this->noInscriptos($request)){
             Funcion::quitarFuncion($request);
             return redirect()->route('funcion.index')->with('Success','Funcion has been disabled successfully');
         }
         return redirect()->route('funcion.index')->with('Error','Funcion has not been disabled successfully');
     }
+        private function noInscriptos(Request $request): bool {
+            $detallesCompra = DetallesCompra::where([
+                ['idFuncion', $request->Funcion]
+            ]);
+            return $detallesCompra->exists()? false : true;
+        }
 }
