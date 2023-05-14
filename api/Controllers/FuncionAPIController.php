@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+ 
 class FuncionAPIController extends Controller
 {
     /**
@@ -27,7 +27,7 @@ class FuncionAPIController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return new FuncionResource(Funcion::where('id', $id)->get());
     }
 
     /**

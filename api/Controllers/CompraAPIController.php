@@ -11,7 +11,7 @@ class CompraAPIController extends Controller
      */
     public function index()
     {
-        return new CompraCollection(Compraa::all());
+        return new CompraCollection(Compra::all());
     }
 
     /**
@@ -19,7 +19,7 @@ class CompraAPIController extends Controller
      */
     public function store(Request $request)
     {
-        // GUARDAR COMPRA CUANDO SE CONFIRMA
+        DetallesCompra::agregarDetallesCompra($request);
     }
 
     /**
@@ -27,7 +27,7 @@ class CompraAPIController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return new CompraResource(Compra::where('id',$id));
     }
 
     /**
@@ -41,8 +41,15 @@ class CompraAPIController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        // DESTRUIR LOS DETALLES COMPRA ASOCIADOS???
+        $validated = $request->validate([
+            'Compra' => 'exists:compra,id',
+        ]);
+        if ($validated){
+            //Para todos detalles compra asociados
+                //DetallesCompra::quitarDetallesCompra($request);
+            Compra::quitarCompra($request);
+        }
     }
 }

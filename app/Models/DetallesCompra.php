@@ -14,4 +14,22 @@ class DetallesCompra extends Model
         'idCompra',
         'cantidadTickets'
     ];
+
+    public static function agregarDetallesCompra(Request $request)
+    {
+        $detallesCompra = new DetallesCompra;
+
+        $detallesCompra->cantTickets       = $request->cantTickets;
+        $detallesCompra->idFuncion         = $request->Funcion;
+        $detallesCompra->idCompra          = $request->Compra;
+        
+        $detallesCompra->save();
+    }
+
+    public static function quitarDetallesCompra(Request $request)
+    {
+        $detallesCompra = $request->DetallesCompra;
+        $detallesCompraElem = DetallesCompra::find($detallesCompra);
+        $detallesCompraElem->destroy();  
+    }
 }

@@ -15,7 +15,7 @@ class FuncionCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'Nro° Id' => $this->id,
+            'NroId' => $this->id,
             'Fecha' => $this->fecha,
             'Hora' => $this->hora,
         ];

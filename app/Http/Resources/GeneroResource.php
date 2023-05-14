@@ -16,13 +16,13 @@ class GeneroResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'Nro° Id' => $this->id,
+            'NroId' => $this->id,
             'Nombre' => $this->nombre,
             'Habilitado' => $this->habilitado,
-            'Peliculas' => PeliculaCollection::collection(DB::pelicula
-                ->where('idGenero','$this->id')
-                ->where('habilitado',true)
-            ),
+            'Peliculas' => PeliculaCollection::collection(Pelicula::where([
+                ['idGenero',$this->id],
+                ['habilitado', true]
+            ])),
             'Creado' => $this->created_at,
             'Ultima modificacion'=> $this->updated_at,
         ];

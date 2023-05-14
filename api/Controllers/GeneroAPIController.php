@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 
 class GeneroAPIController extends Controller
 {
@@ -27,7 +27,7 @@ class GeneroAPIController extends Controller
      */
     public function show(string $id) // MUESTRA UNO SOLO
     {
-        //
+        return new GeneroResource(Genero::where('id', $id)->get());
     }
 
     /**

@@ -11,7 +11,7 @@ class DetallesCompraAPIController extends Controller
      */
     public function index()
     {
-        return new DetallesCompraCollection(DetallesCompraa::all());
+        return new DetallesCompraCollection(DetallesCompra::all());
     }
 
     /**
@@ -19,7 +19,13 @@ class DetallesCompraAPIController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validated = $request->validate([
+            'Funcion' => 'exists:funcion,id',
+        ]);
+        if ($validated){
+            DetallesCompra::agregarDetallesCompra($request);
+        }
     }
 
     /**
@@ -27,7 +33,7 @@ class DetallesCompraAPIController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return new DetallesCompraResource(DetallesCompra::where('id',$id));
     }
 
     /**
@@ -41,8 +47,13 @@ class DetallesCompraAPIController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        // DESTRUIR DETALLES COMPRA
+        $validated = $request->validate([
+            'DetallesCompra' => 'exists:detalles_compra,id',
+        ]);
+        if ($validated){
+            DetallesCompra::quitarDetallesCompra($request);
+        }
     }
 }

@@ -15,10 +15,10 @@ class DetallesCompraResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'Nro° Id' => $this->id,
-            'Nro° Tickets' => $this->cantidadTickets,
-            'Funcion' => $this->idFuncion,
-            'Compra' => $this->idCompra,
+            'NroId' => $this->id,
+            'NroTickets' => $this->cantidadTickets,
+            'idFuncion' => $this->idFuncion,
+            'idCompra' => $this->idCompra,
             'Creado' => $this->created_at,
             'Ultima modificacion'=> $this->updated_at,
         ];

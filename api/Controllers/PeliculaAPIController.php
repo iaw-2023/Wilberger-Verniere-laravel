@@ -11,7 +11,7 @@ class PeliculaAPIController extends Controller
      */
     public function index()
     {
-        return new PeliculaCollection(Pelicula::where('habilitado',true));
+        return new PeliculaCollection(Pelicula::where('habilitado',true)->get());
     }
 
     /**
@@ -27,7 +27,7 @@ class PeliculaAPIController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return new PeliculaResource(Pelicula::where('id', $id)->get());
     }
 
     /**
