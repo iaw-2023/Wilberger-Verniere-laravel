@@ -110,4 +110,15 @@ class FuncionController extends Controller
             ]);
             return $detallesCompra->exists()? false : true;
         }
+    
+    public static function getTicketsAsociados(int $id){
+        $cantTickets=0;
+        $detallesCompra=DetallesCompra::all();
+        foreach ($detallesCompra as $d){
+            if ($d->idFuncion == $id){
+                $cantTickets=$cantTickets+$d->cantidadTickets;
+            }
+        }
+        return $cantTickets;
+    }
 }
