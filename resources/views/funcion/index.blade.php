@@ -31,6 +31,7 @@
                         <th>Sala ID:</th>
                         <th>Fecha:</th>
                         <th>Hora:</th>
+                        <th>Tickets Comprados:</th>
                         <th>Habilitado:</th>
                         <th>Accion:</th>
                     </tr>
@@ -43,6 +44,9 @@
                             <td>{{ $fun->idSala }}</td>
                             <td>{{ $fun->fecha }}</td>
                             <td>{{ $fun->hora }}</td>
+                            <td>
+                                <?php echo App\Http\Controllers\FuncionController::getTicketsAsociados($fun->id); ?>
+                            </td>
                             <td>
                                 @if ($fun->habilitado) {{ 'SI' }} 
                                 @else {{ 'NO' }} 
