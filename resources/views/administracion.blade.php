@@ -20,6 +20,9 @@
             </form>              
             <form action="{{ route('sala.index') }}" method="Post" class="item">
                 <a class="btn btn-secondary btn-salas" href="{{ route('sala.index') }}">Salas</a>
+            </form> 
+            <form action="{{ route('compra.index') }}" method="Post" class="item">
+                <a class="btn btn-secondary btn-compras" href="{{ route('compra.index') }}">Compras</a>
             </form>             
         </div>
     </body>

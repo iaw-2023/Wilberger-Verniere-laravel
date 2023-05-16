@@ -7,6 +7,8 @@ use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\FuncionController;
 use App\Http\Controllers\SalaController;
+use App\Http\Controllers\CompraController;
+use App\Http\Controllers\DetallesCompraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,10 +39,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//PREGUNTAR PROFESOR MIDDLEWARE
 Route::resource('genero', GeneroController::class);//->middleware(Authenticate::Class);
 Route::resource('pelicula', PeliculaController::class);//->middleware(Authenticate::Class);
 Route::resource('funcion', FuncionController::class);//->middleware(Authenticate::Class);
 Route::resource('sala', SalaController::class);//->middleware(Authenticate::Class);
+Route::resource('compra', CompraController::class);//->middleware(Authenticate::Class);
+Route::resource('detallesCompra', DetallesCompraController::class);//->middleware(Authenticate::Class);
 
 
 require __DIR__.'/auth.php';
