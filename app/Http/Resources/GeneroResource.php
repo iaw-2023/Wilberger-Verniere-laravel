@@ -23,8 +23,6 @@ class GeneroResource extends JsonResource
                 ['idGenero',$this->id],
                 ['habilitado', true]
             ])),
-            'Creado' => $this->created_at,
-            'Ultima modificacion'=> $this->updated_at,
         ];
     }
 }

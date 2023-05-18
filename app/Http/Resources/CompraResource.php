@@ -16,13 +16,11 @@ class CompraResource extends JsonResource
     {
         return [
             'NroId' => $this->id,
-            'Compras' => DetallesCompraResource::collection(DetallesCompra::
+            'Compras' => DetallesCompraCollection(DetallesCompra::
                 where('idCompra', $this->id)),
             'Observaciones' => $this->Observaciones,
             'Email' => $this->emailCliente,
             'Fecha de compra' => $this->fecha,
-            'Creado' => $this->created_at,
-            'Ultima modificacion'=> $this->updated_at,
         ];
     }
 }

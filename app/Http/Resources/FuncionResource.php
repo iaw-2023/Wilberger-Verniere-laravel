@@ -20,9 +20,6 @@ class FuncionResource extends JsonResource
             'Fecha' => $this->fecha,
             'Hora' => $this->hora,
             'Sala' => $this->idSala,
-            'Habilitado' => $this->habilitado,
-            'Creado' => $this->created_at,
-            'Ultima modificacion'=> $this->updated_at,
         ];
     }
 }

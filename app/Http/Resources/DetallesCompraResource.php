@@ -19,8 +19,6 @@ class DetallesCompraResource extends JsonResource
             'NroTickets' => $this->cantidadTickets,
             'idFuncion' => $this->idFuncion,
             'idCompra' => $this->idCompra,
-            'Creado' => $this->created_at,
-            'Ultima modificacion'=> $this->updated_at,
         ];
     }
 }

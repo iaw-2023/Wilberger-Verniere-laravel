@@ -18,9 +18,6 @@ class PeliculaResource extends JsonResource
             'NroId' => $this->id,
             'Nombre' => $this->nombre,
             'idGenero' => $this->idGenero,
-            'Habilitado' => $this->habilitado,
-            'Creado' => $this->created_at,
-            'Ultima modificacion'=> $this->updated_at,
         ];
     }
 }

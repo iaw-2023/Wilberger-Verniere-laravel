@@ -16,6 +16,7 @@ class CompraCollection extends ResourceCollection
     {
         return [
             'NroId' => $this->id,
+            'Fecha' => $this->fecha 
         ];
     }
 }
