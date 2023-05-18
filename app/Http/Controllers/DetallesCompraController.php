@@ -21,8 +21,7 @@ class DetallesCompraController extends Controller
      */
     public function create()
     {
-        DetallesCompra::agregarDetallesCompra(); //Crea detallesCompra con valores por defecto
-        return view('detallesCompra.create');
+        //
     }
 
     /**
@@ -30,12 +29,7 @@ class DetallesCompraController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'Funcion' => 'exists:funcion,id',
-        ]);
-        if ($validated){
-            DetallesCompra::confirmarDetallesCompra($request);
-        }
+        DetallesCompra::confirmarDetallesCompra($request);
     }
 
     /**
@@ -65,14 +59,8 @@ class DetallesCompraController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        $validated = $request->validate([
-            'DetallesCompra' => 'exists:detalles_compra,id',
-        ]);
-        if ($validated){
-            DetallesCompra::quitarDetallesCompra($request);
-        }
-        return view();
+        DetallesCompra::quitarDetallesCompra($request);
     }
 }

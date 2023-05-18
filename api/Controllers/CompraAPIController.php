@@ -17,9 +17,14 @@ class CompraAPIController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) 
+    //Llega un JSON con (idCompra, Observaciones, emailCliente, fecha y una lista de DetallesCompra)
     {
-        DetallesCompra::agregarDetallesCompra($request);
+        CompraController::store($request);
+        $listaOrdenes=$request->listaOrdenes;
+        foreach ($listaOrdenes as $ord){
+            DetallesCompraController::store($ord);
+        }
     }
 
     /**
@@ -47,9 +52,11 @@ class CompraAPIController extends Controller
             'Compra' => 'exists:compra,id',
         ]);
         if ($validated){
-            //Para todos detalles compra asociados
-                //DetallesCompra::quitarDetallesCompra($request);
-            Compra::quitarCompra($request);
+            $listaOrdenes=$request->listaOrdenes;
+            foreach ($listaOrdenes as $ord){
+                DetallesCompraController::destroy($ord);
+            }
+            CompraController::destroy($request);
         }
     }
 }

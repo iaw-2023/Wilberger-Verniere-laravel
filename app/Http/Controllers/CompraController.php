@@ -23,8 +23,7 @@ class CompraController extends Controller
      */
     public function create()
     {
-        $ordenes=DetallesCompra::where('idCompra',$request->id)->get();
-        return view('compra.create',compact('ordenes'));
+        //
     }
 
     /**
@@ -32,12 +31,7 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        $ordenesAsociadas=DetallesCompra::where('idCompra',$request->id)->get();
-        foreach($ordenesAsociadas as $d){
-            DetallesCompraController::store($d);
-        }
-        Compra::confirmarCompra($request);
-        return redirect()->route('compra.index')->with('Success','A Compra has been created successfully.');
+        Compra::agregarCompra($request);
     }
 
     /**
@@ -61,7 +55,7 @@ class CompraController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        DetallesCompraController::create();
+        //
     }
 
     /**
