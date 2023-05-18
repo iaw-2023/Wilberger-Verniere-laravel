@@ -9,6 +9,7 @@ use App\Http\Controllers\FuncionController;
 use App\Http\Controllers\SalaController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\DetallesCompraController;
+use App\Http\Middleware\Authenticate;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,12 +41,12 @@ Route::middleware('auth')->group(function () {
 });
 
 //PREGUNTAR PROFESOR MIDDLEWARE
-Route::resource('genero', GeneroController::class);//->middleware(Authenticate::Class);
-Route::resource('pelicula', PeliculaController::class);//->middleware(Authenticate::Class);
-Route::resource('funcion', FuncionController::class);//->middleware(Authenticate::Class);
-Route::resource('sala', SalaController::class);//->middleware(Authenticate::Class);
-Route::resource('compra', CompraController::class);//->middleware(Authenticate::Class);
-Route::resource('detallesCompra', DetallesCompraController::class);//->middleware(Authenticate::Class);
+Route::resource('genero', GeneroController::class)->middleware(Authenticate::Class);
+Route::resource('pelicula', PeliculaController::class)->middleware(Authenticate::Class);
+Route::resource('funcion', FuncionController::class)->middleware(Authenticate::Class);
+Route::resource('sala', SalaController::class)->middleware(Authenticate::Class);
+Route::resource('compra', CompraController::class)->middleware(Authenticate::Class);
+Route::resource('detallesCompra', DetallesCompraController::class)->middleware(Authenticate::Class);
 
 
 require __DIR__.'/auth.php';
