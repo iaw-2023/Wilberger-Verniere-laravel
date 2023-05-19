@@ -16,12 +16,36 @@
     </head>
     <body class="antialiased">
         <!-- insertar el codigo del sidebar con las referencias -->
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm navbar-fixed-top">
+            <div class="container">  
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('funcion.index') }}">Funciones</a>                        
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('genero.index') }}">Generos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('sala.index') }}">Salas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pelicula.index') }}">Peliculas</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         @show
         @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
         @endif
-        @yield('content')
+        <div class="container">
+            @yield('content')
+        </div>
     </body>
 </html>
