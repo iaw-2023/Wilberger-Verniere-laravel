@@ -20,7 +20,7 @@ class compraFactory extends Factory
         return [            
             'emailCliente'=>$this->faker->safeEmail(),
             'observaciones'=>$this->faker->text($maxNbChars = 30),
-            'fecha'=>$this->faker->date($format = 'Y-m-d'),
+            'fecha'=>$this->faker->date($format = 'Y-m-d')
         ];
     }
 }

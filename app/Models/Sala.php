@@ -10,6 +10,7 @@ class Sala extends Model
     use HasFactory;
     protected $table = 'sala';
     protected $fillable = [
-        'nombre', 'capacidadMaxima'
+        'nombre', 
+        'capacidadMaxima'
     ];
 }

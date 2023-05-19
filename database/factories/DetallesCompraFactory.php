@@ -21,8 +21,7 @@ class detallescompraFactory extends Factory
         return [    
             'idCompra'=>$this->faker->randomElement(Compra::pluck('id')),
             'idFuncion'=>$this->faker->randomElement(Funcion::pluck('id')),        
-            'cantidadTickets'=>$this->faker->numberBetween(1,3),
-            
+            'cantidadTickets'=>$this->faker->numberBetween(1,3)
         ];
     }
 }

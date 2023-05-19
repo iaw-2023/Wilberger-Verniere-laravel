@@ -20,7 +20,7 @@ class generoFactory extends Factory
         $faker = \Faker\Factory::create();
         $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));
         return [
-            'nombre'=>$faker->movieGenre
+            'nombre'=>$faker->movieGenre,
         ];
     }
     public function createConGenero($genero): array

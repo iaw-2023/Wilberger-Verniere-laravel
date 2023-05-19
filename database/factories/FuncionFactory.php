@@ -21,9 +21,9 @@ class funcionFactory extends Factory
     {
         return [ 
             'idPelicula'=>$this->faker->randomElement(Pelicula::pluck('id')),
-            'idSala'=>$this->faker->randomElement(Sala::pluck('id')),           
+            'idSala'=>$this->faker->randomElement(Sala::pluck('id')),       
             'fecha'=>$this->faker->date($format = 'Y-m-d'),
-            'hora'=>$this->faker->time($format = 'H:i:s'),
+            'hora'=>$this->faker->time($format = 'H:i:s')
         ];
     }
 }
