@@ -1,0 +1,479 @@
+openapi: 3.0.3
+info:
+  title: webcines
+  description: |-
+    -------------------------
+  termsOfService: http://swagger.io/terms/
+  version: 1.0.11
+
+
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+
+
+servers:
+  - url: //localhost:8000/api
+    description: local server
+  - url: //localhost:8000/api
+    description: vercel deploy (MODIFICAR EL URL CUANDO FUNCIONE VERCEL)
+
+
+tags:
+  - name: funcion
+    description: operaciones sobre funciones
+  - name: genero
+    description: operaciones sobre generos
+  - name: sala
+    description: operaciones sobre salas
+  - name: pelicula
+    description: operaciones sobre peliculas
+  - name: compras
+    description: operaciones sobre compras
+  - name: detallescompras
+    description: operaciones sobre los detalles de compras
+
+
+paths:
+  /funcion:
+    get:
+      tags:
+        - funcion
+      summary: mostrar las funciones
+      description: muestra las funciones habilitadas
+      operationId: getFuncion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Funcion'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Funcion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Funcion'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Funcion'
+  /funcion/show{idFuncion}:
+    get:
+      tags:
+        - funcion
+      summary: obtener una funcion por id
+      description: busca la funcion solicitada por id
+      operationId: getFuncionByID
+      parameters:
+        - name: idFuncion
+          in: query
+          description: id de funcion a buscar
+          required: true
+          schema:
+            type: integer        
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Funcion'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: funcion not found
+
+  /genero:
+    get:
+      tags:
+        - genero
+      summary: mostrar los generos
+      description: se muestran los generos disponibles habilitados
+      operationId: getGenero
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Genero'          
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Genero'
+  /genero/show{idGenero}:
+    get:
+      tags:
+        - genero
+      summary: obtener un genero por id
+      description: busca el genero solicitado por id
+      operationId: getGeneroByID
+      parameters:
+        - name: idGenero
+          in: query
+          description: id del genero a buscar
+          required: true
+          schema:
+            type: integer        
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genero'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: genero not found
+
+  /sala:
+    get:
+      tags:
+        - sala
+      summary: obtiene las salas
+      description: muestra las salas habilitadas disponibles.
+      operationId: getSala
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sala'          
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sala'
+  /sala/show{idSala}:
+    get:
+      tags:
+        - sala
+      summary: obtener una sala por id
+      description: busca la sala solicitada por id
+      operationId: getSalaByID
+      parameters:
+        - name: idSala
+          in: query
+          description: id de la sala a buscar
+          required: true
+          schema:
+            type: integer        
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sala'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: sala not found
+
+  /pelicula:
+    get:
+      tags:
+        - pelicula
+      summary: obtiene las peliculas
+      description: obtiene las peliculas disponibles
+      operationId: getPelicula
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pelicula'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Pelicula'
+  /pelicula/show{idPelicula}:
+    get:
+      tags:
+        - pelicula
+      summary: obtener una pelicula por id
+      description: busca la pelicula solicitada por id
+      operationId: getPeliculaByID
+      parameters:
+        - name: idPelicula
+          in: query
+          description: id de la pelicula a buscar
+          required: true
+          schema:
+            type: integer        
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pelicula'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: pelicula not found
+
+  /compra:
+    get:
+      tags:
+        - compra
+      summary: obtiene las compras
+      description: obtiene las compras disponibles
+      operationId: getCompra
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Compra'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Compra'
+    post:
+      tags:
+        - compra
+      summary: agrega una compra
+      description: se agrega una nueva compra, con los detalles compra asociados
+      operationId: postCompra
+      parameters:
+        - name: idCompra
+          in: path
+          description: ID de la compra
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: additionalMetadata
+          in: query
+          description: Additional Metadata
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Compra'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Compra'
+    delete:
+      tags:
+        - pet
+      summary: Deletes a pet
+      description: delete a pet
+      operationId: deletePet
+      parameters:
+        - name: api_key
+          in: header
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: petId
+          in: path
+          description: Pet id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid pet value
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+
+  /detallesCompra/{idCompra}:
+    get:
+      tags:
+        - detallescompra
+      summary: obtiene los detalles de una compra
+      description: obtiene los detalles por id de compra
+      operationId: getDetallesCompra
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetallesCompra'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DetallesCompra'        
+
+
+components:
+  schemas:
+    Funcion:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        fecha:
+          type: string
+          format: Y-M-D
+          example: 2022-03-22
+        hora:
+          type: string
+          format: HH:II
+          example: 19:30
+        habilitado:
+          type: boolean
+        idPelicula:
+          type: integer
+          description: id de pelicula que se muestra en la funcion
+          example: 16
+        idSala:
+          type: integer
+          description: id de la sala donde se muestra la funcion
+          example: 4  
+      xml:
+        name: funcion
+    Genero:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 25
+        nombre:
+          type: string
+          example: Horror
+        habilitado:
+          type: boolean
+      xml:
+        name: genero
+    Sala:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 21
+        nombre:
+          type: string
+          example: Sala7-3D
+        capacidadMaxima:
+          type: integer
+          minimum: 30
+          example: 55
+        habilitado:
+          type: boolean
+      xml:
+        name: sala
+    Pelicula:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        nombre:
+          type: string
+          example: Star Wars II the clone wars
+        habilitado:
+          type: boolean
+        idGenero:
+          type: integer
+          example: 12
+      xml:
+        name: pelicula
+    Compra:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        emailCliente:
+          type: string
+          example: user@gmail.com
+        observaciones:
+          type: string
+          example: compra para funcion z, x tickets
+        fecha:
+          type: string
+          format: YYYY-MM-DD
+          example: 2018-04-24
+      xml:
+        name: compra
+    DetallesCompra:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        cantidadTickets:
+          type: integer
+          format: int64
+        idFuncion:
+          type: integer
+        idCompra:
+          type: integer  
+      xml:
+        name: detallescompra
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+  requestBodies:
+    Compra:
+      description: Compra a ser agregada
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Compra'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Compra'
+    DetallesCompraArray:
+      description: lista de objetos detallescompra
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DetallesCompra'
+  securitySchemes:
+    petstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://petstore3.swagger.io/oauth/authorize
+          scopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
