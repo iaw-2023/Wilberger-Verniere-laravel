@@ -20,7 +20,7 @@ class CompraResource extends JsonResource
                 where('idCompra', $this->id)),
             'Observaciones' => $this->Observaciones,
             'Email' => $this->emailCliente,
-            'Fecha de compra' => $this->fecha,
+            'FechaCompra' => $this->fecha,
         ];
     }
 }
