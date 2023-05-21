@@ -16,7 +16,9 @@ class FuncionController extends Controller
      */
     public function index()
     {
-        $funciones = Funcion::orderBy('id')->paginate(10);
+        $funciones = Funcion::orderBy('id')
+            ->paginate(10);
+            // Ver si se puede agregar el atributo cant funciones;
         return view('funcion.index', compact('funciones'));
     } 
 

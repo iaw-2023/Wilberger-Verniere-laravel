@@ -61,17 +61,8 @@ class CompraController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        $validated = $request->validate([
-            'Compra' => 'exists:compra,id',
-        ]);
-        if ($validated){
-            $detallesComprasAsociados=DetallesCompra::where('idCompra',$request->id)->get();
-            foreach($detallesComprasAsociados as $d){
-                DetallesCompraController::destroy($d);
-            }
-            Compra::quitarCompra($request);
-        }
+        Compra::quitarCompra($request);
     }
 }

@@ -41,7 +41,7 @@ class SalaController extends Controller
     public function show(string $id)
     {
         //
-        return view('sala.show',compact('sala'));
+        return view('sala.show');
     }
 
     /**

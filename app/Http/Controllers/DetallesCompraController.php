@@ -12,7 +12,7 @@ class DetallesCompraController extends Controller
      */
     public function index(Request $request)
     {
-        $ordenes = DetallesCompra::where('id',$request->idCompra)->orderBy('id')->paginate(10);
+        $ordenes = DetallesCompra::where('id',$request->idCompra)->orderBy('id')->paginate(10)->get();
         return view('detallesCompra.adminIndex', compact('ordenes'));
     }
 
@@ -29,7 +29,7 @@ class DetallesCompraController extends Controller
      */
     public function store(Request $request)
     {
-        DetallesCompra::confirmarDetallesCompra($request);
+        DetallesCompra::agregarDetallesCompra($request);
     }
 
     /**
