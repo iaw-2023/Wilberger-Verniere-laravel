@@ -25,7 +25,7 @@ class GeneroAPIController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) // MUESTRA UNO SOLO
+    public function show(string $id)
     {
         return new GeneroResource(Genero::where('id', $id)->get());
     }
