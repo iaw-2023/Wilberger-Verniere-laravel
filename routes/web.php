@@ -49,4 +49,6 @@ Route::resource('compra', CompraController::class)->middleware(Authenticate::Cla
 Route::resource('detallesCompra', DetallesCompraController::class)->middleware(Authenticate::Class);
 
 
+Route::view('/swagger', 'swagger');
+
 require __DIR__.'/auth.php';
