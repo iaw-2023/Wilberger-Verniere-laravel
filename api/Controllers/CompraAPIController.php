@@ -21,7 +21,8 @@ class CompraAPIController extends Controller
     //Llega un JSON con (idCompra, Observaciones, emailCliente, fecha y una lista de DetallesCompra)
     {
         CompraController::store($request);
-        $listaOrdenes=$request->listaOrdenes;
+        //Obtener id de ultima compra insertada en base de datos y pasarla al store de DetallesCompra
+        $listaOrdenes=$request->listaOrdenes; //$listaOrdenes=$request[listaOrdenes]; reemplazando idCompra por lo obtenido arriba ??
         foreach ($listaOrdenes as $ord){
             DetallesCompraController::store($ord);
         }
@@ -52,7 +53,7 @@ class CompraAPIController extends Controller
             'Compra' => 'exists:compra,id',
         ]);
         if ($validated){
-            $listaOrdenes=$request->listaOrdenes;
+            $listaOrdenes=$request->listaOrdenes;  //$listaOrdenes=$request[listaOrdenes];
             foreach ($listaOrdenes as $ord){
                 DetallesCompraController::destroy($ord);
             }
