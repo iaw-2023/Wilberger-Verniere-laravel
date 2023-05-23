@@ -12,7 +12,6 @@ class GeneroController extends Controller
      */
     public function index()
     {
-        //
         $generos = Genero::orderBy('id')->paginate(10);
         return view('genero.index', compact('generos'));
     }
@@ -22,7 +21,6 @@ class GeneroController extends Controller
      */
     public function create()
     {
-        //
         return view('genero.create');
     }
 
@@ -48,7 +46,6 @@ class GeneroController extends Controller
     public function show(Genero $genero)
     {
         //
-        return view('genero.show',compact('genero'));
     }
 
     /**
@@ -57,7 +54,6 @@ class GeneroController extends Controller
     public function edit(Genero $genero)
     {
         //
-        return view('genero.edit',compact('genero'));
     }
 
     /**

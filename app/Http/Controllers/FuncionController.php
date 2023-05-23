@@ -64,8 +64,7 @@ class FuncionController extends Controller
      */
     public function show(String $id)
     {   
-        $funcion = Funcion::where('id',$id)->get();
-        return view('funcion.show',compact('funcion'));
+        //
     }
 
     /**
@@ -73,8 +72,7 @@ class FuncionController extends Controller
      */
     public function edit(String $id)
     {
-        $funcion = Funcion::where('id',$id)->get();
-        return view('funcion.edit',compact('funcion'));
+        //
     }
 
     /**

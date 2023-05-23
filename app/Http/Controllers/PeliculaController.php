@@ -47,7 +47,6 @@ class PeliculaController extends Controller
     public function show(Pelicula $pelicula)
     {
         //
-        return view('pelicula.show',compact('pelicula'));
     }
 
     /**
@@ -56,7 +55,6 @@ class PeliculaController extends Controller
     public function edit(Pelicula $pelicula)
     {
         //
-        return view('pelicula.edit',compact('pelicula'));
     }
 
     /**
@@ -64,7 +62,6 @@ class PeliculaController extends Controller
      */
     public function update(Request $request)
     {
-        //
         $validated = $request->validate([
             'Pelicula' => 'exists:pelicula,id',
         ]);
