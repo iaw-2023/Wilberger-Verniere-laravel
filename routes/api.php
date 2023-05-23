@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Api\Controllers\CompraAPIController;
+use Api\Controllers\DetallesCompraAPIController;
+use Api\Controllers\FuncionAPIController;
+use Api\Controllers\GeneroAPIController;
+use Api\Controllers\PeliculaAPIController;
 
 /*
 |--------------------------------------------------------------------------
