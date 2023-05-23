@@ -18,4 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('genero', GeneroAPIController::class); //PREGUNTAR
+Route::resource('APIgenero', GeneroAPIController::class); //PREGUNTAR
+Route::resource('APIdetallesCompra', DetallesCompraAPIController::class); //PREGUNTAR
+Route::resource('APIcompra', CompraAPIController::class); //PREGUNTAR
+Route::resource('APIfuncion', FuncionAPIController::class); //PREGUNTAR
+Route::resource('APIpelicula', PeliculaAPIController::class); //PREGUNTAR
