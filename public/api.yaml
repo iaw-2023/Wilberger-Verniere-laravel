@@ -340,8 +340,6 @@ components:
           type: string
           format: HH:II
           example: 19:30
-        habilitado:
-          type: boolean
         idPelicula:
           type: integer
           description: id de pelicula que se muestra en la funcion
@@ -355,23 +353,14 @@ components:
     Genero:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          example: 25
         nombre:
           type: string
           example: Horror
-        habilitado:
-          type: boolean
       xml:
         name: genero
     Sala:
       type: object
       properties:
-        id:
-          type: integer
-          example: 21
         nombre:
           type: string
           example: Sala7-3D
@@ -379,22 +368,14 @@ components:
           type: integer
           minimum: 30
           example: 55
-        habilitado:
-          type: boolean
       xml:
         name: sala
     Pelicula:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          example: 10
         nombre:
           type: string
           example: Star Wars II the clone wars
-        habilitado:
-          type: boolean
         idGenero:
           type: integer
           example: 12
