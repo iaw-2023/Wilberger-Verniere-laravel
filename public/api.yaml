@@ -35,7 +35,7 @@ tags:
 
 
 paths:
-  /APIfuncion:
+  /funciones:
     get:
       tags:
         - funcion
@@ -49,7 +49,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Funcion'
-  /APIfuncion.show{idFuncion}:
+  /funciones/{idFuncion}:
     get:
       tags:
         - funcion
@@ -75,7 +75,7 @@ paths:
         '404':
           description: funcion not found
 
-  /APIgenero:
+  /generos:
     get:
       tags:
         - genero
@@ -96,7 +96,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Genero'
-  /APIgenero.show{idGenero}:
+  /generos/{idGenero}:
     get:
       tags:
         - genero
@@ -122,7 +122,7 @@ paths:
         '404':
           description: genero not found
 
-  /APIsala:
+  /salas:
     get:
       tags:
         - sala
@@ -143,7 +143,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Sala'
-  /APIsala.show{idSala}:
+  /salas/{idSala}:
     get:
       tags:
         - sala
@@ -169,7 +169,7 @@ paths:
         '404':
           description: sala not found
 
-  /APIpelicula:
+  /peliculas:
     get:
       tags:
         - pelicula
@@ -186,7 +186,7 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Pelicula'
-  /APIpelicula.show{idPelicula}:
+  /peliculas/{idPelicula}:
     get:
       tags:
         - pelicula
@@ -212,7 +212,7 @@ paths:
         '404':
           description: pelicula not found
 
-  /compra:
+  /compras:
     get:
       tags:
         - compra
@@ -229,6 +229,7 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Compra'
+  /compras/crear: 
     post:
       tags:
         - compra
@@ -266,7 +267,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Compra'
 
-  /compra/cancelar{idCompra}:
+  /compras/eliminar/{idCompra}:
     delete:
       tags:
         - compra
@@ -286,12 +287,12 @@ paths:
         '400':
           description: Invalid idCompra value
 
-  /detallesCompra/{idCompra}:
+  /ordenes/{idDetalleCompra}:
     get:
       tags:
         - detallescompra
-      summary: obtiene los detalles de una compra
-      description: obtiene los detalles por id de compra
+      summary: obtiene los detalles de una orden
+      description: obtiene los detalles por id de orden
       operationId: getDetallesCompra
       responses:
         '200':
