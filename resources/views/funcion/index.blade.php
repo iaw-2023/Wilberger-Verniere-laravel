@@ -33,7 +33,7 @@
                     <td>{{ $fun->fecha }}</td>
                     <td>{{ $fun->hora }}</td>
                     <td>
-                        <?php echo App\Http\Controllers\FuncionController::getTicketsAsociados($fun->id); ?>
+                        {{ App\Http\Controllers\FuncionController::getTicketsAsociados($fun->id) }}
                     </td>
                     <td>
                         @if ($fun->habilitado) {{ 'SI' }} 
@@ -41,21 +41,27 @@
                         @endif 
                     </td>
                     <td>
-                    @if($fun->habilitado)
-                        <form action="{{ route('funcion.destroy',$fun->id) }}" method="Post">
+                        @if($fun->habilitado)
+                            <form action="{{ route('funcion.deshabilitar',$fun->id) }}" method="Post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="Funcion" value="{{ $fun->id }}">
+                                <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                            </form>
+                        @else
+                            <form action="{{ route('funcion.habilitar',$fun->id) }}" method="Post">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="Funcion" value="{{ $fun->id }}">
+                                <button type="submit" class="btn btn-primary">Habilitar</button>
+                            </form>
+                        @endif
+
+                        <form action="{{ route('funcion.edit',$fun->id) }}" method="Post">
                             @csrf
-                            @method('DELETE')
                             <input type="hidden" name="Funcion" value="{{ $fun->id }}">
-                            <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                            <button type="submit" class="btn btn-danger">Editar</button>
                         </form>
-                    @else
-                        <form action="{{ route('funcion.update',$fun->id) }}" method="Post">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="Funcion" value="{{ $fun->id }}">
-                            <button type="submit" class="btn btn-primary">Habilitar</button>
-                        </form>
-                    @endif
                     </td>
                 </tr>
             @endforeach

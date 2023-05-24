@@ -42,12 +42,22 @@ Route::middleware('auth')->group(function () {
 
 //PREGUNTAR PROFESOR MIDDLEWARE
 Route::resource('genero', GeneroController::class)->middleware(Authenticate::Class);
-Route::resource('pelicula', PeliculaController::class)->middleware(Authenticate::Class);
-Route::resource('funcion', FuncionController::class)->middleware(Authenticate::Class);
-Route::resource('sala', SalaController::class)->middleware(Authenticate::Class);
-Route::resource('compra', CompraController::class)->middleware(Authenticate::Class);
-Route::resource('detallesCompra', DetallesCompraController::class)->middleware(Authenticate::Class);
 
+Route::resource('pelicula', PeliculaController::class)->middleware(Authenticate::Class);
+
+Route::resource('funcion', FuncionController::class)->middleware(Authenticate::Class);
+Route::post('funcion', [FuncionController::class, 'habilitar'])
+    ->name('funcion.habilitar')
+    ->middleware(Authenticate::Class);
+Route::post('funcion', [FuncionController::class, 'deshabilitar'])
+    ->name('funcion.deshabilitar')
+    ->middleware(Authenticate::Class);
+
+Route::resource('sala', SalaController::class)->middleware(Authenticate::Class);
+
+Route::resource('compra', CompraController::class)->middleware(Authenticate::Class);
+
+Route::resource('detallesCompra', DetallesCompraController::class)->middleware(Authenticate::Class);
 
 Route::view('/swagger', 'swagger');
 
