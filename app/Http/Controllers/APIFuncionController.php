@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request; 
-
-class GeneroAPIController extends Controller
+use Illuminate\Http\Request;
+ 
+class APIFuncionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return new GeneroCollection(Genero::where('habilitado',true));
+        return new FuncionCollection(Funcion::where('habilitado',true));
     }
 
     /**
@@ -27,7 +27,7 @@ class GeneroAPIController extends Controller
      */
     public function show(string $id)
     {
-        return new GeneroResource(Genero::where('id', $id)->get());
+        return new FuncionResource(Funcion::where('id', $id)->get());
     }
 
     /**

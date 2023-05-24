@@ -2,11 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Api\Controllers\CompraAPIController;
-use Api\Controllers\DetallesCompraAPIController;
-use Api\Controllers\FuncionAPIController;
-use Api\Controllers\GeneroAPIController;
-use Api\Controllers\PeliculaAPIController;
+use App\Http\Controllers\APICompraController;
+use App\Http\Controllers\APIDetallesCompraController;
+use App\Http\Controllers\APIFuncionController;
+use App\Http\Controllers\APIGeneroController;
+use App\Http\Controllers\APIPeliculaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +23,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('APIgenero', GeneroAPIController::class); //PREGUNTAR
-Route::resource('APIdetallesCompra', DetallesCompraAPIController::class); //PREGUNTAR
-Route::resource('APIcompra', CompraAPIController::class); //PREGUNTAR
-Route::resource('APIfuncion', FuncionAPIController::class); //PREGUNTAR
-Route::resource('APIpelicula', PeliculaAPIController::class); //PREGUNTAR
+Route::get('/generos', [APIGeneroController::class, 'index']);
+Route::get('/generos/{idGenero}', [APIGeneroController::class, 'show(idGenero)']);
+
+Route::get('/peliculas', [APIPeliculaController::class, 'index']);
+Route::get('/peliculas/{idPelicula}', [APIPeliculaController::class, 'show(idPelicula)']);
+
+Route::get('/funciones', [APIFuncionController::class, 'index']);
+Route::get('/funciones/{idFuncion}', [APIFuncionController::class, 'show(idFuncion)']);
+
+Route::get('/compras', [APICompraController::class, 'index']);
+Route::get('/compras/{idCompra}', [APICompraController::class, 'show(idCompra)']);
+
+Route::get('/detallesCompras/{idDetallesCompra}', [APIDetallesCompraController::class, 'show(idDetallesCompra)']);
+
+//https://www.toptal.com/laravel/restful-laravel-api-tutorial

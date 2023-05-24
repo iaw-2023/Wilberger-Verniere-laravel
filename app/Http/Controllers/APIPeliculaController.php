@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DetallesCompraAPIController extends Controller
+class APIPeliculaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return new PeliculaCollection(Pelicula::where('habilitado',true)->get());
     }
 
     /**
@@ -27,7 +27,7 @@ class DetallesCompraAPIController extends Controller
      */
     public function show(string $id)
     {
-        return new DetallesCompraResource(DetallesCompra::where('id',$id));
+        return new PeliculaResource(Pelicula::where('id', $id)->get());
     }
 
     /**

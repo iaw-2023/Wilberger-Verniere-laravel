@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
- 
-class FuncionAPIController extends Controller
+
+class APIDetallesCompraController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return new FuncionCollection(Funcion::where('habilitado',true));
+        //
     }
 
     /**
@@ -27,7 +27,7 @@ class FuncionAPIController extends Controller
      */
     public function show(string $id)
     {
-        return new FuncionResource(Funcion::where('id', $id)->get());
+        return new DetallesCompraResource(DetallesCompra::where('id',$id));
     }
 
     /**

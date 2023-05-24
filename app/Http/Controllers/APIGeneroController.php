@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
+use App\Http\Resources\GeneroCollection;
+use App\Models\Genero;
 
-class PeliculaAPIController extends Controller
+class APIGeneroController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return new PeliculaCollection(Pelicula::where('habilitado',true)->get());
+        return new GeneroCollection(Genero::where('habilitado',true)->get());
     }
 
     /**
@@ -25,9 +27,9 @@ class PeliculaAPIController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(String $id)
     {
-        return new PeliculaResource(Pelicula::where('id', $id)->get());
+        return new GeneroResource(Genero::where('id', $id)->get());
     }
 
     /**
