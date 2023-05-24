@@ -1,7 +1,13 @@
+.main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
 /* The sidebar menu */
 .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 10%; /* Set the width of the sidebar */
+    width: 175px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
@@ -13,7 +19,6 @@
 
 /* The navigation menu links */
 .sidenav a {
-    padding: 6px 8px 6px 16px;
     text-decoration: none;
     text-align: left;
     font-size: 20px;
@@ -27,29 +32,34 @@
 }
 
 /* Style page content */
-.main {
-    margin-left: 25%; /* Same as the width of the sidebar */
+.content {
+    margin-left: 175px; /* Same as the width of the sidebar */
+    padding-left: 20px;
     padding: 0px 10px;
 }
 
-.añadir {
-    margin-left: 40px;
+.btn-group{
+    width: inherit;
 }
 
 .btn-group a {
     color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
+    position: flex;
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
     font-size: 16px;
-}
-  
-.btn-group a:not(:last-child) {
-    border-right: none; /* Prevent double borders */
+    padding: 10px 20px;
 }
 
+.elem{
+    width: 120px;
+    border-right: none; /* Prevent double borders */
+} 
+
 .añadir {
-    margin-left: 0;
+    float: right;
+    position: absolute;
+    right: 0px;
 }
 
 /* Clear floats (clearfix hack) */

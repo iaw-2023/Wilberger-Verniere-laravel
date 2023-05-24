@@ -7,8 +7,8 @@
         @vite(['resources/css/master.css'])
 
         <title>WebCines</title>
-     
     </head>
+
     <body>
         @show
         @if ($message = Session::get('success'))
@@ -17,14 +17,14 @@
             </div>
         @endif
     
-        <div>
+        <div class="main">
              <!-- Sidebar -->
             <div class="sidenav">
                 @include('sidebar')
             </div>
 
              <!-- Page content -->
-            <div class="main">
+            <div class="content">
                 @yield('content')
             </div>
         </div>
