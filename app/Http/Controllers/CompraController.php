@@ -14,7 +14,7 @@ class CompraController extends Controller
      */
     public function index()
     {
-        $compras = Compra::orderBy('id')->paginate(10);
+        $compras = Compra::index();
         return view('compra.adminIndex', compact('compras'));
     }
 

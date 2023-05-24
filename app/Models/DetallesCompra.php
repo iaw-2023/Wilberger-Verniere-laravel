@@ -16,6 +16,14 @@ class DetallesCompra extends Model
         'cantidadTickets'
     ];
 
+    public static function index(Request $request)
+    {
+        $ordenes = DetallesCompra::where('idCompra',$request->idCompra)
+            ->orderBy('id')
+            ->paginate(10);
+        return $ordenes;
+    }
+
     public static function agregarDetallesCompra(Request $request)
     {
         $detallesCompra = new DetallesCompra;

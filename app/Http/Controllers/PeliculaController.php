@@ -14,7 +14,7 @@ class PeliculaController extends Controller
     public function index()
     {
         //
-        $peliculas = Pelicula::orderBy('id')->paginate(10);
+        $peliculas = Pelicula::index();
         return view('pelicula.index', compact('peliculas'));
     }
 

@@ -12,8 +12,8 @@ class DetallesCompraController extends Controller
      */
     public function index(Request $request)
     {
-        $ordenes = DetallesCompra::where('id',$request->idCompra)->orderBy('id')->paginate(10)->get();
-        return view('detallesCompra.adminIndex', compact('ordenes'));
+        $ordenes = DetallesCompra::index($request);
+        return view('detallesCompra.adminIndex', compact('ordenes')); 
     }
 
     /**

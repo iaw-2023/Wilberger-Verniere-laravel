@@ -17,6 +17,10 @@ class Funcion extends Model
         'hora'
     ];
 
+    public static function index()
+    {
+        return Funcion::orderBy('id')->paginate(10);
+    }
 
     public static function agregarFuncion(Request $request)
     {
@@ -27,6 +31,18 @@ class Funcion extends Model
         $funcion->fecha      = $request->Fecha;
         $funcion->hora       = $request->Hora;
         
+        $funcion->save();
+    }
+
+    public static function editarFuncion(Request $request, $id)
+    {
+        $funcion = Funcion::find($id);
+
+        $funcion->idPelicula = $request->Pelicula;
+        $funcion->idSala     = $request->Sala;
+        $funcion->fecha      = $request->Fecha;
+        $funcion->hora       = $request->Hora;
+
         $funcion->save();
     }
 

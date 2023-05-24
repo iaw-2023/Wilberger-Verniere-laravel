@@ -12,7 +12,7 @@ class SalaController extends Controller
      */
     public function index()
     {
-        $salas = Sala::orderBy('id')->paginate(10);
+        $salas = Sala::index();
         return view('sala.index', compact('salas'));
     }
 

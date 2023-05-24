@@ -16,8 +16,7 @@ class FuncionController extends Controller
      */
     public function index()
     {
-        $funciones = Funcion::orderBy('id')
-            ->paginate(10);
+        $funciones = Funcion::index();
             // Ver si se puede agregar el atributo cant funciones;
         return view('funcion.index', compact('funciones'));
     } 
@@ -27,8 +26,8 @@ class FuncionController extends Controller
      */
     public function create()
     {
-        $peliculas = Pelicula::where('habilitado',true)->get();
-        $salas = Sala::where('habilitado',true)->get();
+        $peliculas = Pelicula::habilitadas();
+        $salas = Sala::habilitadas();
         return view('funcion.create', compact('peliculas','salas'));
     }
     
@@ -70,15 +69,31 @@ class FuncionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(String $id)
+    public function edit(Request $request)
     {
-        //
+        $id=$request->Funcion;
+        $funcion = Funcion::find($id);
+        return view('funcion.edit',compact('funcion','id'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request,$id)
+    {
+        $validated = $request->validate([
+            'Pelicula' => 'exists:pelicula,id',
+            'Sala' => 'exists:sala,id',
+        ]);
+
+        if ($validated) { 
+            Funcion::editarFuncion($request,$id);
+            return redirect()->route('funcion.index')->with('Success','Funcion could be updated');
+        }
+        return redirect()->route('funcion.index')->with('Error','Funcion could not be updated');
+    }
+
+    public function habilitar(Request $request)
     {
         $validated = $request->validate([
             'Funcion' => 'exists:funcion,id',
@@ -93,7 +108,7 @@ class FuncionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request)
+    public function deshabilitar(Request $request)
     {
         $validated = $request->validate([
             'Funcion' => 'exists:funcion,id',

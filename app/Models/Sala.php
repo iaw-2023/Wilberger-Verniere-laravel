@@ -15,6 +15,17 @@ class Sala extends Model
         'capacidadMaxima'
     ];
 
+    public static function index()
+    {
+        return Sala::orderBy('id')->paginate(10);
+    }
+
+    public static function habilitadas()
+    {
+        return Sala::where('habilitado',true)->get();
+    }
+
+
     /*
         Añade una sala a la lista de salas
      */

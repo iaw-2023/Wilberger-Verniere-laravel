@@ -15,6 +15,16 @@ class Pelicula extends Model
         'nombre'
     ];
 
+    public static function index()
+    {
+        return Pelicula::orderBy('id')->paginate(10);
+    }
+
+    public static function habilitadas()
+    {
+        return Pelicula::where('habilitado',true)->get();
+    }
+
     /*
         Agrega una pelicula de la lista de funciones
      */

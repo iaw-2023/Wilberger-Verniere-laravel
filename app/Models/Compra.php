@@ -16,6 +16,11 @@ class Compra extends Model
         'fecha'
     ];
 
+    public static function index()
+    {
+        return Compra::orderBy('id')->paginate(10);
+    }
+
     public static function agregarCompra(Request $request)
     {
         $Compra = new Compra;

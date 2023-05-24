@@ -14,6 +14,12 @@ class Genero extends Model
         'nombre'
     ];
 
+    
+    public static function index()
+    {
+        return Genero::orderBy('id')->paginate(10);
+    }
+
     /*
         Añade una genero a la lista de generos
      */
