@@ -38,14 +38,14 @@
                     </td>
                     <td>
                         @if($gen->habilitado)
-                            <form action="{{ route('genero.destroy',$gen->id) }}" method="Post">
+                            <form action="{{ route('genero.deshabilitar',$gen->id) }}" method="Post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="Genero" value="{{ $gen->id }}">
                                 <button type="submit" class="btn btn-danger">Deshabilitar</button>
                             </form>
                         @else
-                            <form action="{{ route('genero.update',$gen->id) }}" method="Post">
+                            <form action="{{ route('genero.habilitar',$gen->id) }}" method="Post">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="Genero" value="{{ $gen->id }}">

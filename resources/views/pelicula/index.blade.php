@@ -39,14 +39,14 @@
                     </td>
                     <td> 
                         @if($pel->habilitado)
-                            <form action="{{ route('pelicula.destroy',$pel->id) }}" method="Post">
+                            <form action="{{ route('pelicula.deshabilitar',$pel->id) }}" method="Post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="Pelicula" value="{{ $pel->id }}">
                                 <button type="submit" class="btn btn-danger">Deshabilitar</button>
                             </form>
                         @else
-                            <form action="{{ route('pelicula.update',$pel->id) }}" method="Post">
+                            <form action="{{ route('pelicula.habilitar',$pel->id) }}" method="Post">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="Pelicula" value="{{ $pel->id }}">

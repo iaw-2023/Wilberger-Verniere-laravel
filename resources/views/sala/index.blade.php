@@ -39,14 +39,14 @@
                     </td>
                     <td>      
                         @if($s->habilitado)
-                            <form action="{{ route('sala.destroy',$s->id) }}" method="Post">
+                            <form action="{{ route('sala.deshabilitar',$s->id) }}" method="Post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="Sala" value="{{ $s->id }}">
                                 <button type="submit" class="btn btn-danger">Deshabilitar</button>
                             </form>
                         @else
-                            <form action="{{ route('sala.update',$s->id) }}" method="Post">
+                            <form action="{{ route('sala.habilitar',$s->id) }}" method="Post">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="Sala" value="{{ $s->id }}">
