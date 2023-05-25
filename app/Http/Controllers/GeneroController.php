@@ -98,4 +98,9 @@ class GeneroController extends Controller
         }
         return redirect()->route('genero.index')->with('Error','Genero has not been disabled successfully');
     }
+
+    public static function nombreGenero($id)
+    {
+        return Genero::nombreGenero($id);
+    }
 }

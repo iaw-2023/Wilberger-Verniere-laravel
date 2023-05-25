@@ -28,7 +28,7 @@
             @foreach ($funciones as $fun)
                 <tr>
                     <td>{{ $fun->id }}</td>
-                    <td>{{ $fun->idPelicula }}</td>
+                    <td>{{ App\Http\Controllers\PeliculaController::nombrePelicula($fun->idPelicula) }}</td> 
                     <td>{{ $fun->idSala }}</td>
                     <td>{{ $fun->fecha }}</td>
                     <td>{{ $fun->hora }}</td>

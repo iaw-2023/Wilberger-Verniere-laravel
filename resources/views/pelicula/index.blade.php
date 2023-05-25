@@ -31,7 +31,7 @@
                 <tr>
                     <td>{{ $pel->id }}</td>
                     <td>{{ $pel->nombre }}</td>
-                    <td>{{ $pel->idGenero }}</td>
+                    <td>{{ App\Http\Controllers\GeneroController::nombreGenero($pel->idGenero) }}</td>
                     <td>
                         @if ($pel->habilitado) {{ 'SI' }} 
                         @else {{ 'NO' }} 

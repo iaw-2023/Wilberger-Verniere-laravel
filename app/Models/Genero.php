@@ -62,4 +62,10 @@ class Genero extends Model
         $generoElem->habilitado = false;
         $generoElem->save(); 
     }
+
+    public static function nombreGenero($id)
+    {
+        $genero = Genero::find($id);
+        return $genero->nombre;
+    }
 }

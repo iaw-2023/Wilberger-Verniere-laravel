@@ -105,4 +105,9 @@ class PeliculaController extends Controller
         }
         return redirect()->route('pelicula.index')->with('Error','Pelicula has not been disabled successfully');
     }
+
+    public static function nombrePelicula($id)
+    {
+        return Pelicula::nombrePelicula($id);
+    }
 }

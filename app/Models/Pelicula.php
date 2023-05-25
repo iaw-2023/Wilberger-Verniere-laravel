@@ -64,4 +64,10 @@ class Pelicula extends Model
         $peliculaElem->habilitado = false; 
         $peliculaElem->save();
     }
+
+    public static function nombrePelicula($id)
+    {
+        $pelicula=Pelicula::find($id);
+        return $pelicula->nombre;
+    }
 }
