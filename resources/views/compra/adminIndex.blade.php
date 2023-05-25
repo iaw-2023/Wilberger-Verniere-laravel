@@ -26,7 +26,7 @@
                     <td>{{ $com->observaciones }}</td>
                     <td>{{ $com->fecha }}</td>
                     <td>
-                        <form action="{{ route('detallesCompra.index', ['idCompra' => $com->id]) }}" method="get">
+                        <form action="{{ route('detallesCompra.ordenesAsociadas', $com->id) }}" method="get">
                             @csrf
                             <button type="submit" class="btn btn-primary">Ver ordenes</button>
                         </form>

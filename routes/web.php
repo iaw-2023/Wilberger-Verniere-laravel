@@ -75,6 +75,9 @@ Route::delete('sala/deshabilitar/{id}', [SalaController::class, 'deshabilitar'])
 Route::resource('compra', CompraController::class)->middleware(Authenticate::Class);
 
 Route::resource('detallesCompra', DetallesCompraController::class)->middleware(Authenticate::Class);
+Route::get('detallesCompra/listaOrdenes/{idCompra}', [DetallesCompraController::class, 'ordenesAsociadas'])
+    ->name('detallesCompra.ordenesAsociadas')
+    ->middleware(Authenticate::Class);
 
 
 

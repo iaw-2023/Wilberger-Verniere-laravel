@@ -12,8 +12,7 @@ class DetallesCompraController extends Controller
      */
     public function index(Request $request)
     {
-        $ordenes = DetallesCompra::index($request);
-        return view('detallesCompra.adminIndex', compact('ordenes')); 
+        //
     }
 
     /**
@@ -62,5 +61,11 @@ class DetallesCompraController extends Controller
     public function destroy(Request $request)
     {
         DetallesCompra::quitarDetallesCompra($request);
+    }
+
+    public function ordenesAsociadas(Request $request)
+    {
+        $ordenes = DetallesCompra::index($request);
+        return view('detallesCompra.adminIndex', compact('ordenes')); 
     }
 }
