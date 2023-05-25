@@ -15,11 +15,11 @@ class FuncionResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'NroId' => $this->id,
-            'idPelicula' => $this->idPelicula,
-            'Fecha' => $this->fecha,
-            'Hora' => $this->hora,
-            'Sala' => $this->idSala,
+            'NroId' => $request->id,
+            'idPelicula' => $request->idPelicula,
+            'Fecha' => $request->fecha,
+            'Hora' => $request->hora,
+            'Sala' => $request->idSala,
         ];
     }
 }

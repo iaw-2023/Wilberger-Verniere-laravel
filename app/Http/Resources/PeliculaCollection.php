@@ -15,8 +15,8 @@ class PeliculaCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'NroId' => $this->id,
-            'Nombre' => $this->Nombre,
+            'NroId' => $request->id,
+            'Nombre' => $request->Nombre,
         ];
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\CompraCollection;
+use App\Http\Resources\CompraResource;
+use App\Models\Compra;
 
 class APICompraController extends Controller
 {
@@ -20,14 +23,11 @@ class APICompraController extends Controller
     public function store(Request $request) 
     //Llega un JSON con (Observaciones, emailCliente, fecha y una lista de DetallesCompra) ???
     {
-        $validated = $request->validate([
-            //Validar ordenes??
-        ]);
-
         CompraController::store($request);
         $idCompra = Compra::lastInsertId();
         //Obtener id de ultima compra insertada en base de datos y pasarla al store de DetallesCompra
         $listaOrdenes=$request->listaOrdenes; //$listaOrdenes=$request[listaOrdenes]; reemplazando idCompra por lo obtenido arriba ??
+
         foreach ($listaOrdenes as $ord){
             DetallesCompraController::store($ord);
         }

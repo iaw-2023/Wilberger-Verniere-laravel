@@ -15,8 +15,8 @@ class CompraCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'NroId' => $this->id,
-            'Fecha' => $this->fecha 
+            'NroId' => $request->id,
+            'Fecha' => $request->fecha 
         ];
     }
 }

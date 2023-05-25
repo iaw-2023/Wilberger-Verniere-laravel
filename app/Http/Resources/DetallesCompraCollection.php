@@ -15,8 +15,8 @@ class DetallesCompraCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'NroId' => $this->id,
-            'idCompra' => $this->idCompra,
+            'NroId' => $request->id,
+            'idCompra' => $request->idCompra,
         ];
     }
 }
