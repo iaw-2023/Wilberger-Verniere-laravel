@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @vite(['resources/css/master.css'])
 
+
         <title>WebCines</title>
     </head>
 
@@ -16,10 +17,12 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
-    
+        @vite(['resources/js/sidebar-toggle.js'])
         <div class="main">
              <!-- Sidebar -->
+            <button class="sidenav-toggle "><i class="fa fa-plus icon"></i></button>
             <div class="sidenav">
+
                 @include('sidebar')
             </div>
 
