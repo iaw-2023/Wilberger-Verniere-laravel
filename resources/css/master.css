@@ -13,13 +13,13 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin-left: 8em;
-    margin-top: -25em;
+    left: 20vh;
+    top: 1vh;
     background-color: #253FE1;
     transition: .5s;
     
     &.is-closed {
-      transform: translateX(-8em);  
+      transform: translateX(-18vh);  
     }
     
     .icon {
