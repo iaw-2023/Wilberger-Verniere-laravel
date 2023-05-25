@@ -93,6 +93,11 @@ class FuncionController extends Controller
         return redirect()->route('funcion.index')->with('Error','Funcion could not be updated');
     }
 
+    public function destroy(Request $request)
+    {
+        //
+    }
+
     public function habilitar(Request $request)
     {
         $validated = $request->validate([
