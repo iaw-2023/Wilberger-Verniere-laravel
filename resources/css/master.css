@@ -4,6 +4,31 @@
     display: flex;
 }
 
+.sidenav-toggle {
+    position: fixed;
+    
+    z-index: 1;
+    border: 4px solid #fff;
+    outline: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 8em;
+    margin-top: -25em;
+    background-color: #253FE1;
+    transition: .5s;
+    
+    &.is-closed {
+      transform: translateX(-8em);  
+    }
+    
+    .icon {
+      font-size: 1.5rem;
+      color: #fff;
+    }
+  }    
+
+
 /* The sidebar menu */
 .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
@@ -15,6 +40,13 @@
     background-color: rgb(44, 42, 42);
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
+
+    transition: 0.7s;
+    
+    &.is-closed {
+      transform: translateX(-16em);
+    }
+
 }
 
 /* The navigation menu links */
