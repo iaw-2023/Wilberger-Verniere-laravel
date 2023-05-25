@@ -26,19 +26,19 @@ class Genero extends Model
     public static function agregarGenero(Request $request)
     {
         $genero = new Genero;
+
         $genero->nombre = $request->Nombre;
+
         $genero->save();
     }
 
-    /*
-        Deshabilitar un genero de la lista de generos
-     */
-    public static function quitarGenero(Request $request)
+    public static function editarGenero(Request $request, $id)
     {
-        $genero = $request->Genero;
-        $generoElem = Genero::find($genero);
-        $generoElem->habilitado = false;
-        $generoElem->save(); 
+        $genero = Genero::find($id);
+
+        $genero->nombre = $request->Nombre;
+
+        $genero->save();
     }
 
     /*
@@ -50,5 +50,16 @@ class Genero extends Model
         $generoElem = Genero::find($genero);
         $generoElem->habilitado = true; 
         $generoElem->save();   
+    }
+
+    /*
+        Deshabilitar un genero de la lista de generos
+     */
+    public static function deshabilitarGenero(Request $request)
+    {
+        $genero = $request->Genero;
+        $generoElem = Genero::find($genero);
+        $generoElem->habilitado = false;
+        $generoElem->save(); 
     }
 }

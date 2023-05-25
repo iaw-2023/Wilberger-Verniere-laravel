@@ -51,17 +51,32 @@ class GeneroController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Genero $genero)
+    public function edit(Request $request)
     {
-        //
+        $id=$request->Genero;
+        $genero = Genero::find($id);
+        return view('genero.edit',compact('genero','id'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
+    {
+        Genero::editarGenero($request,$id);
+        return redirect()->route('genero.index')->with('Success','Genero has been updated successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Request $request)
     {
         //
+    }
+
+    public function habilitar(Request $request)
+    {
         $validated = $request->validate([
             'Genero' => 'exists:genero,id',
         ]);
@@ -72,16 +87,13 @@ class GeneroController extends Controller
         return redirect()->route('genero.index')->with('Error','Genero has not been enabled successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Request $request)
+    public function deshabilitar(Request $request)
     {
         $validated = $request->validate([
             'Genero' => 'exists:genero,id',
         ]);
         if ($validated){
-            Genero::quitarGenero($request);
+            Genero::deshabilitarGenero($request);
             return redirect()->route('genero.index')->with('Success','Genero has been disabled successfully');
         }
         return redirect()->route('genero.index')->with('Error','Genero has not been disabled successfully');

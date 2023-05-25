@@ -39,20 +39,16 @@ class Sala extends Model
         $sala->save();
     }
 
-    /*
-        Elimina un sala de la lista de salas
-     */
-    public static function quitarSala(Request $request)
+    public static function editarSala(Request $request, $id)
     {
-        $sala = $request->Sala;
-        $salaElem = Sala::find($sala);
-        $salaElem->habilitado = false;
-        $salaElem->save();   
+        $sala = Sala::find($id);
+
+        $sala->nombre = $request->Nombre;
+        $sala->capacidadMaxima = $request->Capacidad;
+        
+        $sala->save();
     }
 
-    /*
-        Habilita una sala de la lista de salas
-     */
     public static function habilitarSala(Request $request)
     {
         $sala = $request->Sala;
@@ -60,4 +56,13 @@ class Sala extends Model
         $salaElem->habilitado = true; 
         $salaElem->save();  
     }
+
+    public static function deshabilitarSala(Request $request)
+    {
+        $sala = $request->Sala;
+        $salaElem = Sala::find($sala);
+        $salaElem->habilitado = false;
+        $salaElem->save();   
+    }
+
 }

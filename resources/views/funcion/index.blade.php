@@ -59,8 +59,9 @@
 
                         <form action="{{ route('funcion.edit',$fun->id) }}" method="Post">
                             @csrf
+                            @method('PATCH')
                             <input type="hidden" name="Funcion" value="{{ $fun->id }}">
-                            <button type="submit" class="btn btn-danger">Editar</button>
+                            <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>
                     </td>
                 </tr>

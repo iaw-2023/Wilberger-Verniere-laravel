@@ -52,15 +52,37 @@ class PeliculaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pelicula $pelicula)
+    public function edit(Request $request)
     {
-        //
+        $id=$request->Pelicula;
+        $pelicula = Pelicula::find($id);
+        return view('pelicula.edit',compact('pelicula','id'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'idGenero' => 'exists:genero,id',
+        ]);
+        if ($validated){
+            Pelicula::editarPelicula($request);
+            return redirect()->route('pelicula.index')->with('Success','Pelicula has been updated successfully');
+        }
+        return redirect()->route('pelicula.index')->with('Error','Pelicula has not been updated successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Request $request)
+    {
+        //
+    }
+
+    public function habilitar(Request $request)
     {
         $validated = $request->validate([
             'Pelicula' => 'exists:pelicula,id',
@@ -72,16 +94,13 @@ class PeliculaController extends Controller
         return redirect()->route('pelicula.index')->with('Error','Pelicula has not been enabled successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Request $request)
+    public function deshabilitar(Request $request)
     {
         $validated = $request->validate([
             'Pelicula' => 'exists:pelicula,id',
         ]);
         if ($validated){
-            Pelicula::quitarPelicula($request);
+            Pelicula::deshabilitarPelicula($request);
             return redirect()->route('pelicula.index')->with('Success','Pelicula has been disabled successfully');
         }
         return redirect()->route('pelicula.index')->with('Error','Pelicula has not been disabled successfully');

@@ -13,18 +13,18 @@
         {{ session('status') }}
     </div>
     @endif
-    <form action="{{ route('sala.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('sala.update',$id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nombre:</strong>
-                    <input type="text" name="Nombre" class="form-control" placeholder="Nombre" required>
+                    <input type="text" name="Nombre" class="form-control" value="{{ $sala->nombre }}" required>
                     @error('Nombre')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                     <strong>Capacidad:</strong>
-                    <input type="number" min="50" name="Capacidad" class="form-control" placeholder="Capacidad" required>
+                    <input type="number" min="50" name="Capacidad" class="form-control" value="{{ $sala->capacidadMaxima }}" required>
                     @error('Capacidad')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror

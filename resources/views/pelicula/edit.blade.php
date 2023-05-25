@@ -13,26 +13,26 @@
         {{ session('status') }}
     </div>
     @endif
-    <form action="{{ route('pelicula.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('pelicula.update',$id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nombre:</strong>
-                    <input type="text" name="Nombre" class="form-control" placeholder="Ej: Star Wars" required>
+                    <input type="text" name="Nombre" class="form-control" value="{{ $pelicula->nombre }}" required>
                     @error('Nombre')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="form-group">
-            <label>ID Genero:</label>
-            <select name="Genero" id="gen" placeholder="Elija una opcion" required>
-                @foreach ($generos as $gen)
-                    <option value="{{$gen->id}}"> {{ $gen->id }} </option>
-                @endforeach
-            </select>
-        </div>
+                <label>ID Genero:</label>
+                <select name="Genero" id="gen" placeholder="{{ $pelicula->idGenero }}" required>
+                    @foreach ($generos as $gen)
+                        <option value="{{$gen->id}}"> {{ $gen->id }} </option>
+                    @endforeach
+                </select>
+            </div>
         </div>
         <a class="btn btn-danger" href="{{ route('pelicula.index') }}">Back</a>
         <button type="submit" class="btn btn-primary">Submit</button>

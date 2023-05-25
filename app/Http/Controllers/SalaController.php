@@ -44,15 +44,31 @@ class SalaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        //
+        $id=$request->Sala;
+        $sala = Sala::find($id);
+        return view('sala.edit',compact('sala','id'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
+    {
+        Sala::editarSala($request,$id);
+        return redirect()->route('sala.index')->with('Success','Sala has been updated successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Request $request)
+    {
+
+    }
+
+    public function habilitar(Request $request)
     {
         $validated = $request->validate([
             'Sala'=>'exists:sala,id',
@@ -64,16 +80,13 @@ class SalaController extends Controller
         return redirect()->route('sala.index')->with('Error','Sala has not been enabled successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Request $request)
+    public function deshabilitar(Request $request)
     {
         $validated = $request->validate([
             'Sala' => 'exists:sala,id',
         ]);
         if ($validated){
-            Sala::quitarSala($request);
+            Sala::deshabilitarSala($request);
             return redirect()->route('sala.index')->with('Success','Sala has been disabled successfully');
         }
         return redirect()->route('sala.index')->with('Error','Sala has not been disabled successfully');

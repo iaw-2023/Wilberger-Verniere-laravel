@@ -38,21 +38,27 @@
                         @endif 
                     </td>
                     <td> 
-                    @if($pel->habilitado)
-                        <form action="{{ route('pelicula.destroy',$pel->id) }}" method="Post">
+                        @if($pel->habilitado)
+                            <form action="{{ route('pelicula.destroy',$pel->id) }}" method="Post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="Pelicula" value="{{ $pel->id }}">
+                                <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                            </form>
+                        @else
+                            <form action="{{ route('pelicula.update',$pel->id) }}" method="Post">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="Pelicula" value="{{ $pel->id }}">
+                                <button type="submit" class="btn btn-primary">Habilitar</button>
+                            </form>
+                        @endif
+                        <form action="{{ route('pelicula.edit',$pel->id) }}" method="Post">
                             @csrf
-                            @method('DELETE')
+                            @method('PATCH')
                             <input type="hidden" name="Pelicula" value="{{ $pel->id }}">
-                            <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                            <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>
-                    @else
-                        <form action="{{ route('pelicula.update',$pel->id) }}" method="Post">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="Pelicula" value="{{ $pel->id }}">
-                            <button type="submit" class="btn btn-primary">Habilitar</button>
-                        </form>
-                    @endif
                     </td>
                 </tr>
             @endforeach

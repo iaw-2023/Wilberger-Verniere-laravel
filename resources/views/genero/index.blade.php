@@ -37,21 +37,27 @@
                         @endif 
                     </td>
                     <td>
-                    @if($gen->habilitado)
-                        <form action="{{ route('genero.destroy',$gen->id) }}" method="Post">
+                        @if($gen->habilitado)
+                            <form action="{{ route('genero.destroy',$gen->id) }}" method="Post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="Genero" value="{{ $gen->id }}">
+                                <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                            </form>
+                        @else
+                            <form action="{{ route('genero.update',$gen->id) }}" method="Post">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="Genero" value="{{ $gen->id }}">
+                                <button type="submit" class="btn btn-primary">Habilitar</button>
+                            </form>
+                        @endif
+                        <form action="{{ route('genero.edit',$gen->id) }}" method="Post">
                             @csrf
-                            @method('DELETE')
+                            @method('PATCH')
                             <input type="hidden" name="Genero" value="{{ $gen->id }}">
-                            <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                            <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>
-                    @else
-                        <form action="{{ route('genero.update',$gen->id) }}" method="Post">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="Genero" value="{{ $gen->id }}">
-                            <button type="submit" class="btn btn-primary">Habilitar</button>
-                        </form>
-                    @endif
                     </td>
                 </tr>
             @endforeach

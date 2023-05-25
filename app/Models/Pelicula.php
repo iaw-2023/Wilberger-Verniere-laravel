@@ -39,21 +39,29 @@ class Pelicula extends Model
 
     }
 
-    /*
-        Elimina una pelicula de la lista de Peliculas
-     */
-    public static function quitarPelicula(Request $request)
+    public static function editarPelicula(Request $request, $id)
     {
-        $pelicula = $request->Pelicula;
-        $peliculaElem = Pelicula::find($pelicula);
-        $peliculaElem->habilitado = false; 
-        $peliculaElem->save();
+        $pelicula = Pelicula::find($id);
+
+        $pelicula->nombre     = $request->Nombre;
+        $pelicula->idGenero   = $request->Genero;
+        
+        $pelicula->save();
     }
+
     public static function habilitarPelicula(Request $request)
     {
         $pelicula = $request->Pelicula;
         $peliculaElem = Pelicula::find($pelicula);
         $peliculaElem->habilitado = true;
         $peliculaElem->save();  
+    }
+
+    public static function deshabilitarPelicula(Request $request)
+    {
+        $pelicula = $request->Pelicula;
+        $peliculaElem = Pelicula::find($pelicula);
+        $peliculaElem->habilitado = false; 
+        $peliculaElem->save();
     }
 }

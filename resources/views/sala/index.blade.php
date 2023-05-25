@@ -38,21 +38,27 @@
                     @endif 
                     </td>
                     <td>      
-                    @if($s->habilitado)
-                        <form action="{{ route('sala.destroy',$s->id) }}" method="Post">
+                        @if($s->habilitado)
+                            <form action="{{ route('sala.destroy',$s->id) }}" method="Post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="Sala" value="{{ $s->id }}">
+                                <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                            </form>
+                        @else
+                            <form action="{{ route('sala.update',$s->id) }}" method="Post">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="Sala" value="{{ $s->id }}">
+                                <button type="submit" class="btn btn-primary">Habilitar</button>
+                            </form>
+                        @endif
+                        <form action="{{ route('sala.edit',$s->id) }}" method="Post">
                             @csrf
-                            @method('DELETE')
+                            @method('PATCH')
                             <input type="hidden" name="Sala" value="{{ $s->id }}">
-                            <button type="submit" class="btn btn-danger">Deshabilitar</button>
+                            <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>
-                    @else
-                        <form action="{{ route('sala.update',$s->id) }}" method="Post">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="Sala" value="{{ $s->id }}">
-                            <button type="submit" class="btn btn-primary">Habilitar</button>
-                        </form>
-                    @endif
                     </td>
                 </tr>
             @endforeach

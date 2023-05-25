@@ -13,13 +13,13 @@
         {{ session('status') }}
     </div>
     @endif
-    <form action="{{ route('genero.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('genero.update',$id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group"> 
                     <strong>Nombre:</strong>
-                    <input type="text" name="Nombre" class="form-control" placeholder="Ej: Accion, Aventura" required>
+                    <input type="text" name="Nombre" class="form-control" value="{{ $genero->nombre }}" required>
                     @error('Nombre')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
