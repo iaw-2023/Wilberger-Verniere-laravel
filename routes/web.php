@@ -41,34 +41,34 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('genero', GeneroController::class)->middleware(Authenticate::Class);
-Route::post('genero/habilitar', [GeneroController::class, 'habilitar'])
+Route::put('genero/habilitar/{id}', [GeneroController::class, 'habilitar'])
     ->name('genero.habilitar')
     ->middleware(Authenticate::Class);
-Route::post('genero/deshabilitar', [GeneroController::class, 'deshabilitar'])
+Route::delete('genero/deshabilitar/{id}', [GeneroController::class, 'deshabilitar'])
     ->name('genero.deshabilitar')
     ->middleware(Authenticate::Class);
 
 Route::resource('pelicula', PeliculaController::class)->middleware(Authenticate::Class);
-Route::post('pelicula/habilitar', [PeliculaController::class, 'habilitar'])
+Route::put('pelicula/habilitar/{id}', [PeliculaController::class, 'habilitar'])
     ->name('pelicula.habilitar')
     ->middleware(Authenticate::Class);
-Route::post('pelicula/deshabilitar', [PeliculaController::class, 'deshabilitar'])
+Route::delete('pelicula/deshabilitar/{id}', [PeliculaController::class, 'deshabilitar'])
     ->name('pelicula.deshabilitar')
     ->middleware(Authenticate::Class);
 
 Route::resource('funcion', FuncionController::class)->middleware(Authenticate::Class);
-Route::post('funcion/habilitar', [FuncionController::class, 'habilitar'])
+Route::put('funcion/habilitar/{id}', [FuncionController::class, 'habilitar'])
     ->name('funcion.habilitar')
     ->middleware(Authenticate::Class);
-Route::post('funcion/deshabilitar', [FuncionController::class, 'deshabilitar'])
+Route::delete('funcion/deshabilitar/{id}', [FuncionController::class, 'deshabilitar'])
     ->name('funcion.deshabilitar')
     ->middleware(Authenticate::Class);
 
 Route::resource('sala', SalaController::class)->middleware(Authenticate::Class);
-Route::post('sala/habilitar', [SalaController::class, 'habilitar'])
+Route::put('sala/habilitar/{id}', [SalaController::class, 'habilitar'])
     ->name('sala.habilitar')
     ->middleware(Authenticate::Class);
-Route::post('sala/deshabilitar', [SalaController::class, 'deshabilitar'])
+Route::delete('sala/deshabilitar/{id}', [SalaController::class, 'deshabilitar'])
     ->name('sala.deshabilitar')
     ->middleware(Authenticate::Class);
 

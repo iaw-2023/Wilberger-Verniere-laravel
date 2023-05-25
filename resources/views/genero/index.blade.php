@@ -52,7 +52,7 @@
                                 <button type="submit" class="btn btn-primary">Habilitar</button>
                             </form>
                         @endif
-                        
+
                         <form action="{{ route('genero.edit',$gen->id) }}" method="Post">
                             @csrf
                             @method('PATCH')
