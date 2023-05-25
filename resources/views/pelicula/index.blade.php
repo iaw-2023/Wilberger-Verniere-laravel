@@ -21,7 +21,7 @@
             <tr>
                 <th>ID:</th>
                 <th>Nombre:</th>
-                <th>Genero ID:</th>
+                <th>Genero:</th>
                 <th>Habilitado:</th>
                 <th>Accion:</th>
             </tr>

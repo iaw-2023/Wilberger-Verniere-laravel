@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th>ID:</th>
-                <th>Pelicula ID:</th>
+                <th>Pelicula:</th>
                 <th>Sala ID:</th>
                 <th>Fecha:</th>
                 <th>Hora:</th>
