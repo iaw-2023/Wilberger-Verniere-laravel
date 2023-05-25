@@ -30,11 +30,9 @@
                     <td>{{ $fun->id }}</td>
                     <td>{{ App\Http\Controllers\PeliculaController::nombrePelicula($fun->idPelicula) }}</td> 
                     <td>{{ $fun->idSala }}</td>
-                    <td>{{ $fun->fecha }}</td>
+                    <td>{{ App\Http\Controllers\FuncionController::formatoFecha($fun->fecha) }}</td>
                     <td>{{ $fun->hora }}</td>
-                    <td>
-                        {{ App\Http\Controllers\FuncionController::getTicketsAsociados($fun->id) }}
-                    </td>
+                    <td> {{ App\Http\Controllers\FuncionController::getTicketsAsociados($fun->id) }}</td>
                     <td>
                         @if ($fun->habilitado) {{ 'SI' }} 
                         @else {{ 'NO' }} 

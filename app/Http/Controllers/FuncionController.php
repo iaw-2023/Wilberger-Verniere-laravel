@@ -141,4 +141,9 @@ class FuncionController extends Controller
         }
         return $cantTickets;
     }
+
+    public static function formatoFecha($fecha)
+    {
+        return date('d/m/Y', strtotime($fecha));
+    }
 }
