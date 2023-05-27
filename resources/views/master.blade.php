@@ -22,7 +22,6 @@
              <!-- Sidebar -->
             <button class="sidenav-toggle "><i class="fa fa-plus icon"></i></button>
             <div class="sidenav">
-
                 @include('sidebar')
             </div>
 
