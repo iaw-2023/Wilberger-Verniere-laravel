@@ -20,17 +20,15 @@ servers:
 
 
 tags:
-  - name: funcion
-    description: operaciones sobre funciones
-  - name: genero
-    description: operaciones sobre generos
-  - name: sala
-    description: operaciones sobre salas
-  - name: pelicula
-    description: operaciones sobre peliculas
-  - name: compra
-    description: operaciones sobre compras
-  - name: detallescompra
+  - name: Funcion
+    description: Operaciones sobre funciones
+  - name: Genero
+    description: Operaciones sobre generos
+  - name: Pelicula
+    description: Operaciones sobre peliculas
+  - name: Compra
+    description: Operaciones sobre compras
+  - name: DetallesCompra
     description: operaciones sobre los detalles de compras
 
 
@@ -38,34 +36,34 @@ paths:
   /funciones:
     get:
       tags:
-        - funcion
-      summary: mostrar las funciones
-      description: muestra las funciones habilitadas
+        - Funcion
+      summary: Mostrar las funciones
+      description: Muestra las funciones habilitadas
       operationId: getFuncion
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Funcion'
+                $ref: '#/components/schemas/SetFuncion'
   /funciones/{idFuncion}:
     get:
       tags:
-        - funcion
-      summary: obtener una funcion por id
-      description: busca la funcion solicitada por id
+        - Funcion
+      summary: Obtener una funcion por id
+      description: Busca la funcion solicitada por id
       operationId: getFuncionByID
       parameters:
         - name: idFuncion
           in: query
-          description: id de funcion a buscar
+          description: Id de funcion a buscar
           required: true
           schema:
             type: integer        
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -73,46 +71,46 @@ paths:
         '400':
           description: Invalid ID supplied
         '404':
-          description: funcion not found
+          description: Funcion not found
 
   /generos:
     get:
       tags:
-        - genero
-      summary: mostrar los generos
-      description: se muestran los generos disponibles habilitados
+        - Genero
+      summary: Mostrar los generos
+      description: Se muestran los generos disponibles habilitados
       operationId: getGenero
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Genero'          
+                  $ref: '#/components/schemas/SetGenero'          
             application/xml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Genero'
+                  $ref: '#/components/schemas/SetGenero'
   /generos/{idGenero}:
     get:
       tags:
-        - genero
-      summary: obtener un genero por id
-      description: busca el genero solicitado por id
+        - Genero
+      summary: Obtener un genero por id
+      description: Busca el genero solicitado por id
       operationId: getGeneroByID
       parameters:
         - name: idGenero
           in: query
-          description: id del genero a buscar
+          description: Id del genero a buscar
           required: true
           schema:
             type: integer        
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -120,89 +118,42 @@ paths:
         '400':
           description: Invalid ID supplied
         '404':
-          description: genero not found
-
-  /salas:
-    get:
-      tags:
-        - sala
-      summary: obtiene las salas
-      description: muestra las salas habilitadas disponibles.
-      operationId: getSala
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Sala'          
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Sala'
-  /salas/{idSala}:
-    get:
-      tags:
-        - sala
-      summary: obtener una sala por id
-      description: busca la sala solicitada por id
-      operationId: getSalaByID
-      parameters:
-        - name: idSala
-          in: query
-          description: id de la sala a buscar
-          required: true
-          schema:
-            type: integer        
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Sala'
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: sala not found
+          description: Genero not found
 
   /peliculas:
     get:
       tags:
-        - pelicula
-      summary: obtiene las peliculas
-      description: obtiene las peliculas disponibles
+        - Pelicula
+      summary: Obtiene las peliculas
+      description: Obtiene las peliculas disponibles
       operationId: getPelicula
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pelicula'          
+                $ref: '#/components/schemas/SetPelicula'          
             application/xml:
               schema:
-                $ref: '#/components/schemas/Pelicula'
+                $ref: '#/components/schemas/SetPelicula'
   /peliculas/{idPelicula}:
     get:
       tags:
-        - pelicula
-      summary: obtener una pelicula por id
-      description: busca la pelicula solicitada por id
+        - Pelicula
+      summary: Obtener una pelicula por id
+      description: Busca la pelicula solicitada por id
       operationId: getPeliculaByID
       parameters:
         - name: idPelicula
           in: query
-          description: id de la pelicula a buscar
+          description: Id de la pelicula a buscar
           required: true
           schema:
             type: integer        
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -210,14 +161,31 @@ paths:
         '400':
           description: Invalid ID supplied
         '404':
-          description: pelicula not found
+          description: Pelicula not found
 
   /compras:
     get:
       tags:
-        - compra
-      summary: obtiene las compras
-      description: obtiene las compras disponibles
+        - Compra
+      summary: Obtiene las compras
+      description: Obtiene las compras disponibles
+      operationId: getCompra
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetCompra'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SetCompra'
+  /compras/{idCompra}:
+    get:
+      tags:
+        - Compra
+      summary: Obtiene una compra por id
+      description: Busca la compra solicitada por id
       operationId: getCompra
       responses:
         '200':
@@ -232,21 +200,20 @@ paths:
   /compras/crear: 
     post:
       tags:
-        - compra
-      summary: agrega una compra
-      description: se agrega una nueva compra, con los detalles compra asociados
+        - Compra
+      summary: Agrega una compra
+      description: Se agrega una nueva compra, con los detalles compra asociados
       operationId: postCompra
       parameters:
-        - name: idCompra
+        - name: Email
           in: path
-          description: ID de la compra
+          description: Email del usuario que solicita esa compra
           required: true
           schema:
-            type: integer
-            format: int64
-        - name: additionalMetadata
-          in: query
-          description: Additional Metadata
+            type: string
+        - name: Observaciones
+          in: path
+          description: Informacion adicional que quiera indicar el usuario
           required: false
           schema:
             type: string
@@ -266,37 +233,36 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Compra'
-
   /compras/eliminar/{idCompra}:
     delete:
       tags:
-        - compra
+        - Compra
       summary: Cancela una compra
-      description: cancela una compra realizada por su id.
+      description: Cancela una compra realizada por su id.
       operationId: deleteCompra
       parameters:
         - name: idCompra
           in: path
-          description: 'id de la compra a cancelar'
+          description: 'Id de la compra a cancelar'
           required: true
           schema:
             type: integer
       responses:
         '200':
-          description: operacion realizada de forma exitosa
+          description: Operacion realizada de forma exitosa
         '400':
           description: Invalid idCompra value
 
   /ordenes/{idDetalleCompra}:
     get:
       tags:
-        - detallescompra
-      summary: obtiene los detalles de una orden
-      description: obtiene los detalles por id de orden
+        - DetallesCompra
+      summary: Obtiene los detalles de una orden
+      description: Obtiene los detalles por id de orden
       operationId: getDetallesCompra
       responses:
         '200':
-          description: successful operation
+          description: Successful operation
           content:
             application/json:
               schema:
@@ -307,55 +273,83 @@ paths:
 
 components:
   schemas:
-    Funcion:
+    SetFuncion:
       type: object
       properties:
-        id:
+        NroId:
           type: integer
           format: int64
           example: 10
-        fecha:
+        Fecha:
           type: string
           format: Y-M-D
           example: 2022-03-22
-        hora:
+        Hora:
           type: string
           format: HH:II
           example: 19:30
-        idPelicula:
+      xml:
+        name: funcion
+    Funcion:
+      type: object
+      properties:
+        NroId:
+          type: integer
+          format: int64
+          example: 10
+        Fecha:
+          type: string
+          format: Y-M-D
+          example: 2022-03-22
+        Hora:
+          type: string
+          format: HH:II
+          example: 19:30
+        Pelicula:
           type: integer
           description: id de pelicula que se muestra en la funcion
           example: 16
-        idSala:
+        Sala:
           type: integer
           description: id de la sala donde se muestra la funcion
           example: 4  
       xml:
         name: funcion
-    Genero:
+    SetGenero:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          example: 10
-        nombre:
+        Nombre:
           type: string
           example: Horror
       xml:
         name: genero
-    Sala:
+    Genero:
       type: object
       properties:
-        nombre:
-          type: string
-          example: Sala7-3D
-        capacidadMaxima:
+        NroId:
           type: integer
-          minimum: 30
-          example: 55
+          format: int64
+          example: 10
+        Nombre:
+          type: string
+          example: Horror
       xml:
-        name: sala
+        name: genero
+    SetPelicula:
+      type: object
+      properties:
+        NroId:
+          type: integer
+          format: int64
+          example: 2
+        Nombre:
+          type: string
+          example: Star Wars II the clone wars
+        Genero:
+          type: integer
+          example: 12
+      xml:
+        name: pelicula
     Pelicula:
       type: object
       properties:
@@ -367,20 +361,31 @@ components:
           example: 12
       xml:
         name: pelicula
-    Compra:
+    SetCompra:
       type: object
       properties:
         id:
           type: integer
           format: int64
           example: 10
-        emailCliente:
+        fecha:
+          type: string
+          format: YYYY-MM-DD
+          example: 2018-04-24
+    Compra:
+      type: object
+      properties:
+        NroId:
+          type: integer
+          format: int64
+          example: 10
+        Email:
           type: string
           example: user@gmail.com
-        observaciones:
+        Observaciones:
           type: string
           example: compra para funcion z, x tickets
-        fecha:
+        FechaCompra:
           type: string
           format: YYYY-MM-DD
           example: 2018-04-24
@@ -389,16 +394,20 @@ components:
     DetallesCompra:
       type: object
       properties:
-        id:
+        NroId:
           type: integer
           format: int64
-        cantidadTickets:
+          example: 2
+        NroTickets:
           type: integer
           format: int64
+          example: 4
         idFuncion:
           type: integer
+          example: 4
         idCompra:
-          type: integer  
+          type: integer
+          example: 1  
       xml:
         name: detallescompra
     ApiResponse:
