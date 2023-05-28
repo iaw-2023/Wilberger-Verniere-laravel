@@ -20,7 +20,7 @@ class Pelicula extends Model
         return Pelicula::orderBy('id')->paginate(10);
     }
 
-    public static function habilitadas()
+    public static function elementosHabilitados()
     {
         return Pelicula::where('habilitado',true)->get();
     }

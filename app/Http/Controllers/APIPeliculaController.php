@@ -14,7 +14,7 @@ class APIPeliculaController extends Controller
      */
     public function index()
     {
-        return new PeliculaCollection(Pelicula::where('habilitado',true)->get());
+        return new PeliculaCollection(Pelicula::elementosHabilitados());
     }
 
     /**

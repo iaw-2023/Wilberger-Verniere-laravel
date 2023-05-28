@@ -20,6 +20,11 @@ class Genero extends Model
         return Genero::orderBy('id')->paginate(10);
     }
 
+    public static function elementosHabilitados()
+    {
+        return Genero::where('habilitado',true)->get();
+    }
+
     /*
         Añade una genero a la lista de generos
      */

@@ -14,7 +14,7 @@ class APIGeneroController extends Controller
      */
     public function index()
     {
-        return new GeneroCollection(Genero::where('habilitado',true)->get());
+        return new GeneroCollection(Genero::elementosHabilitados());
     }
 
     /**

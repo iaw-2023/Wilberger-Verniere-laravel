@@ -14,7 +14,7 @@ class APIFuncionController extends Controller
      */
     public function index()
     {
-        return new FuncionCollection(Funcion::where('habilitado',true)->get());
+        return new FuncionCollection(Funcion::elementosHabilitados());
     }
 
     /**

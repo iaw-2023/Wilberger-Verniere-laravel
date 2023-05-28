@@ -20,7 +20,7 @@ class Sala extends Model
         return Sala::orderBy('id')->paginate(10);
     }
 
-    public static function habilitadas()
+    public static function elementosHabilitados()
     {
         return Sala::where('habilitado',true)->get();
     }

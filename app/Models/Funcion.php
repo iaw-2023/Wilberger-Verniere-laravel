@@ -22,6 +22,11 @@ class Funcion extends Model
         return Funcion::orderBy('id')->paginate(10);
     }
 
+    public static function elementosHabilitados()
+    {
+        return Funcion::where('habilitado',true)->get();
+    }
+
     public static function agregarFuncion(Request $request)
     {
         $funcion = new Funcion;
