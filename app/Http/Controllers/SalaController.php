@@ -65,7 +65,7 @@ class SalaController extends Controller
      */
     public function destroy(Request $request)
     {
-
+        //
     }
 
     public function habilitar(Request $request)
