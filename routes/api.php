@@ -34,6 +34,8 @@ Route::get('/funciones/{idFuncion}', [APIFuncionController::class, 'show']);
 
 Route::get('/compras', [APICompraController::class, 'index']);
 Route::get('/compras/{idCompra}', [APICompraController::class, 'show']);
+Route::post('/compras/crear', [APICompraController::class, 'store']);
+Route::delete('/compras/eliminar', [APICompraController::class, 'destroy']);
 
 Route::get('/detallesCompras/{idDetallesCompra}', [APIDetallesCompraController::class, 'show']);
 
