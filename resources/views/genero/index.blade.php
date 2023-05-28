@@ -5,10 +5,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Generos</h2>
-            </div>
-            <div class="pull-right mb-2">
-                <a class="btn btn-success" href="{{ route('genero.create') }}">Añadir Genero</a>
+                <h2>Generos:</h2>
             </div>
         </div>
     </div>

@@ -4,10 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Salas</h2>
-            </div>
-            <div class="pull-right mb-2">
-                <a class="btn btn-success" href="{{ route('sala.create') }}">Añadir Sala</a>
+                <h2>Salas:</h2>
             </div>
         </div>
     </div>

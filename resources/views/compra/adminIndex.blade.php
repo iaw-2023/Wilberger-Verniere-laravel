@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Compras</h2>
+                <h2>Compras:</h2>
             </div>
         </div>
     </div>

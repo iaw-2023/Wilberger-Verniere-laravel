@@ -4,10 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Peliculas</h2>
-            </div>
-            <div class="pull-right mb-2">
-                <a class="btn btn-success" href="{{ route('pelicula.create') }}">Añadir Pelicula</a>
+                <h2>Peliculas:</h2>
             </div>
         </div>
     </div>
