@@ -37,8 +37,9 @@ class PeliculaController extends Controller
         ]);
         if ($validated) {
             Pelicula::agregarPelicula($request);
+            return redirect()->route('pelicula.index')->with('Success','Pelicula has been created successfully.');
         }
-        return redirect()->route('pelicula.index')->with('Success','Pelicula has been created successfully.');
+        return redirect()->route('pelicula.index')->with('Error','Pelicula has not been created successfully.');
     }
 
     /**
@@ -56,7 +57,8 @@ class PeliculaController extends Controller
     {
         $id=$request->Pelicula;
         $pelicula = Pelicula::find($id);
-        return view('pelicula.edit',compact('pelicula','id'));
+        $generos = Genero::where('habilitado',true)->get();
+        return view('pelicula.edit',compact('pelicula','id','generos'));
     }
 
     /**
