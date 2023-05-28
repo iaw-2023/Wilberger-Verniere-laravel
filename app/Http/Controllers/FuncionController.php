@@ -73,7 +73,9 @@ class FuncionController extends Controller
     {
         $id=$request->Funcion;
         $funcion = Funcion::find($id);
-        return view('funcion.edit',compact('funcion','id'));
+        $peliculas = Pelicula::habilitadas();
+        $salas = Sala::habilitadas();
+        return view('funcion.edit',compact('funcion','id','peliculas','salas'));
     }
 
     /**

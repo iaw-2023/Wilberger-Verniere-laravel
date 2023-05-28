@@ -29,15 +29,8 @@ class GeneroController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'Nombre' => 'exists:genero,nombre'
-        ]);
-        if (!$validated){
-            Genero::agregarGenero($request);
-            return redirect()->route('genero.index')->with('Success','Genero has been created successfully.');
-        }
-        else return redirect()->route('genero.index')->with('Error','Genero has not been created successfully.');
-        
+        Genero::agregarGenero($request);
+        return redirect()->route('genero.index')->with('Success','Genero has been created successfully.');
     }
 
     /**

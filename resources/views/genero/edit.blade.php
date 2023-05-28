@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left mb-2">
-                <h2>Añadir nuevo genero:</h2>
+                <h2>Editar genero:</h2>
             </div>
         </div>
     </div>
@@ -15,6 +15,7 @@
     @endif
     <form action="{{ route('genero.update',$id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group"> 

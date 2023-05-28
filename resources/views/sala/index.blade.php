@@ -52,7 +52,7 @@
                         @endif
                         <form action="{{ route('sala.edit',$s->id) }}" method="Post">
                             @csrf
-                            @method('PATCH')
+                            @method('GET')
                             <input type="hidden" name="Sala" value="{{ $s->id }}">
                             <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>

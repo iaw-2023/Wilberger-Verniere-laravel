@@ -15,6 +15,7 @@
     @endif
     <form action="{{ route('funcion.update',$id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="form-group">
             <label>Pelicula:</label>
             <select name="Pelicula" id="pel" value="{{ $funcion->idPelicula }}" required>

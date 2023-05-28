@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left mb-2">
-                <h2>Añadir nueva pelicula:</h2>
+                <h2>Editar pelicula:</h2>
             </div>
         </div>
     </div>
@@ -15,6 +15,7 @@
     @endif
     <form action="{{ route('pelicula.update',$id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -27,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label>ID Genero:</label>
-                <select name="Genero" id="gen" placeholder="{{ $pelicula->idGenero }}" required>
+                <select name="Genero" id="gen" value="{{ $pelicula->idGenero }}" required>
                     @foreach ($generos as $gen)
                         <option value="{{$gen->id}}"> {{ $gen->id }} </option>
                     @endforeach

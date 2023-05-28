@@ -52,7 +52,7 @@
 
                         <form action="{{ route('genero.edit',$gen->id) }}" method="Post">
                             @csrf
-                            @method('PATCH')
+                            @method('GET')
                             <input type="hidden" name="Genero" value="{{ $gen->id }}">
                             <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>
