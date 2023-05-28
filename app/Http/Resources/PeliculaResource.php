@@ -17,7 +17,7 @@ class PeliculaResource extends JsonResource
         return [
             'NroId' => $request->id,
             'Nombre' => $request->nombre,
-            'idGenero' => $request->idGenero,
+            'Genero' => $request->idGenero,
         ];
     }
 }
