@@ -38,7 +38,7 @@ class APICompraController extends Controller
      */
     public function show(string $id)
     {
-        return new CompraResource(Compra::where('id',$id));
+        return new CompraResource(Compra::findorfail($id));
     }
 
     /**

@@ -30,7 +30,7 @@ class APIFuncionController extends Controller
      */
     public function show(string $id)
     {
-        return new FuncionResource(Funcion::where('id', $id)->get());
+        return new FuncionResource(Funcion::findorfail($id));
     }
 
     /**

@@ -28,15 +28,15 @@ class APIPeliculaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(String $id)
     {
-        return new PeliculaResource(Pelicula::where('id', $id)->get());
+        return new PeliculaResource(Pelicula::findorfail($id));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, String $id)
     {
         //
     }
@@ -44,7 +44,7 @@ class APIPeliculaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(String $id)
     {
         //
     }

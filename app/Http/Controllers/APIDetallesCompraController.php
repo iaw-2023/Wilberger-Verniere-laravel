@@ -30,7 +30,7 @@ class APIDetallesCompraController extends Controller
      */
     public function show(string $id)
     {
-        return new DetallesCompraResource(DetallesCompra::where('id',$id));
+        return new DetallesCompraResource(DetallesCompra::findorfail($id));
     }
 
     /**

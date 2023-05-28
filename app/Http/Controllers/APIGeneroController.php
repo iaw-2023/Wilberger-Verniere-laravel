@@ -30,7 +30,7 @@ class APIGeneroController extends Controller
      */
     public function show(String $id)
     {
-        return new GeneroResource(Genero::where('id', $id)->get());
+        return new GeneroResource(Genero::findorfail($id));
     }
 
     /**
