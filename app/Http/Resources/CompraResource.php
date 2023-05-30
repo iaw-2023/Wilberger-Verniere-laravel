@@ -15,12 +15,12 @@ class CompraResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'NroId' => $request->id,
+            'NroId' => $this->id,
             'Compras' => DetallesCompraCollection(DetallesCompra::
-                where('idCompra', $request->id)),
-            'Observaciones' => $request->Observaciones,
-            'Email' => $request->emailCliente,
-            'FechaCompra' => $request->fecha,
+                where('idCompra', $this->id)),
+            'Observaciones' => $this->Observaciones,
+            'Email' => $this->emailCliente,
+            'FechaCompra' => $this->fecha,
         ];
     }
 }

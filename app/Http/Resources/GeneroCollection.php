@@ -15,7 +15,7 @@ class GeneroCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'Nombre' => $request->nombre,
+            'Nombre' => $this->nombre,
         ];
     }
 }
