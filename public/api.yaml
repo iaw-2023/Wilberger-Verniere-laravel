@@ -1,0 +1,455 @@
+openapi: 3.0.3
+info:
+  title: webcines
+  description: |-
+    -------------------------
+  termsOfService: http://swagger.io/terms/
+  version: 1.0.11
+
+
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+
+
+servers:
+  - url: //localhost:8000/api
+    description: local server
+  - url: //localhost:8000/api
+    description: vercel deploy (MODIFICAR EL URL CUANDO FUNCIONE VERCEL)
+
+
+tags:
+  - name: Funcion
+    description: Operaciones sobre funciones
+  - name: Genero
+    description: Operaciones sobre generos
+  - name: Pelicula
+    description: Operaciones sobre peliculas
+  - name: Compra
+    description: Operaciones sobre compras
+  - name: DetallesCompra
+    description: operaciones sobre los detalles de compras
+
+
+paths:
+  /funciones:
+    get:
+      tags:
+        - Funcion
+      summary: Mostrar las funciones
+      description: Muestra las funciones habilitadas
+      operationId: getFuncion
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetFuncion'
+  /funciones/{idFuncion}:
+    get:
+      tags:
+        - Funcion
+      summary: Obtener una funcion por id
+      description: Busca la funcion solicitada por id
+      operationId: getFuncionByID
+      parameters:
+        - name: idFuncion
+          in: query
+          description: Id de funcion a buscar
+          required: true
+          schema:
+            type: integer        
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Funcion'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Funcion not found
+
+  /generos:
+    get:
+      tags:
+        - Genero
+      summary: Mostrar los generos
+      description: Se muestran los generos disponibles habilitados
+      operationId: getGenero
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SetGenero'          
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SetGenero'
+  /generos/{idGenero}:
+    get:
+      tags:
+        - Genero
+      summary: Obtener un genero por id
+      description: Busca el genero solicitado por id
+      operationId: getGeneroByID
+      parameters:
+        - name: idGenero
+          in: query
+          description: Id del genero a buscar
+          required: true
+          schema:
+            type: integer        
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genero'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Genero not found
+
+  /peliculas:
+    get:
+      tags:
+        - Pelicula
+      summary: Obtiene las peliculas
+      description: Obtiene las peliculas disponibles
+      operationId: getPelicula
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetPelicula'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SetPelicula'
+  /peliculas/{idPelicula}:
+    get:
+      tags:
+        - Pelicula
+      summary: Obtener una pelicula por id
+      description: Busca la pelicula solicitada por id
+      operationId: getPeliculaByID
+      parameters:
+        - name: idPelicula
+          in: query
+          description: Id de la pelicula a buscar
+          required: true
+          schema:
+            type: integer        
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pelicula'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pelicula not found
+
+  /compras:
+    get:
+      tags:
+        - Compra
+      summary: Obtiene las compras
+      description: Obtiene las compras disponibles
+      operationId: getCompra
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetCompra'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SetCompra'
+  /compras/{idCompra}:
+    get:
+      tags:
+        - Compra
+      summary: Obtiene una compra por id
+      description: Busca la compra solicitada por id
+      operationId: getCompra
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Compra'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Compra'
+  /compras/crear: 
+    post:
+      tags:
+        - Compra
+      summary: Agrega una compra
+      description: Se agrega una nueva compra, con los detalles compra asociados
+      operationId: postCompra
+      parameters:
+        - name: Email
+          in: path
+          description: Email del usuario que solicita esa compra
+          required: true
+          schema:
+            type: string
+        - name: Observaciones
+          in: path
+          description: Informacion adicional que quiera indicar el usuario
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Compra'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Compra'
+  /compras/eliminar/{idCompra}:
+    delete:
+      tags:
+        - Compra
+      summary: Cancela una compra
+      description: Cancela una compra realizada por su id.
+      operationId: deleteCompra
+      parameters:
+        - name: idCompra
+          in: path
+          description: 'Id de la compra a cancelar'
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Operacion realizada de forma exitosa
+        '400':
+          description: Invalid idCompra value
+
+  /ordenes/{idDetalleCompra}:
+    get:
+      tags:
+        - DetallesCompra
+      summary: Obtiene los detalles de una orden
+      description: Obtiene los detalles por id de orden
+      operationId: getDetallesCompra
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetallesCompra'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DetallesCompra'        
+
+components:
+  schemas:
+    SetFuncion:
+      type: object
+      properties:
+        NroId:
+          type: integer
+          format: int64
+          example: 10
+        Fecha:
+          type: string
+          format: Y-M-D
+          example: 2022-03-22
+        Hora:
+          type: string
+          format: HH:II
+          example: 19:30
+      xml:
+        name: funcion
+    Funcion:
+      type: object
+      properties:
+        NroId:
+          type: integer
+          format: int64
+          example: 10
+        Fecha:
+          type: string
+          format: Y-M-D
+          example: 2022-03-22
+        Hora:
+          type: string
+          format: HH:II
+          example: 19:30
+        Pelicula:
+          type: integer
+          description: id de pelicula que se muestra en la funcion
+          example: 16
+        Sala:
+          type: integer
+          description: id de la sala donde se muestra la funcion
+          example: 4  
+      xml:
+        name: funcion
+    SetGenero:
+      type: object
+      properties:
+        Nombre:
+          type: string
+          example: Horror
+      xml:
+        name: genero
+    Genero:
+      type: object
+      properties:
+        NroId:
+          type: integer
+          format: int64
+          example: 10
+        Nombre:
+          type: string
+          example: Horror
+      xml:
+        name: genero
+    SetPelicula:
+      type: object
+      properties:
+        NroId:
+          type: integer
+          format: int64
+          example: 2
+        Nombre:
+          type: string
+          example: Star Wars II the clone wars
+        Genero:
+          type: integer
+          example: 12
+      xml:
+        name: pelicula
+    Pelicula:
+      type: object
+      properties:
+        nombre:
+          type: string
+          example: Star Wars II the clone wars
+        idGenero:
+          type: integer
+          example: 12
+      xml:
+        name: pelicula
+    SetCompra:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        fecha:
+          type: string
+          format: YYYY-MM-DD
+          example: 2018-04-24
+    Compra:
+      type: object
+      properties:
+        NroId:
+          type: integer
+          format: int64
+          example: 10
+        Email:
+          type: string
+          example: user@gmail.com
+        Observaciones:
+          type: string
+          example: compra para funcion z, x tickets
+        FechaCompra:
+          type: string
+          format: YYYY-MM-DD
+          example: 2018-04-24
+      xml:
+        name: compra
+    DetallesCompra:
+      type: object
+      properties:
+        NroId:
+          type: integer
+          format: int64
+          example: 2
+        NroTickets:
+          type: integer
+          format: int64
+          example: 4
+        idFuncion:
+          type: integer
+          example: 4
+        idCompra:
+          type: integer
+          example: 1  
+      xml:
+        name: detallescompra
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+  requestBodies:
+    Compra:
+      description: Compra a ser agregada
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Compra'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Compra'
+    DetallesCompraArray:
+      description: lista de objetos detallescompra
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DetallesCompra'
+  securitySchemes:
+    petstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://petstore3.swagger.io/oauth/authorize
+          scopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
