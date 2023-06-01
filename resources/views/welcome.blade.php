@@ -1,8 +1,11 @@
+@extends('master')
+@section('content')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        @vite(['resources/css/welcome.css'])
 
         <title>WebCines</title>
 
@@ -29,13 +32,13 @@
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                 </div>
-                        <a href="{{ url('/administracion') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Administracion</a>
-                    @else
-                    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-                    </div>
-                    @endauth                
+            @else
+                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
+                    <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                </div>
+                @endauth                
             @endif
+            <div class="welcome-message">Bienvenido, para obtener una lista de los elementos a buscar, haga click en su nombre en el sidebar, si quiere añadir un elemento a una lista, haga click en el simbolo "+" a la derecha del nombre del elemento en el sidebar</a>
         </div>
     </body>
 </html>
