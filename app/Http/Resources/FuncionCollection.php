@@ -18,6 +18,8 @@ class FuncionCollection extends ResourceCollection
             'NroId' => $this->id,
             'Fecha' => $this->fecha,
             'Hora' => $this->hora,
+            'Pelicula' => $this->idPelicula,
+            'Sala' => $this->idSala
         ];
     }
 }
