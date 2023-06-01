@@ -28,7 +28,7 @@ class APICompraController extends Controller
         $listaOrdenes=$request->listaOrdenes; //$listaOrdenes=$request[listaOrdenes]; reemplazando idCompra por lo obtenido arriba ??
 
         foreach ($listaOrdenes as $ord){
-            DetallesCompraController::store($ord);
+            DetallesCompraController::store($ord, $idCompra);
         }
     }
 
