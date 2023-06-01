@@ -20,10 +20,10 @@ class GeneroResource extends JsonResource
         return [
             'NroId' => $this->id,
             'Nombre' => $this->nombre,
-            'Peliculas' => PeliculaCollection::collection(Pelicula::where([
+            'Peliculas' => PeliculaResource::collection(Pelicula::where([
                 ['idGenero',$this->id],
                 ['habilitado', true]
-            ])),
+            ])->get()),
         ];
     }
 }

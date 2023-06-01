@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\CompraCollection;
 use App\Http\Resources\CompraResource;
 use App\Models\Compra;
 
@@ -14,7 +13,7 @@ class APICompraController extends Controller
      */
     public function index()
     {
-        return new CompraCollection(Compra::all());
+        return CompraResource::collection(Compra::all());
     }
 
     /**

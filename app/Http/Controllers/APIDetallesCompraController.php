@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\DetallesCompraCollection;
 use App\Http\Resources\DetallesCompraResource;
 use App\Models\DetallesCompra;
 
