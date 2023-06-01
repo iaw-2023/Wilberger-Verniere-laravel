@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\DetallesCompra;
 
 class CompraResource extends JsonResource
 {
@@ -16,8 +17,7 @@ class CompraResource extends JsonResource
     {
         return [
             'NroId' => $this->id,
-            'Compras' => DetallesCompraCollection(DetallesCompra::
-                where('idCompra', $this->id)),
+            'Compras' => DetallesCompraResource::collection(DetallesCompra::where('idCompra', $this->id)->get()),
             'Observaciones' => $this->Observaciones,
             'Email' => $this->emailCliente,
             'FechaCompra' => $this->fecha,
