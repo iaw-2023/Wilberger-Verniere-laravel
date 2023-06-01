@@ -1,4 +1,4 @@
-<a href="{{ url('/administracion') }}">Inicio</a>
+<a href="{{ url('/') }}">Inicio</a>
 
 <div class="btn-group">
     <a class="elem" href="{{ route('funcion.index') }}">Funciones</a>
