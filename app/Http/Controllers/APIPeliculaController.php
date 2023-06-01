@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\PeliculaCollection;
 use App\Http\Resources\PeliculaResource;
 use App\Models\Pelicula;
 
@@ -14,7 +13,7 @@ class APIPeliculaController extends Controller
      */
     public function index()
     {
-        return new PeliculaCollection(Pelicula::elementosHabilitados());
+        return PeliculaResource::collection(Pelicula::elementosHabilitados());
     }
 
     /**

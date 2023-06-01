@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request; 
-use App\Http\Resources\GeneroCollection;
+use Illuminate\Http\Request;
 use App\Http\Resources\GeneroResource;
 use App\Models\Genero;
 
@@ -14,7 +13,7 @@ class APIGeneroController extends Controller
      */
     public function index()
     {
-        return new GeneroCollection(Genero::elementosHabilitados());
+        return GeneroResource::collection(Genero::elementosHabilitados());
     }
 
     /**

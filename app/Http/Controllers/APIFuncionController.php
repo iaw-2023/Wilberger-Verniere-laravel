@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\FuncionCollection;
 use App\Http\Resources\FuncionResource;
 use App\Models\Funcion;
  
@@ -14,7 +13,7 @@ class APIFuncionController extends Controller
      */
     public function index()
     {
-        return new FuncionCollection(Funcion::elementosHabilitados());
+        return FuncionResource::collection(Funcion::elementosHabilitados());
     }
 
     /**
