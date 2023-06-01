@@ -16,10 +16,11 @@ class FuncionResource extends JsonResource
     {
         return [
             'NroId' => $this->id,
-            'idPelicula' => $this->idPelicula,
-            'Fecha' => $this->fecha,
-            'Hora' => $this->hora,
+            'Pelicula' => $this->idPelicula,
+            //'Pelicula' => new PeliculaResource(Pelicula:findorfail($this->idPelicula))??,
             'Sala' => $this->idSala,
+            'Fecha' => $this->fecha,
+            'Hora' => $this->hora
         ];
     }
 }

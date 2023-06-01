@@ -18,6 +18,7 @@ class PeliculaResource extends JsonResource
             'NroId' => $this->id,
             'Nombre' => $this->nombre,
             'Genero' => $this->idGenero,
+            //'Genero' => new GeneroResource(Genero:findorfail($this->idGenero))??,
         ];
     }
 }

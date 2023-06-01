@@ -18,7 +18,8 @@ class DetallesCompraResource extends JsonResource
             'NroId' => $this->id,
             'NroTickets' => $this->cantidadTickets,
             'idFuncion' => $this->idFuncion,
-            'idCompra' => $this->idCompra,
+            //'Funcion' => FuncionResource(Funcion:findorfail($this->idFuncion))??,
+            //'Compra' => CompraResource(Compra:findorfail($this->idCompra))??,
         ];
     }
 }
