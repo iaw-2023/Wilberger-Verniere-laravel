@@ -4,6 +4,7 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
   
 class Pelicula extends Model
 {
@@ -43,7 +44,7 @@ class Pelicula extends Model
         $pelicula = Pelicula::find($id);
 
         $pelicula->nombre     = $request->Nombre;
-        $pelicula->idGenero   = $request->Genero;
+        $pelicula->idGenero   = $request->idGenero;
         
         $pelicula->save();
     }
