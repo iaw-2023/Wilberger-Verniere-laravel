@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\FuncionResource;
+use App\Http\Resources\ErrorResource;
 use App\Models\Funcion;
  
 class APIFuncionController extends Controller
@@ -29,8 +30,17 @@ class APIFuncionController extends Controller
      */
     public function show(string $id)
     {
-        return new FuncionResource(Funcion::findorfail($id));
+        
+        if (validarFuncion($id)) { return new FuncionResource(Funcion::findorfail($id)); } 
+        else return new ErrorResource;
     }
+        private function validarFuncion($id) {
+            if (Funcion::exists($id)) {
+                $funcion = Funcion::find($id);
+                if ($funcion->habilitado) { return true; }
+            }
+            return false;
+        }
 
     /**
      * Update the specified resource in storage.

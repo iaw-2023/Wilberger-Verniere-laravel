@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\CompraResource;
+use App\Http\Resources\ErrorResource;
 use App\Models\Compra;
 
 class APICompraController extends Controller
@@ -19,13 +20,11 @@ class APICompraController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) 
-    //Llega un JSON con (Observaciones, emailCliente, fecha y una lista de DetallesCompra) ???
+    public function store(Request $request)
     {
         CompraController::store($request);
         $idCompra = Compra::lastInsertId();
-        //Obtener id de ultima compra insertada en base de datos y pasarla al store de DetallesCompra
-        $listaOrdenes=$request->listaOrdenes; //$listaOrdenes=$request[listaOrdenes]; reemplazando idCompra por lo obtenido arriba ??
+        $listaOrdenes=$request->Compras;
 
         foreach ($listaOrdenes as $ord){
             DetallesCompraController::store($ord, $idCompra);
@@ -37,8 +36,13 @@ class APICompraController extends Controller
      */
     public function show(string $id)
     {
-        return new CompraResource(Compra::findorfail($id));
+        if (validarCompra($id)) { return new CompraResource(Compra::findorfail($id)); }
+        else return new ErrorResource;
     }
+        private function validarCompra($id)
+        {
+            return (Compra::exists($id));
+        }
 
     /**
      * Update the specified resource in storage.
