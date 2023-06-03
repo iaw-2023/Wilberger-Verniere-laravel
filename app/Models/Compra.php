@@ -4,7 +4,6 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
   
 class Compra extends Model
 {
@@ -26,7 +25,7 @@ class Compra extends Model
         $Compra = new Compra;
 
         $Compra->emailCliente      = $request->Email;
-        $Compra->fecha             = $request->Fecha;
+        $Compra->fecha             = $request->FechaCompra;
         $Compra->observaciones     = $request->Observaciones;
         
         $Compra->save();
