@@ -31,7 +31,6 @@ tags:
   - name: DetallesCompra
     description: operaciones sobre los detalles de compras
 
-
 paths:
   /funciones:
     get:
@@ -47,6 +46,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetFuncion'
+        '404':
+          description: Error retrieving Funciones
   /funciones/{idFuncion}:
     get:
       tags:
@@ -214,7 +215,6 @@ paths:
         - name: Observaciones
           in: path
           description: Informacion adicional que quiera indicar el usuario
-          required: true
           schema:
             type: string
       requestBody:
@@ -274,12 +274,12 @@ paths:
 components:
   schemas:
     SetFuncion:
-      type: object
+      type: array
       properties:
-        NroId:
-          type: integer
-          format: int64
-          example: 10
+        Pelicula:
+          type: string
+          description: nombre de la pelicula que se muestra en la funcion
+          example: Star Wars
         Fecha:
           type: string
           format: Y-M-D
@@ -288,15 +288,20 @@ components:
           type: string
           format: HH:II
           example: 19:30
+        NroSala:
+          type: integer
+          format: int64
+          description: numero(id) de la sala donde se muestra la funcion
+          example: 4
       xml:
         name: funcion
     Funcion:
       type: object
       properties:
-        NroId:
-          type: integer
-          format: int64
-          example: 10
+        Pelicula:
+          type: string
+          description: nombre de la pelicula que se muestra en la funcion
+          example: Star Wars
         Fecha:
           type: string
           format: Y-M-D
@@ -305,107 +310,179 @@ components:
           type: string
           format: HH:II
           example: 19:30
-        Pelicula:
+        NroSala:
           type: integer
-          description: id de pelicula que se muestra en la funcion
-          example: 16
-        Sala:
-          type: integer
-          description: id de la sala donde se muestra la funcion
-          example: 4  
+          format: int64
+          description: numero(id) de la sala donde se muestra la funcion
+          example: 4 
       xml:
         name: funcion
     SetGenero:
-      type: object
+      type: array
       properties:
         Nombre:
           type: string
           example: Horror
+        Peliculas:
+          type: array
+          properties:
+            Nombre:
+              type: string
+              example: StarWars
       xml:
         name: genero
     Genero:
       type: object
       properties:
-        NroId:
-          type: integer
-          format: int64
-          example: 10
         Nombre:
           type: string
           example: Horror
+        Peliculas:
+          type: array
+          properties:
+            Nombre:
+              type: string
+              example: StarWars
       xml:
         name: genero
     SetPelicula:
-      type: object
+      type: array
       properties:
-        NroId:
-          type: integer
-          format: int64
-          example: 2
         Nombre:
           type: string
           example: Star Wars II the clone wars
         Genero:
-          type: integer
-          example: 12
+          type: string
+          example: Suspense
       xml:
         name: pelicula
     Pelicula:
       type: object
       properties:
-        nombre:
+        Nombre:
           type: string
           example: Star Wars II the clone wars
-        idGenero:
-          type: integer
-          example: 12
+        Genero:
+          type: string
+          example: Suspense
       xml:
         name: pelicula
     SetCompra:
-      type: object
+      type: array
       properties:
-        id:
-          type: integer
-          format: int64
-          example: 10
-        fecha:
-          type: string
-          format: YYYY-MM-DD
-          example: 2018-04-24
-    Compra:
-      type: object
-      properties:
-        NroId:
-          type: integer
-          format: int64
-          example: 10
-        Email:
-          type: string
-          example: user@gmail.com
         Observaciones:
           type: string
-          example: compra para funcion z, x tickets
+          example: An observation ...   
+        Email:
+          type: string
+          example: user@fakeemail.com    
         FechaCompra:
           type: string
           format: YYYY-MM-DD
           example: 2018-04-24
+        Compras:
+          type: array
+          properties:
+            NroTickets:
+              type: integer
+              format: int64
+              example: 2
+            Funcion:
+              type: object
+              properties:
+                Pelicula:
+                  type: string
+                  description: nombre de la pelicula que se muestra en la funcion
+                  example: Star Wars
+                Fecha:
+                  type: string
+                  format: Y-M-D
+                  example: 2022-03-22
+                Hora:
+                  type: string
+                  format: HH:II
+                  example: 19:30
+                NroSala:
+                  type: integer
+                  format: int64
+                  description: numero(id) de la sala donde se muestra la funcion
+                  example: 4 
+            Compra:
+              type: integer
+              format: int64
+    Compra:
+      type: object
+      properties:
+        Observaciones:
+          type: string
+          example: An observation ...   
+        Email:
+          type: string
+          example: user@fakeemail.com    
+        FechaCompra:
+          type: string
+          format: YYYY-MM-DD
+          example: 2018-04-24
+        Compras:
+          type: array
+          properties:
+            NroTickets:
+              type: integer
+              format: int64
+              example: 2
+            Funcion:
+              type: object
+              properties:
+                Pelicula:
+                  type: string
+                  description: nombre de la pelicula que se muestra en la funcion
+                  example: Star Wars
+                Fecha:
+                  type: string
+                  format: Y-M-D
+                  example: 2022-03-22
+                Hora:
+                  type: string
+                  format: HH:II
+                  example: 19:30
+                NroSala:
+                  type: integer
+                  format: int64
+                  description: numero(id) de la sala donde se muestra la funcion
+                  example: 4 
+            Compra:
+              type: integer
+              format: int64
       xml:
         name: compra
     DetallesCompra:
       type: object
       properties:
-        NroId:
-          type: integer
-          format: int64
-          example: 2
         NroTickets:
           type: integer
           format: int64
           example: 4
-        idFuncion:
-          type: integer
-          example: 4
-        idCompra:
+        Funcion:
+          type: object
+          properties:
+            Pelicula:
+              type: string
+              description: nombre de la pelicula que se muestra en la funcion
+              example: Star Wars
+            Fecha:
+              type: string
+              format: Y-M-D
+              example: 2022-03-22
+            Hora:
+              type: string
+              format: HH:II
+              example: 19:30
+            NroSala:
+              type: integer
+              format: int64
+              description: numero(id) de la sala donde se muestra la funcion
+              example: 4 
+        Compra:
           type: integer
           example: 1  
       xml:
