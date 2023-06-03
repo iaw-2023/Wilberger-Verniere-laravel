@@ -24,7 +24,7 @@ use App\Http\Middleware\Authenticate;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware(Authenticate::Class);
 
 Route::get('/administracion', function () {
     return view('administracion');
