@@ -4,7 +4,6 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
   
 class DetallesCompra extends Model
 {
@@ -28,7 +27,7 @@ class DetallesCompra extends Model
     {
         $detallesCompra = new DetallesCompra;
 
-        $detallesCompra->cantTickets       = $request->cantTickets;
+        $detallesCompra->cantTickets       = $request->NroTickets;
         $detallesCompra->idFuncion         = $request->Funcion;
         $detallesCompra->idCompra          = $idCompra;
         
