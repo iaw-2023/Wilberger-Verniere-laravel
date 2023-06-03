@@ -26,8 +26,8 @@ class FuncionController extends Controller
      */
     public function create()
     {
-        $peliculas = Pelicula::habilitadas();
-        $salas = Sala::habilitadas();
+        $peliculas = Pelicula::elementosHabilitados();
+        $salas = Sala::elementosHabilitados();
         return view('funcion.create', compact('peliculas','salas'));
     }
     
@@ -73,8 +73,8 @@ class FuncionController extends Controller
     {
         $id=$request->Funcion;
         $funcion = Funcion::find($id);
-        $peliculas = Pelicula::habilitadas();
-        $salas = Sala::habilitadas();
+        $peliculas = Pelicula::elementosHabilitados();
+        $salas = Sala::elementosHabilitados();
         return view('funcion.edit',compact('funcion','id','peliculas','salas'));
     }
 
