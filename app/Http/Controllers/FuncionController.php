@@ -17,7 +17,6 @@ class FuncionController extends Controller
     public function index()
     {
         $funciones = Funcion::index();
-            // Ver si se puede agregar el atributo cant funciones;
         return view('funcion.index', compact('funciones'));
     } 
 
