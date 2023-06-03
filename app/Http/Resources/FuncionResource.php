@@ -4,6 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Controllers\PeliculaController;
+use App\Http\Controllers\FuncionController;
 
 class FuncionResource extends JsonResource
 {
@@ -15,12 +17,10 @@ class FuncionResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'NroId' => $this->id,
-            'Pelicula' => $this->idPelicula,
-            //'Pelicula' => new PeliculaResource(Pelicula:findorfail($this->idPelicula))??,
-            'Sala' => $this->idSala,
-            'Fecha' => $this->fecha,
-            'Hora' => $this->hora
+            'Pelicula' => PeliculaController::nombrePelicula($this->idPelicula),
+            'Fecha' => FuncionController::formatoFecha($this->fecha),
+            'Hora' => $this->hora,
+            'NroSala' => $this->idSala,
         ];
     }
 }
