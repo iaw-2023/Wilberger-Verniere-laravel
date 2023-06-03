@@ -87,13 +87,9 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
                   $ref: '#/components/schemas/SetGenero'          
             application/xml:
               schema:
-                type: array
-                items:
                   $ref: '#/components/schemas/SetGenero'
   /generos/{idGenero}:
     get:
@@ -275,24 +271,8 @@ components:
   schemas:
     SetFuncion:
       type: array
-      properties:
-        Pelicula:
-          type: string
-          description: nombre de la pelicula que se muestra en la funcion
-          example: Star Wars
-        Fecha:
-          type: string
-          format: Y-M-D
-          example: 2022-03-22
-        Hora:
-          type: string
-          format: HH:II
-          example: 19:30
-        NroSala:
-          type: integer
-          format: int64
-          description: numero(id) de la sala donde se muestra la funcion
-          example: 4
+      items:
+        $ref: '#/components/schemas/Funcion'
       xml:
         name: funcion
     Funcion:
@@ -319,16 +299,8 @@ components:
         name: funcion
     SetGenero:
       type: array
-      properties:
-        Nombre:
-          type: string
-          example: Horror
-        Peliculas:
-          type: array
-          properties:
-            Nombre:
-              type: string
-              example: StarWars
+      items:
+        $ref: '#/components/schemas/Genero'
       xml:
         name: genero
     Genero:
@@ -339,21 +311,15 @@ components:
           example: Horror
         Peliculas:
           type: array
-          properties:
-            Nombre:
+          items:
               type: string
               example: StarWars
       xml:
         name: genero
     SetPelicula:
       type: array
-      properties:
-        Nombre:
-          type: string
-          example: Star Wars II the clone wars
-        Genero:
-          type: string
-          example: Suspense
+      items:
+        $ref: '#/components/schemas/Pelicula'
       xml:
         name: pelicula
     Pelicula:
@@ -369,47 +335,8 @@ components:
         name: pelicula
     SetCompra:
       type: array
-      properties:
-        Observaciones:
-          type: string
-          example: An observation ...   
-        Email:
-          type: string
-          example: user@fakeemail.com    
-        FechaCompra:
-          type: string
-          format: YYYY-MM-DD
-          example: 2018-04-24
-        Compras:
-          type: array
-          properties:
-            NroTickets:
-              type: integer
-              format: int64
-              example: 2
-            Funcion:
-              type: object
-              properties:
-                Pelicula:
-                  type: string
-                  description: nombre de la pelicula que se muestra en la funcion
-                  example: Star Wars
-                Fecha:
-                  type: string
-                  format: Y-M-D
-                  example: 2022-03-22
-                Hora:
-                  type: string
-                  format: HH:II
-                  example: 19:30
-                NroSala:
-                  type: integer
-                  format: int64
-                  description: numero(id) de la sala donde se muestra la funcion
-                  example: 4 
-            Compra:
-              type: integer
-              format: int64
+      items:
+        $ref: '#/components/schemas/Compra'
     Compra:
       type: object
       properties:
@@ -425,34 +352,8 @@ components:
           example: 2018-04-24
         Compras:
           type: array
-          properties:
-            NroTickets:
-              type: integer
-              format: int64
-              example: 2
-            Funcion:
-              type: object
-              properties:
-                Pelicula:
-                  type: string
-                  description: nombre de la pelicula que se muestra en la funcion
-                  example: Star Wars
-                Fecha:
-                  type: string
-                  format: Y-M-D
-                  example: 2022-03-22
-                Hora:
-                  type: string
-                  format: HH:II
-                  example: 19:30
-                NroSala:
-                  type: integer
-                  format: int64
-                  description: numero(id) de la sala donde se muestra la funcion
-                  example: 4 
-            Compra:
-              type: integer
-              format: int64
+          items:
+            $ref: '#/components/schemas/DetallesCompra'
       xml:
         name: compra
     DetallesCompra:
@@ -464,26 +365,10 @@ components:
           example: 4
         Funcion:
           type: object
-          properties:
-            Pelicula:
-              type: string
-              description: nombre de la pelicula que se muestra en la funcion
-              example: Star Wars
-            Fecha:
-              type: string
-              format: Y-M-D
-              example: 2022-03-22
-            Hora:
-              type: string
-              format: HH:II
-              example: 19:30
-            NroSala:
-              type: integer
-              format: int64
-              description: numero(id) de la sala donde se muestra la funcion
-              example: 4 
+          $ref: '#/components/schemas/Funcion'
         Compra:
           type: integer
+          format: int64
           example: 1  
       xml:
         name: detallescompra
