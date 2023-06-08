@@ -27,10 +27,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>ID Genero:</label>
-                <select name="Genero" id="gen" value="{{ $pelicula->idGenero }}" required>
+                <label>Genero:</label>
+                <select name="idGenero" id="gen" placeholder="Elija una opcion" required>
                     @foreach ($generos as $gen)
-                        <option value="{{$gen->id}}"> {{ $gen->id }} </option>
+                        <option value="{{$gen->id}}"> {{ $gen->nombre }} </option>
                     @endforeach
                 </select>
             </div>

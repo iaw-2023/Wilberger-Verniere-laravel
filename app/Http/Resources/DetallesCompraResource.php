@@ -4,6 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Controllers\FuncionController;
+use App\Models\Funcion;
 
 class DetallesCompraResource extends JsonResource
 {
@@ -15,11 +17,9 @@ class DetallesCompraResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'NroId' => $this->id,
             'NroTickets' => $this->cantidadTickets,
-            'idFuncion' => $this->idFuncion,
-            //'Funcion' => FuncionResource(Funcion:findorfail($this->idFuncion))??,
-            //'Compra' => CompraResource(Compra:findorfail($this->idCompra))??,
+            'Funcion' => new FuncionResource(Funcion::findorfail($this->idFuncion)),
+            'Compra' => $this->idCompra
         ];
     }
 }

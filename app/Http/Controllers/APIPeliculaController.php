@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\PeliculaResource;
+use App\Http\Resources\ErrorResource;
 use App\Models\Pelicula;
 
 class APIPeliculaController extends Controller
@@ -29,8 +30,16 @@ class APIPeliculaController extends Controller
      */
     public function show(String $id)
     {
-        return new PeliculaResource(Pelicula::findorfail($id));
+        if (validarPelicula($id)) { return new PeliculaResource(Pelicula::findorfail($id)); }
+        else return new ErrorResource;
     }
+        private function validarPelicula($id) {
+            if (Pelicula::exists($id)) {
+                $pelicula = Pelicula::find($id);
+                if ($pelicula->habilitado) { return true; }
+            }
+            return false;
+        }
 
     /**
      * Update the specified resource in storage.

@@ -4,11 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\DB;
-use App\Models\Pelicula;
-use App\Http\Controllers\PeliculaController;
 
-class GeneroResource extends JsonResource
+class DetallesCompraResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,8 +15,7 @@ class GeneroResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'Nombre' => $this->nombre,
-            'Peliculas' => PeliculaController::listaPeliculas($this->id),
+            'Mensaje' => "Error al responder al pedido"
         ];
     }
 }

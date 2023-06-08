@@ -44,7 +44,7 @@ class Pelicula extends Model
         $pelicula = Pelicula::find($id);
 
         $pelicula->nombre     = $request->Nombre;
-        $pelicula->idGenero   = $request->Genero;
+        $pelicula->idGenero   = $request->idGenero;
         
         $pelicula->save();
     }
@@ -69,5 +69,10 @@ class Pelicula extends Model
     {
         $pelicula=Pelicula::find($id);
         return $pelicula->nombre;
+    }
+
+    public static function listaPeliculas($idGenero)
+    {
+        return Pelicula::where('idGenero',$idGenero)->get('nombre');
     }
 }

@@ -70,7 +70,7 @@ class PeliculaController extends Controller
             'idGenero' => 'exists:genero,id',
         ]);
         if ($validated){
-            Pelicula::editarPelicula($request);
+            Pelicula::editarPelicula($request,$id);
             return redirect()->route('pelicula.index')->with('Success','Pelicula has been updated successfully');
         }
         return redirect()->route('pelicula.index')->with('Error','Pelicula has not been updated successfully');
@@ -111,5 +111,10 @@ class PeliculaController extends Controller
     public static function nombrePelicula($id)
     {
         return Pelicula::nombrePelicula($id);
+    }
+
+    public static function listaPeliculas($idGenero)
+    {
+        return Pelicula::listaPeliculas($idGenero);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Controllers\GeneroController;
 
 class PeliculaResource extends JsonResource
 {
@@ -15,10 +16,8 @@ class PeliculaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'NroId' => $this->id,
             'Nombre' => $this->nombre,
-            'Genero' => $this->idGenero,
-            //'Genero' => new GeneroResource(Genero:findorfail($this->idGenero))??,
+            'Genero' => GeneroController::nombreGenero($this->idGenero)
         ];
     }
 }

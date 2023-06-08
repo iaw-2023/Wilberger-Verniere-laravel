@@ -28,7 +28,7 @@ class DetallesCompra extends Model
     {
         $detallesCompra = new DetallesCompra;
 
-        $detallesCompra->cantTickets       = $request->cantTickets;
+        $detallesCompra->cantTickets       = $request->NroTickets;
         $detallesCompra->idFuncion         = $request->Funcion;
         $detallesCompra->idCompra          = $idCompra;
         
