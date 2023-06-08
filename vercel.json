@@ -7,6 +7,10 @@
     },
     "routes": [
         {
+            "src": "/rest/(.*)",
+            "dest": "/rest/$1"
+        },
+        {
             "src": "/build/(.*)",
             "dest": "/build/$1"
         },
