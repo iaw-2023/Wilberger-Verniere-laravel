@@ -5,14 +5,14 @@
             "runtime": "vercel-php@0.6.0"
         }
     },
-    "routes": [
-        {
-            "src": "/rest/(.*)",
-            "dest": "/rest/$1"
-        },
+    "routes": [        
         {
             "src": "/build/(.*)",
             "dest": "/build/$1"
+        },
+        {
+            "src": "/swagger/(.*)",
+            "dest": "/swagger/$1"
         },
         {
             "src": "/(.*)",
