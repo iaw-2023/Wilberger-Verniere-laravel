@@ -143,3 +143,11 @@
     padding: 10px 24px;
     bottom: 20px;
 }
+
+.form-group{
+    margin-bottom: 25px;
+}
+
+.form-control{
+    margin-bottom: 25px;
+}
