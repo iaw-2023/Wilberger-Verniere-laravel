@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\GeneroResource;
-use App\Http\Resources\ErrorResource;
 use App\Models\Genero;
 
 class APIGeneroController extends Controller

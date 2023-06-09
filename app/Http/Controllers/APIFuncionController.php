@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\FuncionResource;
-use App\Http\Resources\ErrorResource;
 use App\Models\Funcion;
  
 class APIFuncionController extends Controller
