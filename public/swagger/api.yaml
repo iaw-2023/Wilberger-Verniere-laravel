@@ -13,8 +13,8 @@ externalDocs:
 
 
 servers:
-  - url: //localhost:8000/rest
-    description: vercel deploy (MODIFICAR EL URL CUANDO FUNCIONE VERCEL)
+  - url: https://vercel-deploy-test-4fl3jb0op-wilbergermatias.vercel.app/swagger
+    description: Deploy en vercel
 
 
 tags:
