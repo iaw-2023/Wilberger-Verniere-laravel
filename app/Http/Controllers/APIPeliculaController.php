@@ -30,12 +30,12 @@ class APIPeliculaController extends Controller
      */
     public function show(String $id)
     {
-        if (validarPelicula($id)) { return new PeliculaResource(Pelicula::findorfail($id)); }
-        else return new ErrorResource;
+        if ($this->validarPelicula($id)) { return new PeliculaResource(Pelicula::findorfail($id)); }
+        else { return response()->json(['error' => 'No se encontro esa pelicula'], 404); }
     }
         private function validarPelicula($id) {
-            if (Pelicula::exists($id)) {
-                $pelicula = Pelicula::find($id);
+            $pelicula = Pelicula::find($id);
+            if ($pelicula) {
                 if ($pelicula->habilitado) { return true; }
             }
             return false;

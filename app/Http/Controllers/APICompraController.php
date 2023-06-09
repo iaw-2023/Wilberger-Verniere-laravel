@@ -36,8 +36,8 @@ class APICompraController extends Controller
      */
     public function show(string $id)
     {
-        if (validarCompra($id)) { return new CompraResource(Compra::findorfail($id)); }
-        else return new ErrorResource;
+        if ($this->validarCompra($id)) { return new CompraResource(Compra::findorfail($id)); }
+        else { return response()->json(['error' => 'No se encontro esa compra'], 404); }
     }
         private function validarCompra($id)
         {

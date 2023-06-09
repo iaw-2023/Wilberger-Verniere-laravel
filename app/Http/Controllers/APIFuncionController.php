@@ -31,12 +31,12 @@ class APIFuncionController extends Controller
     public function show(string $id)
     {
         
-        if (validarFuncion($id)) { return new FuncionResource(Funcion::findorfail($id)); } 
-        else return new ErrorResource;
+        if ($this->validarFuncion($id)) { return new FuncionResource(Funcion::findorfail($id)); } 
+        else { return response()->json(['error' => 'No se encontro esa funcion'], 404); }
     }
         private function validarFuncion($id) {
-            if (Funcion::exists($id)) {
-                $funcion = Funcion::find($id);
+            $funcion = Funcion::find($id);
+            if ($funcion) {
                 if ($funcion->habilitado) { return true; }
             }
             return false;

@@ -30,12 +30,12 @@ class APIGeneroController extends Controller
      */
     public function show(String $id)
     {
-        if (validarGenero($id)) { return new GeneroResource(Genero::findorfail($id)); }
-        else return new ErrorResource;
+        if ($this->validarGenero($id)) { return new GeneroResource(Genero::findorfail($id)); }
+        else { return response()->json(['error' => 'No se encontro ese genero'], 404); }
     }
         private function validarGenero($id) {
-            if (Genero::exists($id)) {
-                $genero = Genero::find($id);
+            $genero = Genero::find($id);
+            if ($genero) {
                 if ($genero->habilitado) { return true; }
             }
             return false;
