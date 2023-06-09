@@ -20,25 +20,8 @@
     </head>
     <body class="antialiased">
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-                    @auth
-                    <form method="POST" action="{{ route('logout') }} " class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                            @csrf
-                            @method('POST')
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                </div>
-            @else
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-                    <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-                </div>
-                @endauth                
-            @endif
-            <div class="welcome-message">Bienvenido, para obtener una lista de los elementos a buscar, haga click en su nombre en el sidebar, si quiere añadir un elemento a una lista, haga click en el simbolo "+" a la derecha del nombre del elemento en el sidebar</a>
+            <div class="welcome-message">Bienvenido, para obtener una lista de los elementos que quiere buscar, haga click en su nombre en el sidebar, si quiere añadir un elemento a una lista, haga click en el simbolo "+" a la derecha del nombre del elemento en el sidebar</a>
         </div>
     </body>
 </html>
+@stop
