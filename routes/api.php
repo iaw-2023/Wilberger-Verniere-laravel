@@ -38,5 +38,3 @@ Route::post('/compras/crear', [APICompraController::class, 'store']);
 Route::delete('/compras/eliminar', [APICompraController::class, 'destroy']);
 
 Route::get('/detallesCompras/{idDetallesCompra}', [APIDetallesCompraController::class, 'show']);
-
-//https://www.toptal.com/laravel/restful-laravel-api-tutorial
