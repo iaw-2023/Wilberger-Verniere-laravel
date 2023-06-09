@@ -35,6 +35,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+@stop
 
 @section('css')
 <link rel="preconnect" href="https://fonts.bunny.net">

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 @extends('master')
 @section('content')
 <div class="container mt-2">
@@ -14,7 +13,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>ID:</th>
@@ -63,6 +62,7 @@
     </table>
     {!! $generos->links() !!}
 </div>
+@stop
 
 @section('css')
 <link rel="preconnect" href="https://fonts.bunny.net">

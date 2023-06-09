@@ -37,6 +37,7 @@
     </table>
     {!! $compras->links() !!}
 </div>
+@stop
 
 @section('css')
 <link rel="preconnect" href="https://fonts.bunny.net">
