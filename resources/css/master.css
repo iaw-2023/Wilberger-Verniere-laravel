@@ -19,7 +19,7 @@
     
     &.is-closed {
       transform: translate(-20vh, 0vh);
-      -moz-transform: translate(-20vh, 0vh); 
+      -moz-transform: translate(-16vh, 0vh); 
     }
     
     .icon {
@@ -45,7 +45,7 @@
     
     &.is-closed {
       transform: translate(-20vh, 0vh);
-      -moz-transform: translate(-20vh, 0vh);
+      -moz-transform: translate(-16vh, 0vh);
     }
 
 }
