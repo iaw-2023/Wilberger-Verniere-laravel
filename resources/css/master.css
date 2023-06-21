@@ -1,0 +1,154 @@
+.main {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+}
+
+.sidenav-toggle {
+    position: absolute;
+    
+    z-index: 1;
+    border: 4px solid #04AA6D;
+    outline: none;
+    width: 40px;
+    height: 60px;
+    left: 20vh;
+    top: 1vh;
+    background-color: #04AA6D;
+    transition: .5s;
+    
+    &.is-closed {
+      transform: translate(-20vh, 0vh);
+      -moz-transform: translate(-16vh, 0vh); 
+    }
+    
+    .icon {
+      font-size: 1.5rem;
+      color: #fff;
+    }
+  }    
+
+
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 20vh; /* Set the width of the sidebar */
+    position: absolute; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: rgb(44, 42, 42);
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+
+    transition: 0.5s;
+    
+    &.is-closed {
+      transform: translate(-20vh, 0vh);
+      -moz-transform: translate(-16vh, 0vh);
+    }
+
+}
+@-moz-document url-prefix() {
+
+    .sidenav-toggle.is-closed {
+        position: absolute;
+    
+        z-index: 1;
+        border: 4px solid #04AA6D;
+        outline: none;
+        width: 40px;
+        height: 60px;
+        left: 0vh;
+        top: 1vh;
+        background-color: #04AA6D;
+        transition: .5s;
+    }
+
+    .sidenav.is-closed {
+        height: 100%; /* Full-height: remove this if you want "auto" height */
+        width: 0vh; /* Set the width of the sidebar */
+        position: absolute; /* Fixed Sidebar (stay in place on scroll) */
+        z-index: 1; /* Stay on top */
+        top: 0; /* Stay at the top */
+        left: 0;
+        background-color: rgb(44, 42, 42);
+        overflow-x: hidden; /* Disable horizontal scroll */
+        padding-top: 20px;
+
+        transition: 0.5s;
+    }
+}
+
+/* The navigation menu links */
+.sidenav a {
+    text-decoration: none;
+    text-align: left;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Style page content */
+.content {
+    margin-left: 0px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+    height: inherit;
+    overflow-x: auto;
+}
+
+.btn-group{
+    width: inherit;
+}
+
+.btn-group a {
+    color: white; /* White text */
+    position: flex;
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.elem{
+    width: 140px;
+    border-right: none; /* Prevent double borders */
+} 
+
+.añadir {
+    float: right;
+    position: absolute;
+    right: 0px;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-group a:hover {
+    background-color: #04AA6D; /* Green background */
+}
+
+.logout{
+    position: absolute;
+    display: inline-block;
+    padding: 10px 24px;
+    bottom: 20px;
+}
+
+.form-group{
+    margin-bottom: 25px;
+}
+
+.form-control{
+    margin-bottom: 25px;
+}
