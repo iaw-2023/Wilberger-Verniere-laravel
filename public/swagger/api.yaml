@@ -13,7 +13,7 @@ externalDocs:
 
 
 servers:
-  - url: https://wilberger-verniere-laravel-zxwy-1edzckjst-iawv.vercel.app/rest
+  - url: https://wilberger-verniere-laravel-zxwy-39e7a6i0q-iawv.vercel.app/rest
     description: Deploy en vercel
 
 
