@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Funcion;
+use Compra;
   
 class DetallesCompra extends Model
 {
@@ -16,6 +19,14 @@ class DetallesCompra extends Model
         'cantidadTickets'
     ];
 
+    public function funcion():BelongsTo{
+        return $this->BelongsTo(Funcion::class);
+    }
+
+    public function compra():BelongsTo{
+        return $this->BelongsTo(Compra::class);
+    }
+    
     public static function index(Request $request)
     {
         $ordenes = DetallesCompra::where('idCompra',$request->idCompra)

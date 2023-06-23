@@ -4,7 +4,12 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Genero;
+use Funcion;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
   
 class Pelicula extends Model
 {
@@ -14,6 +19,14 @@ class Pelicula extends Model
         'idGenero',
         'nombre'
     ];
+
+    public function genero():BelongsTo{
+        return $this->BelongsTo(Genero::class);
+    }
+
+    public function funciones():HasMany{
+        return $this->HasMany(Funcion::class);
+    }
 
     public static function index()
     {

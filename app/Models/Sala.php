@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-  
+use Illuminate\Database\Eloquent\Relations\HasMany;  
+use Funcion;
+
 class Sala extends Model
 {
     use HasFactory;
@@ -14,6 +16,10 @@ class Sala extends Model
         'nombre', 
         'capacidadMaxima'
     ];
+
+    public function funciones():HasMany{
+        return $this->hasMany(Funcion::class);
+    }
 
     public static function index()
     {

@@ -4,7 +4,8 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-  
+use DetallesCompra;  
+
 class Compra extends Model
 {
     use HasFactory;
@@ -14,6 +15,10 @@ class Compra extends Model
         'observaciones',
         'fecha'
     ];
+
+    public function detalles():HasMany{
+        return $this->HasMany(DetallesCompra::class);
+    }
 
     public static function index()
     {
