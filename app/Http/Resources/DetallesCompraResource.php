@@ -18,7 +18,7 @@ class DetallesCompraResource extends JsonResource
     {
         return [
             'NroTickets' => $this->cantidadTickets,
-            'Funcion' => new FuncionResource(Funcion::findorfail($this->idFuncion)),
+            'Funcion' => $this->funcion,
             'Compra' => $this->idCompra
         ];
     }

@@ -96,4 +96,5 @@ class GeneroController extends Controller
     {
         return Genero::nombreGenero($id);
     }
+    
 }

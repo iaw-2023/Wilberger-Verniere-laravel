@@ -129,20 +129,16 @@ class FuncionController extends Controller
         }
         return redirect()->route('funcion.index')->with('Error','Funcion has not been disabled successfully');
     }
-        /* private function noInscriptos(Request $request): bool {
-            $detallesCompra = DetallesCompra::where([
-                ['idFuncion', $request->Funcion]
-            ]);
-            return $detallesCompra->exists()? false : true;
-        } */
+
     
     public static function getTicketsAsociados(int $id){
-        $cantTickets=0;
-        $detallesCompra=DetallesCompra::all();
-        foreach ($detallesCompra as $d){
-            if ($d->idFuncion == $id){
+        $cantTickets = 0;
+        $funcionObjeto = Funcion::where([
+            ['id', $id]
+        ])->first();
+        $detalles = $funcionObjeto->detalles;
+        foreach ($detalles as $d){
                 $cantTickets=$cantTickets+$d->cantidadTickets;
-            }
         }
         return $cantTickets;
     }

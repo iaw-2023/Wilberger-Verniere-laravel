@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Funcion;
-use Compra;
+use App\Models\Funcion;
+use App\Models\Compra;
   
 class DetallesCompra extends Model
 {
@@ -20,7 +20,7 @@ class DetallesCompra extends Model
     ];
 
     public function funcion():BelongsTo{
-        return $this->BelongsTo(Funcion::class);
+        return $this->BelongsTo(Funcion::class, 'idFuncion');
     }
 
     public function compra():BelongsTo{

@@ -113,8 +113,4 @@ class PeliculaController extends Controller
         return Pelicula::nombrePelicula($id);
     }
 
-    public static function listaPeliculas($idGenero)
-    {
-        return Pelicula::listaPeliculas($idGenero);
-    }
 }

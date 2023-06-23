@@ -4,7 +4,8 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use DetallesCompra;  
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\DetallesCompra;  
 
 class Compra extends Model
 {
@@ -16,8 +17,8 @@ class Compra extends Model
         'fecha'
     ];
 
-    public function detalles():HasMany{
-        return $this->HasMany(DetallesCompra::class);
+    public function ordenes():HasMany{
+        return $this->HasMany(DetallesCompra::class, 'idCompra');
     }
 
     public static function index()
@@ -40,6 +41,6 @@ class Compra extends Model
     {
         $Compra = $request->Compra;
         $CompraElem = Compra::find($Compra);
-        $CompraElem->destroy();  
+        $CompraElem->destroy(); 
     }
 }

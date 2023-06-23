@@ -17,7 +17,7 @@ class PeliculaResource extends JsonResource
     {
         return [
             'Nombre' => $this->nombre,
-            'Genero' => GeneroController::nombreGenero($this->idGenero)
+            'Genero' => $this->genero->nombre
         ];
     }
 }

@@ -27,7 +27,7 @@ class Funcion extends Model
     }
 
     public function pelicula():HasOne{
-        return $this->HasOne(Pelicula::class);
+        return $this->HasOne(Pelicula::class, 'id', 'idPelicula');
     }
 
     public function detalles():HasMany{

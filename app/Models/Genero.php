@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Pelicula;
+use App\Models\Pelicula;
   
 class Genero extends Model
 {
@@ -17,7 +17,7 @@ class Genero extends Model
     ];
 
     public function peliculas():hasMany{
-        return $this->hasMany(Pelicula::class);
+        return $this->hasMany(Pelicula::class, 'idGenero');
     }
     
     public static function index()
