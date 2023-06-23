@@ -147,4 +147,9 @@ class FuncionController extends Controller
     {
         return date('d/m/Y', strtotime($fecha));
     }
+
+    public static function formatoFechaSinSegundos($fecha)
+    {
+        return date('H:i', strtotime($fecha));
+    }
 }

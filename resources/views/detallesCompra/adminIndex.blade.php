@@ -13,6 +13,10 @@
             <tr>
                 <th>ID:</th>
                 <th>Funcion ID:</th>
+                <th>Pelicula:</th>
+                <th>Sala:</th>
+                <th>Fecha:</th>
+                <th>Hora:</th>
                 <th>Tickets:</th>
             </tr>
         </thead>
@@ -21,6 +25,10 @@
                 <tr>
                     <td>{{ $ord->id }}</td>
                     <td>{{ $ord->idFuncion }}</td>
+                    <td>{{ App\Http\Controllers\DetallesCompraController::nombrePeliculaFuncionAsociada($ord->idFuncion) }}</td>
+                    <td>{{ App\Http\Controllers\DetallesCompraController::salaFuncionAsociada($ord->idFuncion) }}</td>
+                    <td>{{ App\Http\Controllers\DetallesCompraController::fechaFuncionAsociada($ord->idFuncion) }}</td>
+                    <td>{{ App\Http\Controllers\DetallesCompraController::horaFuncionAsociada($ord->idFuncion) }}</td> 
                     <td>{{ $ord->cantidadTickets }}</td>
                 </tr>
             @endforeach

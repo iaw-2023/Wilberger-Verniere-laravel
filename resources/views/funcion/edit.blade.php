@@ -36,7 +36,7 @@
             <label>Fecha:</label>
             <input type="date" id="date" name="Fecha" value="{{ $funcion->fecha }}" required>
             <label>Hora:</label>
-            <input type="time" id="date" name="Hora" min="08:00" max="24:00" value="{{ $funcion->hora }}" required>
+            <input type="time" id="date" name="Hora" min="08:00" max="24:00" value="{{ App\Http\Controllers\FuncionController::formatoFechaSinSegundos($funcion->hora) }}" required>
         </div>
         <a class="btn btn-danger" href="{{ route('funcion.index') }}">Back</a>
             <button type="submit" class="btn btn-primary">Submit</button>
