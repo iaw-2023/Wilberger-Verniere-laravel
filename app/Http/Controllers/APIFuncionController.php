@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\FuncionResource;
 use App\Models\Funcion;
- 
+use App\Models\Pelicula;
+
 class APIFuncionController extends Controller
 {
     /**
@@ -14,6 +15,15 @@ class APIFuncionController extends Controller
     public function index()
     {
         return FuncionResource::collection(Funcion::elementosHabilitados());
+    }
+
+    public function indexWithPelicula(Request $request)
+    {
+        $id = $request->query('Id');
+        $pelicula = Pelicula::find($id);
+        $setFunciones = Funcion::elementosHabilitados();
+        $funcionesPelicula = $pelicula->funciones;
+        return FuncionResource::collection($funcionesPelicula->intersect($setFunciones));
     }
 
     /**
