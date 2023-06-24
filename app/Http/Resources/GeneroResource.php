@@ -19,6 +19,7 @@ class GeneroResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'Id' => $this->id,
             'Nombre' => $this->nombre,
             'Peliculas' => $this->peliculas()->get('nombre'),
         ];

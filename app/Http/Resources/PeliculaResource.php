@@ -16,6 +16,7 @@ class PeliculaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'Id' => $this->id,
             'Nombre' => $this->nombre,
             'Genero' => $this->genero->nombre
         ];

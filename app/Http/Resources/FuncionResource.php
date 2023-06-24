@@ -17,6 +17,7 @@ class FuncionResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'Id' => $this->id,
             'Pelicula' => $this->pelicula->nombre,
             'Fecha' => FuncionController::formatoFecha($this->fecha),
             'Hora' => $this->hora,
