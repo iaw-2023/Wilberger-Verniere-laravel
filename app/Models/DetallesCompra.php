@@ -36,12 +36,12 @@ class DetallesCompra extends Model
         return $ordenes;
     }
 
-    public static function agregarDetallesCompra(Request $request, $idCompra)
+    public static function agregarDetallesCompra($ord, $idCompra)
     {
         $detallesCompra = new DetallesCompra;
 
-        $detallesCompra->cantTickets       = $request->NroTickets;
-        $detallesCompra->idFuncion         = $request->Funcion;
+        $detallesCompra->cantTickets       = $ord->NroTickets;
+        $detallesCompra->idFuncion         = $ord->Id;
         $detallesCompra->idCompra          = $idCompra;
         
         $detallesCompra->save();
