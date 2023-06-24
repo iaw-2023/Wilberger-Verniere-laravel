@@ -29,7 +29,7 @@ class APICompraController extends Controller
     public function store(Request $request)
     {
         Compra::agregarCompra($request);
-        $idCompra = Compra::lastInsertId();
+        $idCompra = DB::getPdo()->lastInsertId();
         $listaOrdenes=$request->Compras;
 
         foreach ($listaOrdenes as $ord){
