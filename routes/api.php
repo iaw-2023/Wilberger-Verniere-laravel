@@ -30,9 +30,11 @@ Route::get('/peliculas', [APIPeliculaController::class, 'index']);
 Route::get('/peliculas/{idPelicula}', [APIPeliculaController::class, 'show']);
 
 Route::get('/funciones', [APIFuncionController::class, 'index']);
+Route::get('/funciones/asociadas', [APIFuncionController::class, 'indexWithPelicula']);
 Route::get('/funciones/{idFuncion}', [APIFuncionController::class, 'show']);
 
 Route::get('/compras', [APICompraController::class, 'index']);
+Route::get('/compras/asociadas', [APICompraController::class, 'indexWithEmail']);
 Route::get('/compras/{idCompra}', [APICompraController::class, 'show']);
 Route::post('/compras/crear', [APICompraController::class, 'store']);
 Route::delete('/compras/eliminar', [APICompraController::class, 'destroy']);
