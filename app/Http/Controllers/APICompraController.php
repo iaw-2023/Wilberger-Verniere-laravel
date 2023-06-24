@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\CompraResource;
 use App\Models\Compra;
+use Illuminate\Support\Facades\DB;
 use App\Models\DetallesCompra;
 
 class APICompraController extends Controller
