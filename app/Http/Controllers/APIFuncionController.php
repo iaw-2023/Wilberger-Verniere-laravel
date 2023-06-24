@@ -21,9 +21,11 @@ class APIFuncionController extends Controller
     {
         $id = $request->query('Id');
         $pelicula = Pelicula::find($id);
-        $setFunciones = Funcion::elementosHabilitados();
-        $funcionesPelicula = $pelicula->funciones;
-        return FuncionResource::collection($funcionesPelicula->intersect($setFunciones));
+        $funcionesPelicula = $pelicula->funciones()
+            ->where(function (Builder $query) {
+                return $query->where('habilitado', True);
+        })->get();
+        return FuncionResource::collection($funcionesPelicula);
     }
 
     /**
