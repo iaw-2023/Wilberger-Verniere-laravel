@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\CompraResource;
 use App\Models\Compra;
+use App\Models\DetallesCompra;
 
 class APICompraController extends Controller
 {
@@ -27,12 +28,12 @@ class APICompraController extends Controller
      */
     public function store(Request $request)
     {
-        CompraController::store($request);
+        Compra::agregarCompra($request);
         $idCompra = Compra::lastInsertId();
         $listaOrdenes=$request->Compras;
 
         foreach ($listaOrdenes as $ord){
-            DetallesCompraController::store($ord, $idCompra);
+            DetallesCompra::agregarDetallesCompra($ord, $idCompra);
         }
     }
 
