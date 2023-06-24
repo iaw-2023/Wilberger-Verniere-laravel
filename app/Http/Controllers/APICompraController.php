@@ -16,6 +16,12 @@ class APICompraController extends Controller
         return CompraResource::collection(Compra::all());
     }
 
+    public function indexWithEmail(Request $request)
+    {
+        $email = $request->query('email');
+        return CompraResource::collection(Compra::where('emailCliente',$email)->get());
+    }
+
     /**
      * Store a newly created resource in storage.
      */
