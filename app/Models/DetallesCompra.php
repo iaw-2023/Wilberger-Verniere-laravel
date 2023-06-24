@@ -40,8 +40,8 @@ class DetallesCompra extends Model
     {
         $detallesCompra = new DetallesCompra;
 
-        $detallesCompra->cantTickets       = $ord->NroTickets;
-        $detallesCompra->idFuncion         = $ord->Id;
+        $detallesCompra->cantTickets       = $ord[0]->NroTickets;
+        $detallesCompra->idFuncion         = $ord[0]->Id;
         $detallesCompra->idCompra          = $idCompra;
         
         $detallesCompra->save();
