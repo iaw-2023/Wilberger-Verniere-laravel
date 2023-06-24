@@ -20,7 +20,7 @@ class FuncionResource extends JsonResource
             'Id' => $this->id,
             'Pelicula' => $this->pelicula->nombre,
             'Fecha' => FuncionController::formatoFecha($this->fecha),
-            'Hora' => $this->hora,
+            'Hora' => FuncionController::formatoFechaSinSegundos($this->hora),
             'NroSala' => $this->idSala,
         ];
     }
