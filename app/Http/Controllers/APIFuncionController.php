@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\FuncionResource;
 use App\Models\Funcion;
 use App\Models\Pelicula;
+use Illuminate\Database\Eloquent\Builder;
 
 class APIFuncionController extends Controller
 {
