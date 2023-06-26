@@ -30,7 +30,7 @@ class SalaController extends Controller
     public function store(Request $request)
     {
         Sala::agregarSala($request);
-        return redirect()->route('sala.index')->with('Success','Sala has been created successfully.');
+        return redirect()->route('sala.index')->with('Success','Sala ha sido creado/a correctamente.');
     }
 
     /**
@@ -57,7 +57,7 @@ class SalaController extends Controller
     public function update(Request $request, $id)
     {
         Sala::editarSala($request,$id);
-        return redirect()->route('sala.index')->with('Success','Sala has been updated successfully');
+        return redirect()->route('sala.index')->with('Success','Sala a sido editado/a correctamente');
     }
 
     /**
@@ -75,9 +75,9 @@ class SalaController extends Controller
         ]);
         if($validated){
             Sala::habilitarSala($request);
-            return redirect()->route('sala.index')->with('Success','Sala has been enabled successfully');
+            return redirect()->route('sala.index')->with('Success','Sala ha sido habilitado/a correctamente');
         }
-        return redirect()->route('sala.index')->with('Error','Sala has not been enabled successfully');
+        return redirect()->route('sala.index')->with('Error','Sala no pudo ser habilitado/a');
     }
 
     public function deshabilitar(Request $request)
@@ -87,8 +87,8 @@ class SalaController extends Controller
         ]);
         if ($validated){
             Sala::deshabilitarSala($request);
-            return redirect()->route('sala.index')->with('Success','Sala has been disabled successfully');
+            return redirect()->route('sala.index')->with('Success','Sala a sido deshabilitado/a correctamente');
         }
-        return redirect()->route('sala.index')->with('Error','Sala has not been disabled successfully');
+        return redirect()->route('sala.index')->with('Error','Sala no pudo ser deshabilitado/a');
     }
 }

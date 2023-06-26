@@ -37,9 +37,9 @@ class PeliculaController extends Controller
         ]);
         if ($validated) {
             Pelicula::agregarPelicula($request);
-            return redirect()->route('pelicula.index')->with('Success','Pelicula has been created successfully.');
+            return redirect()->route('pelicula.index')->with('Success','Pelicula ha sido creado/a correctamente.');
         }
-        return redirect()->route('pelicula.index')->with('Error','Pelicula has not been created successfully.');
+        return redirect()->route('pelicula.index')->with('Error','Pelicula no pudo ser creado/a.');
     }
 
     /**
@@ -71,7 +71,7 @@ class PeliculaController extends Controller
         ]);
         if ($validated){
             Pelicula::editarPelicula($request,$id);
-            return redirect()->route('pelicula.index')->with('Success','Pelicula has been updated successfully');
+            return redirect()->route('pelicula.index')->with('Success','Pelicula a sido editado/a correctamente');
         }
         return redirect()->route('pelicula.index')->with('Error','Pelicula has not been updated successfully');
     }
@@ -91,9 +91,9 @@ class PeliculaController extends Controller
         ]);
         if ($validated){
             Pelicula::habilitarPelicula($request);
-            return redirect()->route('pelicula.index')->with('Success','Pelicula has been enabled successfully');
+            return redirect()->route('pelicula.index')->with('Success','Pelicula ha sido habilitado/a correctamente');
         }
-        return redirect()->route('pelicula.index')->with('Error','Pelicula has not been enabled successfully');
+        return redirect()->route('pelicula.index')->with('Error','Pelicula no pudo ser habilitado/a');
     }
 
     public function deshabilitar(Request $request)
@@ -103,9 +103,9 @@ class PeliculaController extends Controller
         ]);
         if ($validated){
             Pelicula::deshabilitarPelicula($request);
-            return redirect()->route('pelicula.index')->with('Success','Pelicula has been disabled successfully');
+            return redirect()->route('pelicula.index')->with('Success','Pelicula a sido deshabilitado/a correctamente');
         }
-        return redirect()->route('pelicula.index')->with('Error','Pelicula has not been disabled successfully');
+        return redirect()->route('pelicula.index')->with('Error','Pelicula no pudo ser deshabilitado/a');
     }
 
     public static function nombrePelicula($id)
