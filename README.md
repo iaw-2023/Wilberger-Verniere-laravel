@@ -55,5 +55,5 @@ https://wilberger-verniere-laravel-zxwy-bo1shc4cz-iawv.vercel.app/swagger
 https://wilberger-verniere-laravel-zxwy-bo1shc4cz-iawv.vercel.app/rest/...
 
 ## Comentarios adicionales:
-Nos faltaria modificar algunos iconos faltantes (Ej: el boton de abrir y cerrar el sidebar) y reemplazar imagenes de Laravel por imagenes del logo de la empresa
+Nos faltaria reemplazar imagenes de Laravel por imagenes del logo de la empresa
 
