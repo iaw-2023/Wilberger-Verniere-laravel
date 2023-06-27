@@ -17,8 +17,12 @@ class Sala extends Model
         'capacidadMaxima'
     ];
 
-    public function funciones():HasMany{
-        return $this->hasMany(Funcion::class);
+    public function funciones():HasMany {
+        return $this->hasMany(Funcion::class, 'idSala');
+    }
+
+    public function capMaxima(){
+        return $this->capacidadMaxima;
     }
 
     public static function index()

@@ -22,8 +22,8 @@ class Funcion extends Model
         'hora'
     ];
 
-    public function sala():HasOne{
-        return $this->HasOne(Sala::class);
+    public function sala():HasOne {
+        return $this->HasOne(Sala::class, 'id', 'idSala');
     }
 
     public function pelicula():HasOne{

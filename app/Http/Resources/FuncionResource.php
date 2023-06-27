@@ -22,6 +22,7 @@ class FuncionResource extends JsonResource
             'Fecha' => FuncionController::formatoFecha($this->fecha),
             'Hora' => FuncionController::formatoFechaSinSegundos($this->hora),
             'NroSala' => $this->idSala,
+            'AsientosDisponible' => $this->sala->capMaxima() - FuncionController::getTicketsAsociados($this->id)
         ];
     }
 }
