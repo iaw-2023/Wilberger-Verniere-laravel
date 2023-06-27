@@ -18,7 +18,7 @@
     transition: .5s;
     
     &.is-closed {
-      transform: translate(-20vh, 0vh);
+      transform: translate(-16vh, 0vh);
       -moz-transform: translate(-16vh, 0vh); 
     }
     
