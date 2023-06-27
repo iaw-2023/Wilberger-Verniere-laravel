@@ -365,6 +365,11 @@ components:
           format: int64
           description: numero(id) de la sala donde se muestra la funcion
           example: 4 
+        AsientosDisponible:
+          type: integer
+          format: int64
+          description: numero de asientos disponibles de la sala donde se muestra la funcion
+          example: 32 
       xml:
         name: funcion
     SetGenero:
