@@ -46,13 +46,13 @@ Se utilizaron las siguientes librerias en la implementacion de este proyecto:
 -<a href="https://github.com/JulienRAVIA/FakerCinemaProviders"> extension de libreria Faker, con datos relacionados a peliculas, cinemas, generos, shows de tv, etc...</a>
 
 ## Link deploy en vercel:
-https://wilberger-verniere-laravel-zxwy-39e7a6i0q-iawv.vercel.app
+https://wilberger-verniere-laravel-zxwy-5c26z77m7-iawv.vercel.app
 
 ## Link a SwaggerUI:
-https://wilberger-verniere-laravel-zxwy-39e7a6i0q-iawv.vercel.app/swagger
+https://wilberger-verniere-laravel-zxwy-5c26z77m7-iawv.vercel.app/swagger
 
 ## Consultas a API:
-https://wilberger-verniere-laravel-zxwy-39e7a6i0q-iawv.vercel.app/rest/...
+https://wilberger-verniere-laravel-zxwy-5c26z77m7-iawv.vercel.app/rest/...
 
 ## Comentarios adicionales:
 Nos faltaria modificar algunos iconos faltantes (Ej: el boton de abrir y cerrar el sidebar) y reemplazar imagenes de Laravel por imagenes del logo de la empresa
