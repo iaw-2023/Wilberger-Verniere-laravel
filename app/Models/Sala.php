@@ -18,7 +18,7 @@ class Sala extends Model
     ];
 
     public function funciones():HasMany {
-        return $this->hasMany(Funcion::class, 'idSala');
+        return $this->hasMany(Funcion::class);
     }
 
     public function capMaxima(){
