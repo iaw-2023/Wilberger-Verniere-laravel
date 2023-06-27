@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Pelicula;
   
 class Genero extends Model
 {
@@ -14,6 +16,9 @@ class Genero extends Model
         'nombre'
     ];
 
+    public function peliculas():hasMany{
+        return $this->hasMany(Pelicula::class, 'idGenero');
+    }
     
     public static function index()
     {

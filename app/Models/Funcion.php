@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Pelicula;
+use App\Models\Sala;
+use App\Models\DetallesCompra;
   
 class Funcion extends Model
 {
@@ -16,6 +21,18 @@ class Funcion extends Model
         'fecha',
         'hora'
     ];
+
+    public function sala():HasOne{
+        return $this->HasOne(Sala::class);
+    }
+
+    public function pelicula():HasOne{
+        return $this->HasOne(Pelicula::class, 'id', 'idPelicula');
+    }
+
+    public function detalles():HasMany{
+        return $this->HasMany(DetallesCompra::class, 'idFuncion');
+    }
 
     public static function index()
     {

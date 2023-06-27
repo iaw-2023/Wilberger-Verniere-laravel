@@ -4,7 +4,12 @@ namespace App\Models;
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Genero;
+use App\Models\Funcion;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
   
 class Pelicula extends Model
 {
@@ -14,6 +19,18 @@ class Pelicula extends Model
         'idGenero',
         'nombre'
     ];
+
+    public function genero():HasOne{
+        return $this->HasOne(Genero::class, 'id', 'idGenero');
+    }
+
+    public function funciones():HasMany{
+        return $this->HasMany(Funcion::class);
+    }
+
+    public function titulo(){
+        return $this->nombre;
+    }
 
     public static function index()
     {
@@ -71,8 +88,4 @@ class Pelicula extends Model
         return $pelicula->nombre;
     }
 
-    public static function listaPeliculas($idGenero)
-    {
-        return Pelicula::where('idGenero',$idGenero)->get('nombre');
-    }
 }

@@ -19,7 +19,7 @@ class CompraResource extends JsonResource
             'Observaciones' => $this->observaciones,
             'Email' => $this->emailCliente,
             'FechaCompra' => $this->fecha,
-            'Compras' => DetallesCompraResource::collection(DetallesCompra::where('idCompra', $this->id)->get())
+            'Compras' => DetallesCompraResource::collection($this->ordenes)
         ];
     }
 }

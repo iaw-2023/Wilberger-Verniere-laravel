@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DetallesCompra;
+use App\Models\Funcion;
 
 class DetallesCompraController extends Controller
 {
@@ -67,5 +68,28 @@ class DetallesCompraController extends Controller
     {
         $ordenes = DetallesCompra::index($request);
         return view('detallesCompra.adminIndex', compact('ordenes')); 
+    }
+
+    public static function nombrePeliculaFuncionAsociada(int $idFuncion)
+    {
+        return Funcion::find($idFuncion)->pelicula->nombre;
+    }
+
+    public static function salaFuncionAsociada(int $idFuncion)
+    {
+        $funcion = Funcion::find($idFuncion);
+        return $funcion->idSala;
+    }
+
+    public static function fechaFuncionAsociada(int $idFuncion)
+    {
+        $funcion = Funcion::find($idFuncion);
+        return $funcion->fecha;
+    }
+
+    public static function horaFuncionAsociada(int $idFuncion)
+    {
+        $funcion = Funcion::find($idFuncion);
+        return $funcion->hora;
     }
 }

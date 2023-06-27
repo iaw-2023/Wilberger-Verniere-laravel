@@ -119,26 +119,26 @@ class FuncionController extends Controller
         $validated = $request->validate([
             'Funcion' => 'exists:funcion,id',
         ]);
-        if ($validated && $this->noInscriptos($request)){
+        $funcionObjeto = Funcion::where([
+            ['id', $request->Funcion]
+        ])->first();
+        $detalles = $funcionObjeto->detalles->first();
+        if ($validated && is_null($detalles)){
             Funcion::quitarFuncion($request);
             return redirect()->route('funcion.index')->with('Success','Funcion has been disabled successfully');
         }
         return redirect()->route('funcion.index')->with('Error','Funcion has not been disabled successfully');
     }
-        private function noInscriptos(Request $request): bool {
-            $detallesCompra = DetallesCompra::where([
-                ['idFuncion', $request->Funcion]
-            ]);
-            return $detallesCompra->exists()? false : true;
-        }
+
     
     public static function getTicketsAsociados(int $id){
-        $cantTickets=0;
-        $detallesCompra=DetallesCompra::all();
-        foreach ($detallesCompra as $d){
-            if ($d->idFuncion == $id){
+        $cantTickets = 0;
+        $funcionObjeto = Funcion::where([
+            ['id', $id]
+        ])->first();
+        $detalles = $funcionObjeto->detalles;
+        foreach ($detalles as $d){
                 $cantTickets=$cantTickets+$d->cantidadTickets;
-            }
         }
         return $cantTickets;
     }
@@ -146,5 +146,10 @@ class FuncionController extends Controller
     public static function formatoFecha($fecha)
     {
         return date('d/m/Y', strtotime($fecha));
+    }
+
+    public static function formatoFechaSinSegundos($fecha)
+    {
+        return date('H:i', strtotime($fecha));
     }
 }
