@@ -283,25 +283,6 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Compra'
-  /compras/eliminar/{idCompra}:
-    delete:
-      tags:
-        - Compra
-      summary: Cancela una compra
-      description: Cancela una compra realizada por su id.
-      operationId: deleteCompra
-      parameters:
-        - name: idCompra
-          in: path
-          description: 'Id de la compra a cancelar'
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Operacion realizada de forma exitosa
-        '400':
-          description: Invalid idCompra value
   /ordenes/{idDetalleCompra}:
     get:
       tags:
