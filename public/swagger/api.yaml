@@ -50,33 +50,27 @@ paths:
     get:
       tags:
         - Funcion
-      summary: Obtener una funcion por id
-      description: Busca la funcion solicitada por id
-      operationId: getFuncionByPeliculaYGenero
+      summary: Obtener las funciones asociadas por el id de una pelicula
+      description: Busca las funciones solicitadas por id de una pelicula
+      operationId: getFuncionByPelicula
       parameters:
-        - name: pelicula
+        - name: id
           in: query
-          description: Nombre de la pelicula a buscar
+          description: Id de la pelicula de la que se desea obtener las funciones
           required: true
           schema:
-            type: string
-        - name: pelicula
-          in: query
-          description: Nombre del genero asociado a la pelicula a buscar
-          required: true
-          schema:
-            type: string        
+            type: integer       
       responses:
         '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Funcion'
+                $ref: '#/components/schemas/SetFuncion'
         '400':
           description: Invalid ID supplied
         '404':
-          description: Funcion not found
+          description: Pelicula not found
   /funciones/{idFuncion}:
     get:
       tags:
@@ -211,7 +205,7 @@ paths:
       tags:
         - Compra
       summary: Obtiene compras asociadas a un email
-      description: Busca la compras asociadas a un email
+      description: Busca las compras asociadas a un email
       operationId: getCompraByEmail
       parameters:
         - name: email
@@ -226,10 +220,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Compra'          
+                $ref: '#/components/schemas/SetCompra'          
             application/xml:
               schema:
-                $ref: '#/components/schemas/Compra'
+                $ref: '#/components/schemas/SetCompra'
   /compras/{idCompra}:
     get:
       tags:
