@@ -13,7 +13,7 @@ externalDocs:
 
 
 servers:
-  - url: https://vercel-deploy-test-7ix687nun-wilbergermatias.vercel.app/swagger
+  - url: https://wilberger-verniere-laravel-zxwy.vercel.app/rest/
     description: Deploy en vercel
 
 
