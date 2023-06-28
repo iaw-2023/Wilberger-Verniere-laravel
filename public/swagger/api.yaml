@@ -54,7 +54,7 @@ paths:
       description: Busca las funciones solicitadas por id de una pelicula
       operationId: getFuncionByPelicula
       parameters:
-        - name: id
+        - name: Id
           in: query
           description: Id de la pelicula de la que se desea obtener las funciones
           required: true
