@@ -283,30 +283,6 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Compra'
-  /ordenes/{idDetalleCompra}:
-    get:
-      tags:
-        - DetallesCompra
-      summary: Obtiene los detalles de una orden
-      description: Obtiene los detalles por id de orden
-      operationId: getDetallesCompra
-      parameters:
-        - name: idDetallesCompra
-          in: path
-          description: Id de la orden a buscar
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DetallesCompra'          
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/DetallesCompra'
 
 components:
   schemas:
