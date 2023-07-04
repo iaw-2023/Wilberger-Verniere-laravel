@@ -30,7 +30,7 @@ class GeneroController extends Controller
     public function store(Request $request)
     {
         Genero::agregarGenero($request);
-        return redirect()->route('genero.index')->with('Success','Genero has been created successfully.');
+        return redirect()->route('genero.index')->with('Success','Genero ha sido creado/a correctamente.');
     }
 
     /**
@@ -57,7 +57,7 @@ class GeneroController extends Controller
     public function update(Request $request, $id)
     {
         Genero::editarGenero($request,$id);
-        return redirect()->route('genero.index')->with('Success','Genero has been updated successfully');
+        return redirect()->route('genero.index')->with('Success','Genero a sido editado/a correctamente');
     }
 
     /**
@@ -75,9 +75,9 @@ class GeneroController extends Controller
         ]);
         if ($validated){
             Genero::habilitarGenero($request);
-            return redirect()->route('genero.index')->with('Success','Genero has been enabled successfully');
+            return redirect()->route('genero.index')->with('Success','Genero ha sido habilitado/a correctamente');
         }
-        return redirect()->route('genero.index')->with('Error','Genero has not been enabled successfully');
+        return redirect()->route('genero.index')->with('Error','Genero no pudo ser habilitado/a');
     }
 
     public function deshabilitar(Request $request)
@@ -87,9 +87,9 @@ class GeneroController extends Controller
         ]);
         if ($validated){
             Genero::deshabilitarGenero($request);
-            return redirect()->route('genero.index')->with('Success','Genero has been disabled successfully');
+            return redirect()->route('genero.index')->with('Success','Genero a sido deshabilitado/a correctamente');
         }
-        return redirect()->route('genero.index')->with('Error','Genero has not been disabled successfully');
+        return redirect()->route('genero.index')->with('Error','Genero no pudo ser deshabilitado/a');
     }
 
     public static function nombreGenero($id)

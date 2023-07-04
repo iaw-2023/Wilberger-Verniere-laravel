@@ -18,6 +18,7 @@ class DetallesCompraResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'Id' => $this->id,
             'NroTickets' => $this->cantidadTickets,
             'Funcion' => new FuncionResource($this->funcion),
             'Compra' => $this->idCompra

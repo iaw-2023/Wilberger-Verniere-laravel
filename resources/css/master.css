@@ -18,8 +18,8 @@
     transition: .5s;
     
     &.is-closed {
-      transform: translate(-20vh, 0vh);
-      -moz-transform: translate(-16vh, 0vh); 
+      transform: translate(-16vh, 0vh);
+      -moz-transform: translate(3vh, 0vh); 
     }
     
     .icon {
@@ -45,7 +45,7 @@
     
     &.is-closed {
       transform: translate(-20vh, 0vh);
-      -moz-transform: translate(-16vh, 0vh);
+      -moz-transform: translate(0vh, 0vh);
     }
 
 }

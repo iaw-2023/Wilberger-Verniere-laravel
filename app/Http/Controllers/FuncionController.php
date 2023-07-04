@@ -41,9 +41,9 @@ class FuncionController extends Controller
         ]);
         if ($validated && $this->validarFuncionUnica($request)){
             Funcion::agregarFuncion($request);
-            return redirect()->route('funcion.index')->with('Success','Funcion has been created successfully.');
+            return redirect()->route('funcion.index')->with('Success','Funcion ha sido creado/a correctamente.');
         }
-        return redirect()->route('funcion.index')->with('Error','Funcion could not been created.');
+        return redirect()->route('funcion.index')->with('Error','Funcion no pudo ser creado/a.');
     }
         private function validarFuncionUnica(Request $request): bool {
             $funciones = Funcion::where([
@@ -89,11 +89,14 @@ class FuncionController extends Controller
 
         if ($validated) { 
             Funcion::editarFuncion($request,$id);
-            return redirect()->route('funcion.index')->with('Success','Funcion could be updated');
+            return redirect()->route('funcion.index')->with('Success','Funcion a sido editado/a correctamente');
         }
-        return redirect()->route('funcion.index')->with('Error','Funcion could not be updated');
+        return redirect()->route('funcion.index')->with('Error','Funcion no pudo ser editado/a correctamente');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Request $request)
     {
         //
@@ -106,14 +109,13 @@ class FuncionController extends Controller
         ]);
         if ($validated){
             Funcion::habilitarFuncion($request);
-            return redirect()->route('funcion.index')->with('Success','Funcion has been enabled successfully');
+            return redirect()->route('funcion.index')->with('Success','Funcion ha sido habilitado/a correctamente');
         }
-        return redirect()->route('funcion.index')->with('Error','Funcion has not been enabled successfully');
+        else{
+            return redirect()->route('funcion.index')->with('Error','Funcion no pudo ser habilitado/a, tal vez no exista');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function deshabilitar(Request $request)
     {
         $validated = $request->validate([
@@ -123,11 +125,16 @@ class FuncionController extends Controller
             ['id', $request->Funcion]
         ])->first();
         $detalles = $funcionObjeto->detalles->first();
-        if ($validated && is_null($detalles)){
-            Funcion::quitarFuncion($request);
-            return redirect()->route('funcion.index')->with('Success','Funcion has been disabled successfully');
+        if ($validated){
+            if (is_null($detalles)){
+                Funcion::quitarFuncion($request);
+                return redirect()->route('funcion.index')->with('Success','Funcion a sido deshabilitado/a correctamente');
+            }
+            else{
+                return redirect()->route('funcion.index')->with('Error','Funcion no pudo ser deshabilitado/a; esta funcion tiene al menos un ticket comprado');
+            }
         }
-        return redirect()->route('funcion.index')->with('Error','Funcion has not been disabled successfully');
+        return redirect()->route('funcion.index')->with('Error','Funcion no pudo ser deshabilitado/a, tal vez no exista');
     }
 
     

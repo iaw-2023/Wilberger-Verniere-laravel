@@ -1,4 +1,7 @@
-<a href="{{ url('/') }}">Inicio</a>
+<a href="{{ url('/') }}">
+    <i class="fa-solid fa-home" style="color: #ffffff;"></i>
+    Inicio
+</a>
 
 <div class="btn-group">
     <a class="elem" href="{{ route('funcion.index') }}">Funciones</a>
@@ -25,6 +28,7 @@
 </div>
 
 <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+    <i class="fa-solid fa-power-off" style="color: #ffffff;"></i>
     Logout
 </a>
 

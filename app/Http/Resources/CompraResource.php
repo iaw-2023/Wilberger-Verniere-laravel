@@ -16,6 +16,7 @@ class CompraResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'Id' => $this->id,
             'Observaciones' => $this->observaciones,
             'Email' => $this->emailCliente,
             'FechaCompra' => $this->fecha,

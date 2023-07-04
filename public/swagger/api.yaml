@@ -13,7 +13,7 @@ externalDocs:
 
 
 servers:
-  - url: https://wilberger-verniere-laravel-zxwy-39e7a6i0q-iawv.vercel.app/rest
+  - url: https://wilberger-verniere-laravel-zxwy.vercel.app/rest/
     description: Deploy en vercel
 
 
@@ -46,6 +46,31 @@ paths:
                 $ref: '#/components/schemas/SetFuncion'
         '404':
           description: Error retrieving Funciones
+  /funciones/asociadas:
+    get:
+      tags:
+        - Funcion
+      summary: Obtener las funciones asociadas por el id de una pelicula
+      description: Busca las funciones solicitadas por id de una pelicula
+      operationId: getFuncionByPelicula
+      parameters:
+        - name: Id
+          in: query
+          description: Id de la pelicula de la que se desea obtener las funciones
+          required: true
+          schema:
+            type: integer       
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetFuncion'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pelicula not found
   /funciones/{idFuncion}:
     get:
       tags:
@@ -175,6 +200,30 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/SetCompra'
+  /compras/asociadas:
+    get:
+      tags:
+        - Compra
+      summary: Obtiene compras asociadas a un email
+      description: Busca las compras asociadas a un email
+      operationId: getCompraByEmail
+      parameters:
+        - name: email
+          in: query
+          description: Email asociado a compras a buscar
+          required: true
+          schema:
+            type: string 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetCompra'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SetCompra'
   /compras/{idCompra}:
     get:
       tags:
@@ -214,7 +263,7 @@ paths:
           schema:
             type: string
         - name: Observaciones
-          in: path
+          in: query
           description: Informacion adicional que quiera indicar el usuario
           schema:
             type: string
@@ -234,50 +283,6 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Compra'
-  /compras/eliminar/{idCompra}:
-    delete:
-      tags:
-        - Compra
-      summary: Cancela una compra
-      description: Cancela una compra realizada por su id.
-      operationId: deleteCompra
-      parameters:
-        - name: idCompra
-          in: path
-          description: 'Id de la compra a cancelar'
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Operacion realizada de forma exitosa
-        '400':
-          description: Invalid idCompra value
-
-  /detallesCompras/{idDetalleCompra}:
-    get:
-      tags:
-        - DetallesCompra
-      summary: Obtiene los detalles de una orden
-      description: Obtiene los detalles por id de orden
-      operationId: getDetallesOrden
-      parameters:
-        - name: idDetalleCompra
-          in: path
-          description: Id del detalle de compra a buscar
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DetallesCompra'          
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/DetallesCompra'        
 
 components:
   schemas:
@@ -290,6 +295,10 @@ components:
     Funcion:
       type: object
       properties:
+        Id:
+          type: integer
+          description: Id de la funcion
+          example: 1
         Pelicula:
           type: string
           description: nombre de la pelicula que se muestra en la funcion
@@ -307,6 +316,11 @@ components:
           format: int64
           description: numero(id) de la sala donde se muestra la funcion
           example: 4 
+        AsientosDisponible:
+          type: integer
+          format: int64
+          description: numero de asientos disponibles de la sala donde se muestra la funcion
+          example: 32 
       xml:
         name: funcion
     SetGenero:
@@ -318,6 +332,10 @@ components:
     Genero:
       type: object
       properties:
+        Id:
+          type: integer
+          description: Id del genero
+          example: 1
         Nombre:
           type: string
           example: Horror
@@ -337,6 +355,10 @@ components:
     Pelicula:
       type: object
       properties:
+        Id:
+          type: integer
+          description: Id de la pelicula
+          example: 1
         Nombre:
           type: string
           example: Star Wars II the clone wars
@@ -352,6 +374,10 @@ components:
     Compra:
       type: object
       properties:
+        Id:
+          type: integer
+          description: Id de la funcion
+          example: 1
         Observaciones:
           type: string
           example: An observation ...   
@@ -371,6 +397,10 @@ components:
     DetallesCompra:
       type: object
       properties:
+        Id:
+          type: integer
+          description: Id de la funcion
+          example: 1
         NroTickets:
           type: integer
           format: int64

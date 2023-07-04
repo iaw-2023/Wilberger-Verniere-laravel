@@ -25,7 +25,7 @@ class Pelicula extends Model
     }
 
     public function funciones():HasMany{
-        return $this->HasMany(Funcion::class);
+        return $this->HasMany(Funcion::class, 'idPelicula');
     }
 
     public function titulo(){

@@ -17,10 +17,12 @@ class FuncionResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'Id' => $this->id,
             'Pelicula' => $this->pelicula->nombre,
             'Fecha' => FuncionController::formatoFecha($this->fecha),
-            'Hora' => $this->hora,
+            'Hora' => FuncionController::formatoFechaSinSegundos($this->hora),
             'NroSala' => $this->idSala,
+            'AsientosDisponible' => $this->sala->capMaxima() - FuncionController::getTicketsAsociados($this->id)
         ];
     }
 }

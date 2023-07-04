@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\CompraResource;
 use App\Models\Compra;
+use Illuminate\Support\Facades\DB;
+use App\Models\DetallesCompra;
 
 class APICompraController extends Controller
 {
@@ -16,17 +18,23 @@ class APICompraController extends Controller
         return CompraResource::collection(Compra::all());
     }
 
+    public function indexWithEmail(Request $request)
+    {
+        $email = $request->query('email');
+        return CompraResource::collection(Compra::where('emailCliente',$email)->get());
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        CompraController::store($request);
-        $idCompra = Compra::lastInsertId();
+        Compra::agregarCompra($request);
+        $idCompra = DB::getPdo()->lastInsertId();
         $listaOrdenes=$request->Compras;
 
         foreach ($listaOrdenes as $ord){
-            DetallesCompraController::store($ord, $idCompra);
+            DetallesCompra::agregarDetallesCompra($ord, $idCompra);
         }
     }
 
