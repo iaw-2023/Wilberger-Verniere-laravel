@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'name' => "admin",
             'email'=>"admin@iaw.com",            
             'password'=>Hash::make('admin123'),
+            'rol'=>"SUPER_ADMIN",
         ]);
     }
 }

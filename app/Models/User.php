@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rol',
     ];
 
     /**
@@ -41,4 +42,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function agregarUsuario($email,$contraseña,$nombre){
+        $nuevoUsuario = new User;
+
+        $nuevoUsuario->name = $nombre;
+        $nuevoUsuario->email = $email;
+        $nuevoUsuario->password = $contraseña;
+        $nuevoUsuario->rol = "USUARIO";
+
+        $nuevoUsuario->save();
+    }
 }
