@@ -54,7 +54,7 @@ class APIUsuarioController extends Controller
     {
         $email = $request->query('Email');
         $contraseña = $request->query('Contraseña');
-
+        $validarEmail=true;
        /*  $validarEmail = $request->validate([
             $email => 'exists:usuario,email',
         ]);
