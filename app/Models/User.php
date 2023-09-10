@@ -49,7 +49,7 @@ class User extends Authenticatable
         $nuevoUsuario->name = $nombre;
         $nuevoUsuario->email = $email;
         $nuevoUsuario->password = $contraseña;
-        $nuevoUsuario->rol = 2;
+        $nuevoUsuario->rol = "USUARIO";
 
         $nuevoUsuario->save();
     }
