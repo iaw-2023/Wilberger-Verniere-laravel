@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Http\Request;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -43,13 +44,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function agregarUsuario($email,$contraseña,$nombre){
+    public static function agregarUsuario(Request $request){
         $nuevoUsuario = new User;
 
-        $nuevoUsuario->name = $nombre;
-        $nuevoUsuario->email = $email;
-        $nuevoUsuario->password = $contraseña;
-        $nuevoUsuario->rol = "USUARIO";
+        $nuevoUsuario->name         = $request->$Nombre;
+        $nuevoUsuario->email        = $request->$Email;
+        $nuevoUsuario->password     = $request->$Contraseña;
+        $nuevoUsuario->rol          = "USUARIO";
 
         $nuevoUsuario->save();
     }
