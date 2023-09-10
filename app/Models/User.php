@@ -47,9 +47,9 @@ class User extends Authenticatable
     public static function agregarUsuario(Request $request){
         $nuevoUsuario = new User;
 
-        $nuevoUsuario->name         = $request->$Nombre;
-        $nuevoUsuario->email        = $request->$Email;
-        $nuevoUsuario->password     = $request->$Contraseña;
+        $nuevoUsuario->name         = $request->query('Nombre');
+        $nuevoUsuario->email        = $request->query('Email');
+        $nuevoUsuario->password     = $request->query('Contraseña');
         $nuevoUsuario->rol          = "USUARIO";
 
         $nuevoUsuario->save();
