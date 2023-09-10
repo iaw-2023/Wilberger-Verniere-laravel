@@ -60,7 +60,7 @@ class APIUsuarioController extends Controller
             $email => 'exists:usuario,email',
         ]);
  */
-        if ($validarEmail){ return new UsuarioResource(Usuario::findOrFail($email)); }
+        if ($validarEmail){ return new UsuarioResource(User::findOrFail($email)); }
         else { return response()->json(['error' => 'El email o la contraseña no son validos'], 404); }
     }
 
