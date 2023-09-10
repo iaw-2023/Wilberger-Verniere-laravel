@@ -7,6 +7,7 @@ use App\Http\Controllers\APIDetallesCompraController;
 use App\Http\Controllers\APIFuncionController;
 use App\Http\Controllers\APIGeneroController;
 use App\Http\Controllers\APIPeliculaController;
+use App\Http\Controllers\APIUsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/usuarios/iniciar', [APIUsuarioController::class, 'show']);
+Route::get('/usuarios/iniciar', [APIUsuarioController::class, 'show']);
 Route::post('/usuarios/crear', [APIUsuarioController::class, 'store']);
 
 Route::get('/generos', [APIGeneroController::class, 'index']);
