@@ -47,7 +47,20 @@ class APIUsuarioController extends Controller
      */
     public function show(string $id)
     {
-        //
+       //
+    }
+
+    public function getWithEmail(Request $request)
+    {
+        $email = $request->query('Email');
+        $contraseña = $request->query('Contraseña');
+
+       /*  $validarEmail = $request->validate([
+            $email => 'exists:usuario,email',
+        ]);
+ */
+        if ($validarEmail){  return UsuarioResource(Usuario::findOrFail($email)); }
+        else { return response()->json(['error' => 'El email o la contraseña no son validos'], 404); }
     }
 
     /**
