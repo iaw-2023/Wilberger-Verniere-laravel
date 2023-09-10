@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/usuarios/inciar', [APIUsuarioController::class, 'show']);
+Route::post('/usuarios/iniciar', [APIUsuarioController::class, 'show']);
 Route::post('/usuarios/crear', [APIUsuarioController::class, 'store']);
 
 Route::get('/generos', [APIGeneroController::class, 'index']);
