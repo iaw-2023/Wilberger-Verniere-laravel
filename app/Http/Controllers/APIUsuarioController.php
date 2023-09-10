@@ -20,9 +20,12 @@ class APIUsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $email = $request->query('Email');
+        /* $email = $request->query('Email');
         $contraseña = $request->query('Contraseña');
-        $nombre = $request->query('Nombre');
+        $nombre = $request->query('Nombre'); */
+        $email = $request->$Email;
+        $contraseña = $request->$Contraseña;
+        $nombre = $request->$Nombre;
         $validarEmail = $request->validate([
             $email => 'exists:usuario,email',
         ]);
