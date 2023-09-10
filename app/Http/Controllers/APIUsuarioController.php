@@ -31,7 +31,7 @@ class APIUsuarioController extends Controller
         ]);
 
         if (!$validarEmail && !$validarNombre){
-            User::agregarUsuario($request);
+            User::agregarUsuario($email,$contraseña,$nombre);
             return response()->json(['success' => 'Se creo el nuevo usuario'], 200);
         }
         else{
