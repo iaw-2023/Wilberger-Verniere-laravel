@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Resources\UsuarioResource;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class APIUsuarioController extends Controller
 {
@@ -21,21 +23,15 @@ class APIUsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        /* $email = $request->query('Email');
-        $contraseña = $request->query('Contraseña');
-        $nombre = $request->query('Nombre'); */
         $email = $request->Email;
         $contraseña = $request->Contraseña;
         $nombre = $request->Nombre;
-        $validarEmail = $request->validate([
-            $email => 'exists:usuario,email',
-        ]);
-        $validarNombre = $request->validate([
-            $nombre => 'exists:usuario,nombre',
-        ]);
+    
+        $existeUsuario = User::where('email', $email)->first();
 
-        if (!$validarEmail && !$validarNombre){
-            User::agregarUsuario($email,$contraseña,$nombre);
+        if (!$existeUsuario){
+            $hashContraseña = Hash::make($contraseña);
+            User::agregarUsuario($email,$hashContraseña,$nombre);
             return response()->json(['success' => 'Se creo el nuevo usuario'], 200);
         }
         else{
@@ -53,14 +49,13 @@ class APIUsuarioController extends Controller
 
     public function getWithEmail(Request $request)
     {
-        $email = $request->query('Email');
-        $contraseña = $request->query('Contraseña');
-        $validarEmail=true;
-       /*  $validarEmail = $request->validate([
-            $email => 'exists:usuario,email',
-        ]);
- */
-        if ($validarEmail){ return new UsuarioResource(User::where('email',$email)->first()); }
+        $email = $request->input('Email');
+        $contraseña = $request->input('Contraseña');
+
+        $usuario = User::where('email', $email)->first();
+        if ($usuario && Hash::check($contraseña, $usuario->password)){
+            return new UsuarioResource(User::where('email',$email)->first()); 
+        }
         else { return response()->json(['error' => 'El email o la contraseña no son validos'], 404); }
     }
 
