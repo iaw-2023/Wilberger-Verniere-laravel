@@ -56,7 +56,7 @@ class APIUsuarioController extends Controller
         if ($usuario && Hash::check($contraseña, $usuario->password)){
             return new UsuarioResource(User::where('email',$email)->first()); 
         }
-        else { return response()->json(['error' => 'El email o la contraseña no son validos'], 404); }
+        else { return response()->json(['error' => 'El email o la contraseña no son validos'], 400); }
     }
 
     /**
