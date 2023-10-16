@@ -20,10 +20,29 @@ use App\Http\Controllers\APIUsuarioController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request){
+        $user = $request->user();
+        $nombre = $user->name;
+        $email = $user->email;
+
+        return response()->json([
+            'Nombre' => $nombre,
+            'Email' => $email,
+        ]);
+    });
+    Route::post('/logout', [AuthControllerApi::class, 'logout']);
+
+    Route::get('/compras', [APICompraController::class, 'index']);
+    Route::get('/compras/asociadas', [APICompraController::class, 'indexWithEmail']);
+    Route::get('/compras/{idCompra}', [APICompraController::class, 'show']);
+    Route::post('/compras/crear', [APICompraController::class, 'store']);
+    Route::delete('/compras/eliminar', [APICompraController::class, 'destroy']);
+
+    Route::get('/detallesCompras/{idDetallesCompra}', [APIDetallesCompraController::class, 'show']);
 });
 
+Route::post('/login', [AuthControllerApi::class, 'login']);
 Route::post('/usuarios/iniciar', [APIUsuarioController::class, 'getWithEmail']);
 Route::post('/usuarios/crear', [APIUsuarioController::class, 'store']);
 
@@ -37,10 +56,3 @@ Route::get('/funciones', [APIFuncionController::class, 'index']);
 Route::get('/funciones/asociadas', [APIFuncionController::class, 'indexWithPelicula']);
 Route::get('/funciones/{idFuncion}', [APIFuncionController::class, 'show']);
 
-Route::get('/compras', [APICompraController::class, 'index']);
-Route::get('/compras/asociadas', [APICompraController::class, 'indexWithEmail']);
-Route::get('/compras/{idCompra}', [APICompraController::class, 'show']);
-Route::post('/compras/crear', [APICompraController::class, 'store']);
-Route::delete('/compras/eliminar', [APICompraController::class, 'destroy']);
-
-Route::get('/detallesCompras/{idDetallesCompra}', [APIDetallesCompraController::class, 'show']);
