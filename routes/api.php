@@ -43,8 +43,9 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::post('/login', [AuthControllerApi::class, 'login']);
+Route::post('/register', [AuthControllerApi::class, 'register']);
 Route::post('/usuarios/iniciar', [APIUsuarioController::class, 'getWithEmail']);
-Route::post('/usuarios/crear', [APIUsuarioController::class, 'store']);
+
 
 Route::get('/generos', [APIGeneroController::class, 'index']);
 Route::get('/generos/{idGenero}', [APIGeneroController::class, 'show']);

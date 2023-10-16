@@ -8,10 +8,35 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthControllerApi extends Controller
 {
     use HasApiTokens;
+
+    public function register(Request $request)
+    {
+        $email = $request->Email;
+        $contraseña = $request->Contraseña;
+        $nombre = $request->Nombre;
+    
+        $existeUsuario = User::where('email', $email)->first();
+
+        if (!$existeUsuario){
+            $hashContraseña = Hash::make($contraseña);
+            User::agregarUsuario($email,$hashContraseña,$nombre);
+            $token = auth()->user()->createToken('token-name')->plainTextToken;
+
+            return response()->json([
+                'success' => 'Se creo el nuevo usuario',
+                'access_token' => $token
+            ], 200);
+        }
+        else{
+            return response()->json(['error' => 'No se creo el nuevo usuario'], 400);
+        }
+    }
 
     public function login(Request $request)
     {
