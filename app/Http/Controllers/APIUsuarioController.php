@@ -32,7 +32,12 @@ class APIUsuarioController extends Controller
         if (!$existeUsuario){
             $hashContraseña = Hash::make($contraseña);
             User::agregarUsuario($email,$hashContraseña,$nombre);
-            return response()->json(['success' => 'Se creo el nuevo usuario'], 200);
+            $token = auth()->user()->createToken('token-name')->plainTextToken;
+
+            return response()->json([
+                'success' => 'Se creo el nuevo usuario',
+                'access_token' => $token
+            ], 200);
         }
         else{
             return response()->json(['error' => 'No se creo el nuevo usuario'], 400);
