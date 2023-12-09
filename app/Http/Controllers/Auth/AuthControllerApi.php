@@ -26,12 +26,8 @@ class AuthControllerApi extends Controller
         if (!$existeUsuario){
             $hashContraseña = Hash::make($contraseña);
             User::agregarUsuario($email,$hashContraseña,$nombre);
-            $token = auth()->user()->createToken('token-name')->plainTextToken;
 
-            return response()->json([
-                'success' => 'Se creo el nuevo usuario',
-                'access_token' => $token
-            ], 200);
+            login($request);
         }
         else{
             return response()->json(['error' => 'No se creo el nuevo usuario'], 400);
@@ -41,7 +37,7 @@ class AuthControllerApi extends Controller
     public function login(Request $request)
     {
         // Validar las credenciales del usuario
-        if (!auth()->attempt($request->only('email', 'password'))) {
+        if (!auth()->attempt($request->only('Email', 'Contraseña'))) {
             return response()->json(['message' => 'Nombre de usuario o contraseña incorrectas'], 401);
         }
 
