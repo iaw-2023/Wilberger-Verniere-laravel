@@ -8,6 +8,7 @@ use App\Http\Controllers\APIFuncionController;
 use App\Http\Controllers\APIGeneroController;
 use App\Http\Controllers\APIPeliculaController;
 use App\Http\Controllers\APIUsuarioController;
+use App\Http\Controllers\AuthControllerApi;
 
 /*
 |--------------------------------------------------------------------------
