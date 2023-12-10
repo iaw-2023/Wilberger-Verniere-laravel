@@ -30,14 +30,14 @@ class AuthControllerApi extends Controller
             $this->login($request);
         }
         else{
-            return response()->json(['error' => 'No se creo el nuevo usuario'], 400);
+            return response()->json(['error' => 'No se creo el nuevo usuario, ya existe un usuario con ese email asociado'], 400);
         }
     }
 
     public function login(Request $request)
     {
         // Validar las credenciales del usuario
-        if (!auth()->attempt($request->only('Email', 'Contraseña'))) {
+        if (!auth()->attempt($request->only('email', 'password'))) {
             return response()->json(['message' => 'Nombre de usuario o contraseña incorrectas'], 401);
         }
 
