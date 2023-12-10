@@ -23,9 +23,9 @@ class APIUsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $email = $request->Email;
-        $contraseña = $request->Contraseña;
-        $nombre = $request->Nombre;
+        $email = $request->email;
+        $contraseña = $request->password;
+        $nombre = $request->name;
     
         $existeUsuario = User::where('email', $email)->first();
 

@@ -17,9 +17,9 @@ class AuthControllerApi extends Controller
 
     public function register(Request $request)
     {
-        $email = $request->Email;
-        $contraseña = $request->Contraseña;
-        $nombre = $request->Nombre;
+        $email = $request->email;
+        $contraseña = $request->password;
+        $nombre = $request->name;
     
         $existeUsuario = User::where('email', $email)->first();
 
@@ -44,9 +44,8 @@ class AuthControllerApi extends Controller
             return response()->json(
                 [
                     'message' => 'Nombre de usuario o contraseña incorrectas',
-                    'emailSent' => $request->Email,
-                    'passWordSent' => $request->Contraseña,
-                    'passWordHash' => Hash::make($request->Contraseña)
+                    'emailSent' => $request->email,
+                    'passWordSent' => $request->password,
                 ], 401);
         }
 
