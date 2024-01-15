@@ -52,7 +52,7 @@ class AuthControllerApi extends Controller
         // Generar y devolver el token de acceso
         $token = auth()->user()->createToken('token-name')->plainTextToken;
 
-        return response()->json(['access_token' => $token]);
+        return response()->json(['access_token' => $token], 200);
     }
 
     public function logout(Request $request)
