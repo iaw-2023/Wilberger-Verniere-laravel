@@ -27,9 +27,12 @@ class AuthControllerApi extends Controller
             $hashContraseña = Hash::make($contraseña);
             User::agregarUsuario($email,$hashContraseña,$nombre);
 
-            $this->login($request);
+            return response()->json(
+                [
+                    'success' => 'Nuevo usuario creado correctamente',
+                ], 201);
         }
-        else{
+        else {
             return response()->json(
                 [
                     'error' => 'No se creo el nuevo usuario, ya existe un usuario con ese email asociado',
