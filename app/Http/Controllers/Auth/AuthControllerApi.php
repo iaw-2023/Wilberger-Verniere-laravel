@@ -51,19 +51,26 @@ class AuthControllerApi extends Controller
                     'passWordSent' => $request->password,
                 ], 401);
         }
-
-        // Generar y devolver el token de acceso
+        // Generar y devolver el token de acceso, y nombre e email
         $token = auth()->user()->createToken('token-name')->plainTextToken;
+        $user = auth()->user();
 
-        return response()->json(['access_token' => $token], 201);
+        return response()->json(
+            [
+                'message' => 'Sesion iniciada correctamente',
+                'access_token' => $token,
+                'user_name' => $user->nombre,
+                'user_email' => $user->email,
+            ], 201);
     }
 
     public function logout(Request $request)
     {
-        $user = Auth::user();
+        $user = auth()->user();
+
         $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
 
-        return response()->json(['message' => 'Sesión cerrada correctamente']);
+        return response()->json(['message' => 'Sesión cerrada correctamente'], 200);
     }
 
 /* 
