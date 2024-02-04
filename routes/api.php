@@ -7,6 +7,8 @@ use App\Http\Controllers\APIDetallesCompraController;
 use App\Http\Controllers\APIFuncionController;
 use App\Http\Controllers\APIGeneroController;
 use App\Http\Controllers\APIPeliculaController;
+use App\Http\Controllers\APIUsuarioController;
+use App\Http\Controllers\Auth\AuthControllerApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +21,32 @@ use App\Http\Controllers\APIPeliculaController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request){
+        $user = $request->user();
+        $nombre = $user->name;
+        $email = $user->email;
+
+        return response()->json([
+            'Nombre' => $nombre,
+            'Email' => $email,
+        ]);
+    });
+    Route::post('/logout', [AuthControllerApi::class, 'logout']);
+
+    Route::get('/compras', [APICompraController::class, 'index']);
+    Route::get('/compras/asociadas', [APICompraController::class, 'indexWithEmail']);
+    Route::get('/compras/{idCompra}', [APICompraController::class, 'show']);
+    Route::post('/compras/crear', [APICompraController::class, 'store']);
+    Route::delete('/compras/eliminar', [APICompraController::class, 'destroy']);
+
+    Route::get('/detallesCompras/{idDetallesCompra}', [APIDetallesCompraController::class, 'show']);
 });
+
+Route::post('/login', [AuthControllerApi::class, 'login']);
+Route::post('/register', [AuthControllerApi::class, 'register']);
+Route::post('/usuarios/iniciar', [APIUsuarioController::class, 'getWithEmail']);
+
 
 Route::get('/generos', [APIGeneroController::class, 'index']);
 Route::get('/generos/{idGenero}', [APIGeneroController::class, 'show']);
@@ -33,10 +58,3 @@ Route::get('/funciones', [APIFuncionController::class, 'index']);
 Route::get('/funciones/asociadas', [APIFuncionController::class, 'indexWithPelicula']);
 Route::get('/funciones/{idFuncion}', [APIFuncionController::class, 'show']);
 
-Route::get('/compras', [APICompraController::class, 'index']);
-Route::get('/compras/asociadas', [APICompraController::class, 'indexWithEmail']);
-Route::get('/compras/{idCompra}', [APICompraController::class, 'show']);
-Route::post('/compras/crear', [APICompraController::class, 'store']);
-Route::delete('/compras/eliminar', [APICompraController::class, 'destroy']);
-
-Route::get('/detallesCompras/{idDetallesCompra}', [APIDetallesCompraController::class, 'show']);
