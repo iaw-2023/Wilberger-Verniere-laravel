@@ -61,6 +61,14 @@ class RoleSeeder extends Seeder
         $peliculaUpdate = Permission::create(['name' => 'pelicula.update']); // Permiso para modificar una pelicula
         $peliculaDestroy = Permission::create(['name' => 'pelicula.destroy']); // Permiso para eliminar una pelicula
         
+        $ordenIndex = Permission::create(['name' => 'orden.index']); // Permiso para listar ordenes
+        $ordenCreate = Permission::create(['name' => 'orden.create']); // Permiso para ver la ventana de creacion de una orden 
+        $ordenStore = Permission::create(['name' => 'orden.store']); // Permiso para registrar una orden
+        $ordenShow = Permission::create(['name' => 'orden.show']); // Permiso para ver una orden en particular 
+        $ordenEdit = Permission::create(['name' => 'orden.edit']); // Permiso para ver la ventana de modificacion de una orden
+        $ordenUpdate = Permission::create(['name' => 'orden.update']); // Permiso para modificar una orden
+        $ordenDestroy = Permission::create(['name' => 'orden.destroy']); // Permiso para eliminar una orden
+        
         $superadmin->syncPermissions(
 
         );
