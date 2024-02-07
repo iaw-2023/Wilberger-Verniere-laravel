@@ -46,12 +46,14 @@
                                 <button type="submit" class="btn btn-primary">Habilitar</button>
                             </form>
                         @endif
+                        @can('sala.edit')
                         <form action="{{ route('sala.edit',$s->id) }}" method="Post">
                             @csrf
                             @method('GET')
                             <input type="hidden" name="Sala" value="{{ $s->id }}">
                             <button type="submit" class="btn btn-secondary">Editar</button>
                         </form>
+                        @endcan
                     </td>
                 </tr>
             @endforeach
