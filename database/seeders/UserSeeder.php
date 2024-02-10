@@ -28,20 +28,20 @@ class UserSeeder extends Seeder
             'email'=>"funcionAdmin@iaw.com",            
             'password'=>Hash::make('admin234'),
             'rol'=>"ADMIN",
-        ])->assignRole('adminFunciones');
+        ])->assignRole('adminFunc');
 
         DB::table('users')->insert([
             'name' => "SalaAdmin",
             'email'=>"salaAdmin@iaw.com",            
             'password'=>Hash::make('admin456'),
             'rol'=>"ADMIN",
-        ])->assignRole('adminSalas');
+        ])->assignRole('adminSala');
 
         DB::table('users')->insert([
             'name' => "GenyPelAdmin",
             'email'=>"generoypeliculaAdmin@iaw.com",            
             'password'=>Hash::make('admin567'),
             'rol'=>"ADMIN",
-        ])->assignRole('adminGenerosPeliculas');
+        ])->assignRole('adminGyP');
     }
 }
