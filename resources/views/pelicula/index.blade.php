@@ -32,19 +32,23 @@
                     </td>
                     <td> 
                         @if($pel->habilitado)
+                            @can('pelicula.deshabilitar')
                             <form action="{{ route('pelicula.deshabilitar',$pel->id) }}" method="Post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="hidden" name="Pelicula" value="{{ $pel->id }}">
                                 <button type="submit" class="btn btn-danger">Deshabilitar</button>
                             </form>
+                            @endcan
                         @else
+                            @can('pelicula.habilitar')
                             <form action="{{ route('pelicula.habilitar',$pel->id) }}" method="Post">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="Pelicula" value="{{ $pel->id }}">
                                 <button type="submit" class="btn btn-primary">Habilitar</button>
                             </form>
+                            @endcan
                         @endif
                         @can('pelicula.edit')
                         <form action="{{ route('pelicula.edit',$pel->id) }}" method="Post">
