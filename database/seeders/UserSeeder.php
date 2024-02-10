@@ -23,7 +23,6 @@ class UserSeeder extends Seeder
             'rol'=>"SUPER_ADMIN",
         ])->assignRole('superadmin');
 
-        User::truncate();
         User::create([
             'name' => "FuncionAdmin",
             'email'=>"funcionAdmin@iaw.com",            
@@ -31,7 +30,6 @@ class UserSeeder extends Seeder
             'rol'=>"ADMIN",
         ])->assignRole('adminFunc');
 
-        User::truncate();
         User::create([
             'name' => "SalaAdmin",
             'email'=>"salaAdmin@iaw.com",            
@@ -39,7 +37,6 @@ class UserSeeder extends Seeder
             'rol'=>"ADMIN",
         ])->assignRole('adminSala');
 
-        User::truncate();
         User::create([
             'name' => "GenyPelAdmin",
             'email'=>"generoypeliculaAdmin@iaw.com",            
