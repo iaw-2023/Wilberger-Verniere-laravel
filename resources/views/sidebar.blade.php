@@ -37,6 +37,9 @@
     @endcan
 </div>
 
+<a class="username">
+    <div>{{ Auth::user()->name }}</div>
+</a>
 <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
     <i class="fa-solid fa-power-off" style="color: #ffffff;"></i>
     Logout
