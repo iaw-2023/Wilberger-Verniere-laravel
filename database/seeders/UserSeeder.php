@@ -15,29 +15,32 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        DB::table('users')->insert([
+        User::truncate();
+        User::create([
             'name' => "Admin",
             'email'=>"admin@iaw.com",            
             'password'=>Hash::make('admin123'),
             'rol'=>"SUPER_ADMIN",
         ])->assignRole('superadmin');
 
-        DB::table('users')->insert([
+        User::truncate();
+        User::create([
             'name' => "FuncionAdmin",
             'email'=>"funcionAdmin@iaw.com",            
             'password'=>Hash::make('admin234'),
             'rol'=>"ADMIN",
         ])->assignRole('adminFunc');
 
-        DB::table('users')->insert([
+        User::truncate();
+        User::create([
             'name' => "SalaAdmin",
             'email'=>"salaAdmin@iaw.com",            
             'password'=>Hash::make('admin456'),
             'rol'=>"ADMIN",
         ])->assignRole('adminSala');
 
-        DB::table('users')->insert([
+        User::truncate();
+        User::create([
             'name' => "GenyPelAdmin",
             'email'=>"generoypeliculaAdmin@iaw.com",            
             'password'=>Hash::make('admin567'),
