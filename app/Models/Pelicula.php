@@ -17,7 +17,8 @@ class Pelicula extends Model
     protected $table = 'pelicula';
     protected $fillable = [
         'idGenero',
-        'nombre'
+        'nombre',
+        'imagen_pelicula',
     ];
 
     public function genero():HasOne{
@@ -51,9 +52,16 @@ class Pelicula extends Model
 
         $pelicula->nombre     = $request->Nombre;
         $pelicula->idGenero   = $request->Genero;
+
+        if ($request->hasFile('Imagen_pelicula')){
+            $imagen = $request->file('Imagen_pelicula');
+            $extension = $imagen->getClientOriginalExtension();
+            $nombreArchivo = $pelicula->nombre.'.'.$extension;
+            $imagen->move("storage/peliculas/imagenes/",$nombreArchivo);
+            $pelicula->imagen_pelicula = $nombreArchivo;
+        }
         
         $pelicula->save();
-
     }
 
     public static function editarPelicula(Request $request, $id)
@@ -62,6 +70,7 @@ class Pelicula extends Model
 
         $pelicula->nombre     = $request->Nombre;
         $pelicula->idGenero   = $request->idGenero;
+        $pelicula->imagen     = $request->imagen;
         
         $pelicula->save();
     }
