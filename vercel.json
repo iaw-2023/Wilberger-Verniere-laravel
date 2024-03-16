@@ -1,13 +1,11 @@
 {
     "version": 2,
+    "builds": [
+        { "src": "build.sh", "use": "@vercel/build-utils/bash" }
+      ],
     "functions": {
         "api/index.php": {
             "runtime": "vercel-php@0.6.0"
-        },
-        "hooks": {
-            "build": {
-                "command": "apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo_pgsql"
-            }
         }
     },
     "routes": [        
