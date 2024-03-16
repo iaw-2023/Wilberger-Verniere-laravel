@@ -18,7 +18,8 @@ class PeliculaResource extends JsonResource
         return [
             'Id' => $this->id,
             'Nombre' => $this->nombre,
-            'Genero' => $this->genero->nombre
+            'Genero' => $this->genero->nombre,
+            'Imagen' => asset('storage/peliculas/imagenes/'.$pelicula->imagen_pelicula),
         ];
     }
 }
