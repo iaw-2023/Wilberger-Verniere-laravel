@@ -1,8 +1,13 @@
 {
     "version": 2,
     "functions": {
-        "api/index.php": { 
-            "runtime": "vercel-php@0.6.0"
+        "api/index.php": {
+        "runtime": "vercel-php@0.6.0",
+        "hooks": {
+            "build": {
+            "command": "apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo_pgsql"
+            }
+        }
         }
     },
     "routes": [        
