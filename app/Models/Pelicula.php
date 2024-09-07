@@ -61,12 +61,13 @@ class Pelicula extends Model
             $imagen = $request->file('Imagen_pelicula');
             $extension = $imagen->getClientOriginalExtension();
 
-            $nombreArchivo = Str::slug($request->Nombre).'.'.$extension; Log::info("Nombre de archivo: " . $nombreArchivo);
-            
-            //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
-            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo); Log::info("Nombre de result: " . $result);
+            $nombreArchivo = Str::slug($request->Nombre).'.'.$extension; 
+            Log::info("Nombre de archivo: " . $nombreArchivo);
+            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
+            Log::info("Nombre de result: " . $result);
 
             $pelicula->imagen_pelicula = $result->getSecurePath();
+            Log::info("Nombre de url: " . $pelicula->imagen_pelicula);
         }
         else { $pelicula->imagen_pelicula = null; }
         
@@ -84,13 +85,13 @@ class Pelicula extends Model
             $imagen = $request->file('Imagen_pelicula'); 
             $extension = $imagen->getClientOriginalExtension();
 
-            $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;  Log::info("Nombre de archivo: " . $nombreArchivo);
-            //$nombreArchivo = Str::slug($request->Nombre);
+            $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;  
+            Log::info("Nombre de archivo: " . $nombreArchivo);
+            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo); 
+            Log::info("Nombre de result: " . $result);
 
-            //$path = $imagen->storeAs('/peliculas/imagenes', $nombreArchivo, 'public');
-            $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo); Log::info("Nombre de result: " . $result);
-
-            $pelicula->imagen_pelicula = $result->getSecurePath();
+            $pelicula->imagen_pelicula = $result->getSecurePath(); 
+            Log::info("Nombre de url: " . $pelicula->imagen_pelicula);
         }
         else { $pelicula->imagen_pelicula = null; }
         

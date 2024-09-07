@@ -21,8 +21,8 @@
                 <div class="form-group">
                     <strong>Nombre:</strong>
                     <div class="input-group">
-                        <input type="text" id="nombrePelicula" name="Nombre" class="form-control" value="{{ $pelicula->nombre }}" required>
-                        <button type="button" id="fillFormBtn" class="btn btn-secondary">Llenar formulario</button>
+                        <input type="text" id="nombrePelicula" name="Nombre" class="input-textfield" value="{{ $pelicula->nombre }}" required>
+                        <button type="button" id="fillFormBtn" class="btn btn-secondary inputFormAutoButton">Llenar formulario</button>
                     </div>
                     @error('Nombre')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
@@ -45,7 +45,7 @@
                 <input type="file" name="Imagen_pelicula" id="img_pel">
                 <div id="imagenPreview"></div>
                 <div id="errorPoster" class="alert alert-danger mt-1 mb-1" style="display:none;">
-                    El genero de esta pelicula en OMDb no existe en la lista de generos existentes
+                    Esta pelicula no tiene poster disponible
                 </div>
             </div>
         </div>
@@ -133,8 +133,11 @@
             linkDescarga.download = 'poster.jpg';
             linkDescarga.textContent = 'Descargar Poster';
             imagenPreview.appendChild(linkDescarga);
-        }
 
+            document.getElementById('errorPoster').style.display = 'none';
+        } else {
+            document.getElementById('errorPoster').style.display = 'block';
+        }
     }
 </script>
 @stop

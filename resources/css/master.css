@@ -159,3 +159,13 @@
 .form-control{
     margin-bottom: 25px;
 }
+
+.input-textfield{
+    margin-right: 10px;
+    width: 50%;
+}
+
+.inputFormAutoButton{
+    border-radius: 1px !important;
+    background-color: darkcyan !important;
+}
