@@ -64,7 +64,7 @@ class Pelicula extends Model
             $nombreArchivo = Str::slug($request->Nombre).'.'.$extension; 
             Log::info("Nombre de archivo: " . $nombreArchivo);
             $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo);
-            Log::info("Nombre de result: " . $result);
+            Log::info("Nombre de result path: " . $result->getSecurePath());
 
             $pelicula->imagen_pelicula = $result->getSecurePath();
             Log::info("Nombre de url: " . $pelicula->imagen_pelicula);
@@ -88,7 +88,7 @@ class Pelicula extends Model
             $nombreArchivo = Str::slug($request->Nombre).'.'.$extension;  
             Log::info("Nombre de archivo: " . $nombreArchivo);
             $result = $imagen->storeOnCloudinaryAs('/peliculas/imagenes/', $nombreArchivo); 
-            Log::info("Nombre de result: " . $result);
+            Log::info("Nombre de result path: " . $result->getSecurePath());
 
             $pelicula->imagen_pelicula = $result->getSecurePath(); 
             Log::info("Nombre de url: " . $pelicula->imagen_pelicula);
