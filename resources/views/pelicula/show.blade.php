@@ -15,7 +15,7 @@
     </div>
     @endif
     @if($pelicula->imagen_pelicula)
-        <img src="{{ $pelicula->imagen_pelicula }}" alt="" width="1200" heigth="1200">
+        <img src="{{ $pelicula->imagen_pelicula }}" alt="" width="500" heigth="500">
     @else
         <div>No hay portada guardada para esta pelicula</div>
     @endif
