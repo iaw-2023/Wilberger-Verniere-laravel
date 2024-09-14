@@ -84,7 +84,18 @@ class FuncionController extends Controller
         $funcion = Funcion::find($id);
         $peliculas = Pelicula::elementosHabilitados();
         $salas = Sala::elementosHabilitados();
-        return view('funcion.edit',compact('funcion','id','peliculas','salas'));
+
+        $funcionObjeto = Funcion::where([
+            ['id', $request->Funcion]
+        ])->first();
+        $detalles = $funcionObjeto->detalles->first();
+        if (is_null($detalles)){
+            Funcion::quitarFuncion($request);
+            return view('funcion.edit',compact('funcion','id','peliculas','salas'));
+        }
+        else{
+            return redirect()->route('funcion.index')->with('Error','Funcion no puede ser editada; esta funcion tiene al menos un ticket comprado');
+        }
     }
 
     /**
