@@ -51,21 +51,19 @@ https://wilberger-verniere-laravel-zxwy.vercel.app/swagger
 ## Consultas a API:
 https://wilberger-verniere-laravel-zxwy.vercel.app/rest/...
 
-## Comentarios adicionales:
-Nos faltaria reemplazar imagenes de Laravel por imagenes del logo de la empresa
-
-
 ## ANOTACIONES EXAMEN FINAL:
-Roles-en-laravel -> Se agregaron roles que permiten solo modificar salas, solo modificar funciones, o solo modificar peliculas y generos. Todos pueden ver la lista de peliculas,generos,funciones y salas. Solo el superadmin puede ver compras y ordenes de compra asociadas a cada una. Se uso SPATIE/laravel-permissions. 
-https://spatie.be/docs/laravel-permission/v6/introduction
 
-## Administracion-de-archivos-> Imagenes
-https://laravel.com/docs/10.x/filesystem
-Usamos Cloudinary
+### Roles-en-laravel 
+- Se agregaron roles que permiten solo modificar salas, solo modificar funciones, o solo modificar peliculas y generos. Todos pueden ver la lista de peliculas,generos,funciones y salas. Solo el superadmin puede ver compras y ordenes de compra asociadas a cada una. Se uso SPATIE/laravel-permissions. 
+- https://spatie.be/docs/laravel-permission/v6/introduction
 
-## Servicio-web-laravel:
-Se utiliza API de OMDb para autocompletar formulario de creacion de pelicula
-Se utilizo JavaScript
-Si no encuentra pelicula tira alert
-Si encuentra pelicula pero no tiene genero existente en la base de datos actual muestra notificacion
-Si no encuentra poster no hace nada, si lo hace setea un link para descargarlo y lo muestra como preview
+### Administracion-de-archivos-> Imagenes
+- https://laravel.com/docs/10.x/filesystem
+- Usamos Cloudinary
+
+### Servicio-web-laravel:
+- Se utiliza API de OMDb para autocompletar formulario de creacion de pelicula
+- Se utilizo JavaScript
+- Si no encuentra pelicula tira alert
+- Si encuentra pelicula pero no tiene genero existente en la base de datos actual muestra notificacion
+- Si no encuentra poster no hace nada, si lo hace setea un link para descargarlo y lo muestra como preview
