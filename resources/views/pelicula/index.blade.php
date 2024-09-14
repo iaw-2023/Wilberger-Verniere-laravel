@@ -30,7 +30,7 @@
                         @else {{ 'NO' }} 
                         @endif 
                     </td>
-                    <td> 
+                    <td class="indexAcciones">
                         @if($pel->habilitado)
                             @can('pelicula.deshabilitar')
                             <form action="{{ route('pelicula.deshabilitar',$pel->id) }}" method="Post">

@@ -28,7 +28,7 @@
                         @else {{ 'NO' }} 
                         @endif 
                     </td>
-                    <td>
+                    <td class="indexAcciones">
                         @if($gen->habilitado)
                             @can('genero.deshabilitar')
                             <form action="{{ route('genero.deshabilitar',$gen->id) }}" method="Post">

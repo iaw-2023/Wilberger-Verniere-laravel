@@ -25,7 +25,7 @@
                     <td>{{ $com->emailCliente }}</td>
                     <td>{{ $com->observaciones }}</td>
                     <td>{{ $com->fecha }}</td>
-                    <td>
+                    <td class="indexAcciones">
                         <form action="{{ route('detallesCompra.ordenesAsociadas', $com->id) }}" method="get">
                             @csrf
                             @can('orden.index')

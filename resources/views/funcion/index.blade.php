@@ -36,7 +36,7 @@
                         @else {{ 'NO' }} 
                         @endif 
                     </td>
-                    <td>
+                    <td class="indexAcciones">
                         @if($fun->habilitado)
                             @can('funcion.deshabilitar')
                             <form action="{{ route('funcion.deshabilitar',$fun->id) }}" method="Post">

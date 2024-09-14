@@ -1,6 +1,6 @@
-<a href="{{ url('/') }}">
-    <i class="fa-solid fa-home" style="color: #ffffff;"></i>
+<a href="{{ url('/') }}" style="margin: 10px; text-transform: uppercase;">
     Inicio
+    <i class="fa-solid fa-home" style="color: #ffffff;"></i>
 </a>
 
 <div class="btn-group">
@@ -38,7 +38,7 @@
 </div>
 
 <a class="username">
-    <div>{{ Auth::user()->name }}</div>
+    <div class="usernameContent">{{ Auth::user()->name }}</div>
 </a>
 <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
     <i class="fa-solid fa-power-off" style="color: #ffffff;"></i>
