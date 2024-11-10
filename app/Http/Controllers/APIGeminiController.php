@@ -17,11 +17,11 @@ class APIGeminiController extends Controller
 
         try {
             $result = Gemini::geminiPro()->generateContent($request);
-            Log::info("Respuesta GEMINI API: " . $result);
+            Log::info("Respuesta GEMINI API: " . $result->text());
 
-            $response = $result['choices'][0]['message']['content'] ?? '';
+            $response = $result->text();
 
-            if (stripos($response, 'Error al buscar una sinopsis en Gemini') !== false) {
+            if ($response === 'Error al buscar una sinopsis en Gemini') {
                 return response()->json(['error' => $response], 404); //No encontro info pelicula, pero dio respuesta de error 
             }
 
