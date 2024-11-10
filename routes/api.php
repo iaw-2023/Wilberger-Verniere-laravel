@@ -10,6 +10,7 @@ use App\Http\Controllers\APIPeliculaController;
 use App\Http\Controllers\APIUsuarioController;
 use App\Http\Controllers\APICompraMPController;
 use App\Http\Controllers\APIOpenAIController;
+use App\Http\Controllers\APIGeminiController;
 use App\Http\Controllers\APIOpenMovieDBController;
 use App\Http\Controllers\Auth\AuthControllerApi;
 
@@ -64,4 +65,5 @@ Route::get('/funciones/asociadas', [APIFuncionController::class, 'indexWithPelic
 Route::get('/funciones/{idFuncion}', [APIFuncionController::class, 'show']);
 
 Route::get('/chatgpt', [APIOpenAIController::class, 'infoChatGPT']);
+Route::get('/gemini', [APIGeminiController::class, 'infoGemini']);
 Route::get('/openmovie', [APIOpenMovieDBController::class, 'infoOMDb']);
