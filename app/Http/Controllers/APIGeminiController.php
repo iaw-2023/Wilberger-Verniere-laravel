@@ -19,7 +19,7 @@ class APIGeminiController extends Controller
             Log::info("Respuesta GEMINI API: " . $result->text());
 
             $response = $result->text();
-            $responseASJSON = json_decode($responseText, true);
+            $responseASJSON = json_decode($response, true);
 
             
             if (isset($responseASJSON['content'])) { return response()->json([
