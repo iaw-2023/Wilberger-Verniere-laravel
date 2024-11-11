@@ -7,7 +7,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use Gemini\Laravel\Facades\Gemini;
-use GuzzleHttp\Client;
 
 class APIGeminiController extends Controller
 {
@@ -20,14 +19,27 @@ class APIGeminiController extends Controller
             Log::info("Respuesta GEMINI API: " . $result->text());
 
             $response = $result->text();
+            $responseASJSON = json_decode($responseText, true);
 
-            if ($response === 'Error al buscar una sinopsis en Gemini') {
-                return response()->json(['error' => $response], 404); //No encontro info pelicula, pero dio respuesta de error 
-            }
+            
+            if (isset($responseASJSON['content'])) { return response()->json([
+                'content' => $responseASJSON['content'],
+                'fullResponse' => $response
+            ], 200); }
+            if (isset($responseASJSON['error'])) { return response()->json([
+                'error' => $responseASJSON['error'],
+                'fullResponse' => $response
+            ], 404); }
 
-            return response()->json(['content' => $response], 200); //Encontro info pelicula
+            return response()->json([
+                'error' => 'Error formato respuesta GEMINI',
+                'fullResponse' => $response
+            ], 500);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            return response()->json([
+                'error' => $e->getMessage(), 
+                'fullResponse' => $response
+            ], 500);
         }
     }
 }
