@@ -21,10 +21,8 @@ class APICompraMPController extends Controller
         $request_options->setCustomHeaders(["X-Idempotency-Key: " . uniqid()]);
 
         $bodyString = $request->json('body');
-        //Log::info('Body string: ' . $bodyString);
 
         $body = json_decode($bodyString, true);
-        //Log::info('Decoded body: ', $body);
 
         try {
             // Create the payment
@@ -35,7 +33,6 @@ class APICompraMPController extends Controller
                 "installments" => $body['installments'], //<INSTALLMENTS>
                 "payment_method_id" => $body['payment_method_id'], //<PAYMENT_METHOD_ID>
                 "issuer_id" => $body['issuer_id'], //<ISSUER>
-                "cardholderName" => $body['cardholderName'], //<CARD_HOLDER_NAME>
                 "payer" => [
                     "email" => $body['payer']['email'], //<EMAIL> 
                     "identification" => [
@@ -45,13 +42,8 @@ class APICompraMPController extends Controller
                 ]
             ], $request_options);
 
-            // Return the payment response as JSON
             return response()->json($payment);
         } catch (Exception $e) {
-            // Log the error
-            //Log::error('Payment processing error: ' . $e->getMessage());
-            
-            // Return an error response
             return response()->json(['error' => 'Payment processing failed','message' => $e->getMessage()], 500);
         }
     }
