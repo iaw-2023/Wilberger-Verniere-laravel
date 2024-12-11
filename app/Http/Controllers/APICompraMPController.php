@@ -24,6 +24,8 @@ class APICompraMPController extends Controller
 
         $body = json_decode($bodyString, true);
 
+        Log::info('Body de la compra:', ['body' => $body]);
+
         try {
             // Create the payment
             $payment = $client->create([
@@ -33,7 +35,7 @@ class APICompraMPController extends Controller
                 "installments" => $body['installments'], //<INSTALLMENTS>
                 "payment_method_id" => $body['payment_method_id'], //<PAYMENT_METHOD_ID>
                 "issuer_id" => $body['issuer_id'], //<ISSUER>
-                //"cardholderName" => $body['cardholderName'], //<CARDHOLDER_NAME>
+                "cardholderName" => $body['cardholderName'], //<CARDHOLDER_NAME>
                 "payer" => [
                     "email" => $body['payer']['email'], //<EMAIL> 
                     "identification" => [
