@@ -33,7 +33,7 @@ class APICompraMPController extends Controller
                 "installments" => $body['installments'], //<INSTALLMENTS>
                 "payment_method_id" => $body['payment_method_id'], //<PAYMENT_METHOD_ID>
                 "issuer_id" => $body['issuer_id'], //<ISSUER>
-                "cardholderName" => $body['cardholderName'], //<CARDHOLDER_NAME>
+                //"cardholderName" => $body['cardholderName'], //<CARDHOLDER_NAME>
                 "payer" => [
                     "email" => $body['payer']['email'], //<EMAIL> 
                     "identification" => [
@@ -45,7 +45,12 @@ class APICompraMPController extends Controller
 
             return response()->json($payment);
         } catch (Exception $e) {
-            return response()->json(['error' => 'Payment processing failed','message' => $e->getMessage()], 500);
+            return response()->json(
+                [
+                    'error' => 'Payment processing failed',
+                    'message' => $e->getMessage(),
+                    'errorObj' => $e,
+                ], 500);
         }
     }
 }
