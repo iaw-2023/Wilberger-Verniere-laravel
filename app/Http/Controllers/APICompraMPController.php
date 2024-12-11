@@ -33,6 +33,7 @@ class APICompraMPController extends Controller
                 "installments" => $body['installments'], //<INSTALLMENTS>
                 "payment_method_id" => $body['payment_method_id'], //<PAYMENT_METHOD_ID>
                 "issuer_id" => $body['issuer_id'], //<ISSUER>
+                "cardholderName" => $body['cardholderName'], //<CARDHOLDER_NAME>
                 "payer" => [
                     "email" => $body['payer']['email'], //<EMAIL> 
                     "identification" => [
