@@ -43,8 +43,10 @@ class APICompraMPController extends Controller
                 ]
             ], $request_options);
 
+            Log::info('Payment creado:', ['payment' => $payment]);
             return response()->json($payment);
         } catch (Exception $e) {
+            Log::error('Payment fallo:', ['error' => $e->getMessage(), 'error_details' => $e]);
             return response()->json(
                 [
                     'error' => 'Payment processing failed',
